@@ -1,7 +1,7 @@
 # codex_config.toml
 
 - 来源: `/Users/jack/.codex/config.toml`
-- 同步时间: `2026-03-21 13:29:47 CST`
+- 同步时间: `2026-03-21 14:40:28 CST`
 
 ---
 
@@ -25,8 +25,8 @@ command = "/Users/jack/.nvm/versions/node/v22.22.0/bin/playwright-mcp"
 command = "/Users/jack/.nvm/versions/node/v22.22.0/bin/mcp-server-memory"
 
 [mcp_servers.obsidian]
-command = "npx"
-args = ["-y", "@sunub/obsidian-mcp-server@latest"]
+command = "/Users/jack/.nvm/versions/node/v22.22.0/bin/node"
+args = ["/Users/jack/.npm/_npx/02f38078ec27a24d/node_modules/.bin/obsidian-mcp-server"]
 
 [mcp_servers.obsidian.env]
 LOGGING_LEVEL = "info"
