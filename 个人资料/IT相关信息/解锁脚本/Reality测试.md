@@ -1,0 +1,1 @@
+for d in statici.icloud.com s0.awsstatic.com d2c.aws.amazon.com fpinit.itunes.apple.com drivers.amd.com sisu.xboxlive.com downloadmirror.intel.com j.6sc.co xp.apple.com www.sony.com ; do t1=$(date +%s%3N); timeout 1 openssl s_client -connect $d:443 -servername $d </dev/null &>/dev/null && t2=$(date +%s%3N) && echo "$d: $((t2 - t1)) ms" || echo "$d: timeout"; done

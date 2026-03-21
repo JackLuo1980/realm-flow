@@ -1,0 +1,35 @@
+tunnel_id	tunnel_name	in_node_id	out_node_id	in_ip	out_ip	type
+1	阿里广州-咕咕云	2	3	8.138.120.16	165.101.5.172	2
+2	阿里广州-YT	2	4	8.138.120.16	cnix.zhuji.host	2
+3	阿里G口-YT	1	4	8.166.137.87	cnix.zhuji.host	2
+6	Aliyun-Claw-JP-Black Friday	7	7	47.74.32.145	47.74.32.145	1
+7	Wawo-HkPis-Excellence-2G-31	8	8	103.122.244.22	103.122.244.22	1
+9	Bgp.GD 莞港IPLC	10	10	119.147.22.28	119.147.22.28	1
+10	速维云（年付）YT	11	4	103.236.60.119	cnix.zhuji.host	2
+11	LaLa  广东三线NAT|680	12	12	119.147.129.75	119.147.129.75	1
+12	无忧云 YT	13	4	103.236.62.196	cnix.zhuji.host	2
+13	无忧云-> HK.BGP.A	13	15	103.236.62.196	hk-bgp.zhuji.host	2
+16	LaLa 广东三线NAT|680 S2	16	16	14.116.246.198	14.116.246.198	1
+17	云曦幻境	19	19	2409:8c54:6810:5::c4	2409:8c54:6810:5::c4	1
+18	Wawo-HkPis-Excellence-2G-34	20	20	103.192.179.240	103.192.179.240	1
+19	速维云G口-YT	18	4	103.236.64.30	cnix.zhuji.host	2
+23	咕咕云 苏日专线特惠型	24	24	43.227.71.46	43.227.71.46	1
+24	HaloCloud 深圳三线	25	25	240e:97c:400c:803::1:14c	240e:97c:400c:803::1:14c	1
+25	Heptasky Trinity-V6-500G流量款	26	26	240e:97d:10:25cf:2::2e	240e:97d:10:25cf:2::2e	1
+26	VmSilo IEPL-沪港-ipv6	27	27	240e:96c:7100:1fe:1c8:c8aa:4ecc:6f	240e:96c:7100:1fe:1c8:c8aa:4ecc:6f	1
+27	DMIT-LAX.Pro.MALIBU	28	28	154.21.89.58	154.21.89.58	1
+29	肥仔云 深圳电信IEPL	30	30	103.236.57.183	103.236.57.183	1
+30	BandwagonHost-MEGABOX-PRO	31	31	144.34.238.147	144.34.238.147	1
+31	速维云-Heptasky	11	32	103.236.60.119	163.223.124.110	2
+32	无忧云-Heptasky	13	32	103.236.62.196	163.223.124.110	2
+33	阿里-hep	1	32	8.166.137.87	163.223.124.110	2
+34	速维云 V5	18	33	103.236.64.30	138.252.162.75	2
+35	YT IPLC	34	15	103.236.67.27	hk-bgp.zhuji.host	2
+36	Mkcloud 广州BGP-香港IEPL专线	35	35	109.244.76.47	109.244.76.47	1
+37	LeikwanHost 利群马年创始	36	36	leikwanct.zlib4.eu.org	leikwanct.zlib4.eu.org	1
+39	阿里上海 -咕咕云沪日	38	37	139.196.125.70	211.161.225.88	2
+40	阿里云上海-咕咕云 沪日99	38	39	139.196.125.70	211.161.225.88	2
+41	LeikwanHost 利群 Promo- SDWAN-雙子星	40	40	leikwan.zlib4.eu.org	leikwan.zlib4.eu.org	1
+42	VmSilo IEPL-沪日-ipv6	41	41	240e:96c:7100:1fe:1c8:c8aa:4ecc:7d	240e:96c:7100:1fe:1c8:c8aa:4ecc:7d	1
+43	VmSilo 沪港 IEPL	42	42	240e:96c:7100:1fe:1c8:c8aa:4ecc:83	240e:96c:7100:1fe:1c8:c8aa:4ecc:83	1
+44	VmSilo 沪美 IEPL	43	43	240e:96c:7100:1fe:1c8:c8aa:4ecc:86	240e:96c:7100:1fe:1c8:c8aa:4ecc:86	1

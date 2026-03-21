@@ -1,0 +1,1 @@
+geosite:openai,geosite:tiktok,geosite:google,geosite:microsoft,domain:claude.com,domain:translate.googleapis.com,domain:copilot.microsoft.com,domain:bing.com,domain:login.live.com,domain:[login.microsoftonline.com](http://login.microsoftonline.com)

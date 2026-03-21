@@ -1,0 +1,1 @@
+http://boss.sunline.cn:8080/download/pc/versionUpdate/

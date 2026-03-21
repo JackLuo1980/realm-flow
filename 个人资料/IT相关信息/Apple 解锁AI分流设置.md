@@ -1,0 +1,21 @@
+- - -
+
+## 7条规则
+```
+guzzoni.apple.com
+
+*.smoot.apple.com
+
+apple-relay.cloudflare.com
+
+apple-relay.fastly-edge.com
+
+cp4.cloudflare.com
+
+apple-relay.apple.com
+
+gspe1-ssl.ls.apple.com
+```
+
+
+
