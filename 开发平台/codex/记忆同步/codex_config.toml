@@ -1,9 +1,15 @@
 # codex_config.toml
 
 - 来源: `/Users/jack/.codex/config.toml`
-- 同步时间: `2026-03-20 13:17:57 CST`
+- 同步时间: `2026-03-21 13:10:18 CST`
 
 ---
+
+# codex_config.toml
+
+# Source: /Users/jack/.codex/config.toml
+# Sync time: 2026-03-20 13:17:57 CST
+
 
 model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
@@ -31,5 +37,6 @@ url = "https://mcp.figma.com/mcp"
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
+
 
 

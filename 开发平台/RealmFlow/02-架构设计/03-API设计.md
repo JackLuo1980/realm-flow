@@ -59,6 +59,23 @@ GET    /api/nodes/:id/status  # 获取节点状态
 GET    /api/nodes/:id/traffic # 获取节点流量统计
 ```
 
+## 节点 / 服务器生命周期
+
+```
+POST   /api/nodes/:id/install     # 下发安装命令 / 安装包
+POST   /api/nodes/:id/update      # 更新节点或服务端
+POST   /api/nodes/:id/uninstall   # 卸载节点或服务端
+GET    /api/nodes/:id/version     # 获取当前版本
+POST   /api/nodes/:id/autoupdate  # 触发自动升级检查
+GET    /api/nodes/:id/upgrade-log # 获取升级日志
+```
+
+### 说明
+
+- 节点端和服务器端都需要支持安装、更新、卸载
+- 节点端应支持根据服务器端版本变化自动升级
+- 安装/升级流程需要在测试环境先验证，再纳入正式部署流程
+
 ---
 
 ## 隧道管理
