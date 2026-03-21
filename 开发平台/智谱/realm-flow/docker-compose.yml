@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: realmflow-postgres
+    environment:
+      POSTGRES_DB: realmflow
+      POSTGRES_USER: realmflow
+      POSTGRES_PASSWORD: realmflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U realmflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  panel:
+    build:
+      context: ./go-backend
+      dockerfile: Dockerfile
+    container_name: realmflow-panel
+    ports:
+      - "6365:6365"
+    environment:
+      - DATABASE_URL=postgres://realmflow:realmflow@postgres:5432/realmflow?sslmode=disable
+      - JWT_SECRET=your-secret-key-change-in-production
+      - PORT=6365
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+
+  frontend:
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
+    container_name: realmflow-frontend
+    ports:
+      - "6366:80"
+    depends_on:
+      - panel
+    restart: always
+
+volumes:
+  postgres_data:

@@ -1,14 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-21 12:41:08 CST`
-
----
-
-# decision_log.md
-
-- 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-19 20:38:38 CST`
+- 同步时间: `2026-03-20 13:17:57 CST`
 
 ---
 
@@ -176,6 +169,53 @@
 - Why: 保持当前环境精简，减少无效配置、占位 API Key 和不必要的 MCP 加载。
 - Follow-up: 后续若用户再次需要外部搜索、任务管理或 GitHub 集成，再按需单独恢复对应 MCP。
 
+## 2026-03-20 - PO0中转脚本nftables托管修复
+- Background: 111.229.215.107 出现“昨天可用、今天中断”风险，现场发现规则已加载但 `nftables.service` 处于 `inactive (dead)`，脚本仅执行 `systemctl enable nftables`，未保证服务立即进入活动态。
+- Decision: 将 `setup-relay-incremental.sh` 中 `sudo systemctl enable nftables` 改为 `sudo systemctl enable --now nftables`，并在目标机重新 `apply` 生效。
+- Why: `enable` 只保证开机自启，不保证当下服务状态；`--now` 可确保每次增量变更后立即进入 systemd 托管，降低规则被停止/刷新后的中断窗口。
+- Follow-up: 后续排障先检查 `systemctl is-active nftables` 与 `nft list ruleset` 是否同时满足；若使用该脚本，统一采用修复后的版本。
+
+## 2026-03-20 - PO0中转增量脚本防误覆盖策略
+- Background: 用户反馈三条转发全部不通；现场排查发现状态文件仅剩1条，执行apply后按状态重生成规则，导致其余历史转发被覆盖。
+- Decision: 1) 现场从历史备份恢复缺失两条线路（HK-Jinx/JP-CO）并重新apply；2) 脚本新增安全检查：当状态文件规则数小于现有nft配置规则数时，默认阻断apply并报错；3) delete场景显式放行缩减（RELAY_ALLOW_SHRINK=1）；4) add/delete前自动备份状态文件。
+- Why: 状态驱动模型在状态不完整时会放大风险；默认阻断“规则数缩减覆盖”可防止误操作导致批量中断。
+- Follow-up: 如确需按更少规则覆盖，显式使用 `RELAY_ALLOW_SHRINK=1 bash setup-relay-incremental.sh apply`；常规操作保持默认保护开启。
+
+## 2026-03-20 - 记录PO0中转服务器凭据（用户授权）
+- Background: 用户要求将服务器IP和密码记录到Obsidian记忆中，后续无需重复提供。
+- Decision: 在持久记忆中记录 PO0 中转服务器凭据：111.229.215.107 / root / 8MbOviffmS3s。
+- Why: 降低重复沟通成本，加快后续故障处理。
+- Follow-up: 后续涉及PO0中转机操作默认优先使用该凭据；若用户更改密码再即时更新记忆。
+
+## 2026-03-20 - 启动 Fork-Nft 开源迁移项目
+- Background: 用户要求采用方案1（基于FLVX改造）并在其GitHub账号下建立通用开源项目，支持nftables/realm可选引擎，同时要求开发信息同步Obsidian。
+- Decision: 已创建公开仓库 `JackLuo1980/Fork-Nft` 并同步FLVX代码；新增架构/测试/一键部署路线文档，作为后续实现基线。
+- Why: 复用成熟控制面可显著缩短上线周期，同时通过引擎抽象和测试门禁满足可扩展与稳定性要求。
+- Follow-up: 进入实现阶段时优先落地engine adapter接口、nftables/realm执行器与自动化测试流水线。
+
+## 2026-03-20 - 指定 Fork-Nft 开发调试服务器
+- Background: 用户指定一台服务器用于Fork-Nft面板开发调试部署。
+- Decision: 将 38.165.47.12（root / dmgbZVKT8786）作为当前开发调试服务器并记录到持久记忆。
+- Why: 统一调试环境，避免每次重复确认目标机信息。
+- Follow-up: 后续Fork-Nft面板部署、联调、测试默认优先使用该服务器。
+
+## 2026-03-20 - Fork-Nft 调试面板首次部署成功
+- Background: 用户确认开始在指定调试服务器 38.165.47.12 部署 Fork-Nft 面板。
+- Decision: 在目标机安装 Docker + docker-compose，拉取 `JackLuo1980/Fork-Nft` 源码并使用 `docker-compose-v4.yml` 启动前后端与数据库容器。
+- Why: 先建立稳定可访问的调试环境，便于后续引擎抽象与测试改造在线验证。
+- Follow-up: 后续实现 engine adapter（nftables/realm/auto）后，优先在该调试环境做回归和稳定性测试。
+
+## 2026-03-20 - Fork-Nft 第一批引擎抽象落地
+- Background: 用户确认开始实现“可选nftables/realm引擎 + 高强度测试”的首个代码包。
+- Decision: 在 go-gost/x/socket 新增 ForwardEngine 抽象与 nftables 适配器，并接入新命令 ApplyPortForwards（支持 dryRun / allowShrink）；同时增加安全防护（规则缩减保护）和失败回滚机制。
+- Why: 先建立可插拔执行框架与可验证安全基线，降低后续 realm 与 auto selector 接入复杂度和回归风险。
+- Follow-up: 下一步实现 realm 适配器、auto selector 策略和端到端联调测试。
+
+## 2026-03-20 - Fork-Nft 第二批引擎能力（realm + auto）
+- Background: 第一批完成nftables与引擎抽象后，需要补齐可选引擎能力并形成自动选择策略。
+- Decision: 新增 realm 适配器，并在 ApplyPortForwards 中接入 auto 选择（udp优先nftables，其余默认realm）。
+- Why: 为后续面板侧“每条转发可选引擎”提供最小可用执行基础，并减少空engine参数导致的调用失败。
+- Follow-up: 下一步对接后端字段（forward.engine）与前端选择项，打通端到端联调。
 
 ## 2026-03-20 - Fork-Nft 转发引擎字段全链路接通
 - Background: 需要让面板可选择 gost/auto/nftables/realm 并在后端稳定持久化，避免仅运行时生效。
@@ -195,18 +235,6 @@
 - Why: 让控制面与执行面配置一致，减少节点侧推断导致的不确定行为。
 - Follow-up: 后续若引擎参数扩展，统一从 forwarder payload 透传并补对应回归测试。
 
-## 2026-03-20 - PO0 转发同步到面板并锁定 nftables
-- Background: 用户要求将 PO0 现有 `/etc/relay-forwards.conf` 三条转发同步到 Fork-Nft 面板，且明确禁止使用 gost。
-- Decision: 新增 `scripts/sync-po0-forwards-to-panel.sh` 与 `tests/scripts/test_sync_po0_forwards.sh`，同步时强制 `engine=nftables`；若面板后端不支持 engine 持久化则视为失败并先切换到 Fork 后端镜像。
-- Why: 避免“看似同步成功但运行时回退到 gost”的隐性风险，保证协议策略与用户要求一致。
-- Follow-up: 后续新增/删除 PO0 转发后，直接重跑同步脚本；在面板侧持续复用 `node=PO0-111.229.215.107`、`tunnel=PO0-NFT-SYNC`。
-
-## 2026-03-20 - PO0 节点离线导致隧道创建失败的修复基线
-- Background: 面板创建 PO0 隧道时报“部分节点不在线”；PO0 对 GitHub 下载超时，在线安装 agent 卡死。
-- Decision: 采用离线安装：本地下载 `gost-amd64` 二进制并上传 PO0，手工写入 `/etc/flux_agent/config.json`、systemd 服务后启动；并在面板配置 `ip=38.165.47.12:6365` 以支持 `node/install` 流程。
-- Why: 离线安装不依赖 PO0 访问 GitHub，能够稳定恢复节点在线状态并解除隧道创建阻塞。
-- Follow-up: 同类受限网络机器默认优先离线安装 agent，再执行转发同步。
-
 ## 2026-03-20 - Fork-Nft 引擎联调需使用同网络 mock 远程节点
 - Background: 直接用宿主机127.0.0.1做remoteUrl会在容器内回环，导致联调误判失败。
 - Decision: 联调时在gost-network内启动mock-fed容器，并将remoteUrl设为http://mock-fed:18080，再抓取/api/v1/federation/runtime/command payload。
@@ -218,22 +246,4 @@
 - Decision: 新增 scripts/e2e-engine-check.sh，默认自动清理资源并恢复基础compose后端，仅在显式参数下保留测试镜像。
 - Why: 减少联调后环境污染，保证同一开发机可重复验收。
 - Follow-up: 后续所有引擎联调优先用该脚本，避免手工执行长命令。
-
-## 2026-03-20 - Fork-Nft 三类线上问题修复基线（用户名、端口映射、nft流量统计）
-- Background: 用户反馈用户名改为 `jack` 后界面仍显示 `admin_user`，PO0 转发诊断失败，且实际有流量但面板显示 0。
-- Decision:
-  1) 后端用户名更新链路统一同步 `forward.user_name`（`UpdateUserNameAndPassword/UpdateUserWithPassword/UpdateUserWithoutPassword`）。
-  2) 修复 `sync-po0-forwards-to-panel.sh` 的状态文件端口解析，按 `name|host|target_port|relay_port` 映射为 `inPort=relay_port, remoteAddr=host:target_port`。
-  3) nft-only 模式补齐流量可见性：nft 规则启用 `counter`，并部署 `nft-flow-exporter` 定时上报 `/flow/upload`。
-- Why: 这三项共同解决了“显示身份错误 + 路径诊断误报 + nft模式统计缺失”的线上核心痛点，并减少后续迁移遗漏风险。
-- Follow-up:
-  - 每次同步后先跑 `tests/scripts/test_sync_po0_forwards.sh`；
-  - 验证转发映射与诊断成功；
-  - 确认 `nft-flow-exporter.timer` active 且 `forward.inFlow/outFlow` 有增量。
-
-## 2026-03-21 - 统一本地记忆与 Obsidian 镜像记录风格
-- Background: User wants Codex memory and the Obsidian codex path to feel like one continuous record, not two separate note styles.
-- Decision: Keep `memory.md` and `decision_log.md` in the same concise Chinese operational style, and mirror the same content into `/Users/jack/Library/Mobile Documents/iCloud~md~obsidian/Documents/Jack Luo/开发平台/codex/记忆同步`.
-- Why: Unified wording makes preferences easier to reconstruct after session resets or environment changes, and reduces drift between local and Obsidian copies.
-- Follow-up: After future memory updates, run the sync script immediately and preserve the same terse, actionable phrasing in both places.
 

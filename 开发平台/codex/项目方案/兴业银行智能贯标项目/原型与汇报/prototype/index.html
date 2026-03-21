@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兴业银行智能贯标项目 - 高保真原型</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">兴</div>
+          <div>
+            <div class="brand-title">智能贯标平台</div>
+            <div class="brand-subtitle">高保真静态原型</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <button class="nav-item active" data-screen="query">智能取数首页</button>
+          <button class="nav-item" data-screen="detail">结果详情页</button>
+          <button class="nav-item" data-screen="standard">标准推荐/建标页</button>
+          <button class="nav-item" data-screen="dashboard">领导看板页</button>
+        </nav>
+        <div class="sidebar-note">
+          <p>说明</p>
+          <span>本原型为最终用户操作视角的静态页面示意，可用于汇报、评审和继续细化 UI。</span>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <div class="topbar-title">兴业银行智能贯标项目</div>
+            <div class="topbar-subtitle">数据字典 + 贯标智能辅助平台</div>
+          </div>
+          <div class="topbar-actions">
+            <span class="pill">Vue 前端原型</span>
+            <span class="pill subtle">Qwen3 + DeepSeek3</span>
+            <span class="pill subtle">openGauss / TDSQL / GaussDB</span>
+          </div>
+        </header>
+
+        <section class="screen active" id="screen-query">
+          <div class="hero">
+            <div>
+              <div class="eyebrow">开发人员主视角</div>
+              <h1>一句话找到数据、字段和标准</h1>
+              <p>输入自然语言问题，系统返回表、字段、关联标准和可信依据。没有结果时，直接给出建标建议。</p>
+            </div>
+            <div class="hero-panel">
+              <div class="hero-panel-title">今日概览</div>
+              <div class="hero-metrics">
+                <div><strong>1,284</strong><span>查询量</span></div>
+                <div><strong>72%</strong><span>命中率</span></div>
+                <div><strong>41%</strong><span>定位提效</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="search-card">
+            <label for="queryInput">请输入你的数据需求</label>
+            <div class="search-row">
+              <input id="queryInput" value="我要查询客户开户地址字段在哪张表" />
+              <button class="primary-btn">智能查询</button>
+            </div>
+            <div class="suggestions">
+              <span>客户开户地址在哪张表</span>
+              <span>贷款余额字段标准是什么</span>
+              <span>客户手机号字段是否已有标准</span>
+            </div>
+          </div>
+
+          <div class="grid two-col">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>推荐结果</h3>
+                <a href="#">查看全部</a>
+              </div>
+              <div class="result-card highlight">
+                <div class="result-top">
+                  <div>
+                    <h4>cust_base_info.address</h4>
+                    <p>CRM系统 / ods_crm / cust_base_info</p>
+                  </div>
+                  <span class="score">可信度 0.92</span>
+                </div>
+                <div class="result-body">
+                  <div class="kv"><span>字段定义</span><strong>客户在业务办理时登记的详细联系地址</strong></div>
+                  <div class="kv"><span>关联标准</span><strong>客户开户地址</strong></div>
+                  <div class="kv"><span>建议动作</span><strong>直接使用</strong></div>
+                </div>
+                <div class="actions">
+                  <button>复制字段路径</button>
+                  <button>查看详情</button>
+                  <button>加入收藏</button>
+                </div>
+              </div>
+              <div class="result-card">
+                <div class="result-top">
+                  <div>
+                    <h4>customer_profile.home_addr</h4>
+                    <p>MDM系统 / dwd_mdm / customer_profile</p>
+                  </div>
+                  <span class="score low">可信度 0.84</span>
+                </div>
+                <p class="muted">语义接近，但当前推荐优先级低于 CRM 主记录字段。</p>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>辅助与建议</h3>
+              </div>
+              <div class="side-block success">
+                <h4>术语识别</h4>
+                <p>系统识别到“客户”“地址”“开户地址”三个核心术语，已与术语库自动映射。</p>
+              </div>
+              <div class="side-block">
+                <h4>命中依据</h4>
+                <ul>
+                  <li>数据字典条目：CRM-客户基本信息表</li>
+                  <li>标准条目：客户开户地址</li>
+                  <li>制度条款：客户联系信息维护规范</li>
+                </ul>
+              </div>
+              <div class="side-block warning">
+                <h4>无结果时处理</h4>
+                <p>若未命中，自动生成新增字段/标准建议，并允许一键进入建标流程。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-detail">
+          <div class="page-header">
+            <div>
+              <div class="eyebrow">结果详情</div>
+              <h2>客户开户地址查询详情</h2>
+            </div>
+            <div class="page-actions">
+              <button>复制表路径</button>
+              <button class="primary-btn ghost">发起建标</button>
+            </div>
+          </div>
+
+          <div class="grid detail-layout">
+            <div class="panel large">
+              <div class="panel-header"><h3>主推荐对象</h3></div>
+              <div class="detail-main-card">
+                <div class="detail-meta">
+                  <div><span>系统</span><strong>CRM</strong></div>
+                  <div><span>库 / Schema</span><strong>ods_crm.public</strong></div>
+                  <div><span>表</span><strong>cust_base_info</strong></div>
+                  <div><span>字段</span><strong>address</strong></div>
+                  <div><span>字段类型</span><strong>varchar(256)</strong></div>
+                  <div><span>关联标准</span><strong>客户开户地址</strong></div>
+                </div>
+                <div class="definition-box">
+                  <h4>字段定义</h4>
+                  <p>客户在业务办理、开户或资料维护过程中登记的详细联系地址，用于客户联系、业务核验和寄送场景。</p>
+                </div>
+              </div>
+              <div class="table-like">
+                <div class="row head"><span>相似字段</span><span>差异说明</span><span>建议</span></div>
+                <div class="row"><span>home_addr</span><span>主数据侧标准化住址</span><span>可作为补充参考</span></div>
+                <div class="row"><span>mailing_addr</span><span>偏邮寄地址口径</span><span>不建议直接替代</span></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header"><h3>可信依据</h3></div>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>命中字典条目</strong>
+                    <p>CRM 客户基本信息表字段说明</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>命中标准条目</strong>
+                    <p>标准名称：客户开户地址</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="dot"></span>
+                  <div>
+                    <strong>制度依据</strong>
+                    <p>客户联系信息维护规范 第 3.2 条</p>
+                  </div>
+                </div>
+              </div>
+              <div class="feedback-box">
+                <h4>结果反馈</h4>
+                <div class="actions">
+                  <button class="primary-btn">已解决</button>
+                  <button>未解决</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-standard">
+          <div class="page-header">
+            <div>
+              <div class="eyebrow">标准推荐与建标</div>
+              <h2>标准草案智能推荐</h2>
+            </div>
+            <div class="page-actions">
+              <button>保存草稿</button>
+              <button class="primary-btn">提交审核</button>
+            </div>
+          </div>
+
+          <div class="grid standard-layout">
+            <div class="panel large">
+              <div class="panel-header"><h3>标准草案录入</h3></div>
+              <form class="form-grid">
+                <label><span>标准中文名称</span><input value="客户开户地址" /></label>
+                <label><span>标准英文名称</span><input value="customer_opening_address" /></label>
+                <label><span>数据类型</span><input value="varchar(256)" /></label>
+                <label><span>业务域</span><input value="客户域" /></label>
+                <label class="full"><span>标准定义</span><textarea>客户在开户或资料维护时登记的详细地址信息。</textarea></label>
+                <label class="full"><span>值域/约束</span><textarea>不为空；长度不超过256；支持中文、数字及常用符号。</textarea></label>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header"><h3>系统建议</h3></div>
+              <div class="side-block success">
+                <h4>推荐结论</h4>
+                <p>建议复用现有标准“客户开户地址”，无需重复新建。</p>
+              </div>
+              <div class="side-block">
+                <h4>重复检测</h4>
+                <p>检测到 2 个近似标准，其中 1 个为高相似对象。</p>
+              </div>
+              <div class="side-block warning">
+                <h4>纠错提示</h4>
+                <p>定义建议增加“业务办理/资料维护”适用场景说明，提升标准完整度。</p>
+              </div>
+              <div class="actions vertical">
+                <button class="primary-btn">采纳推荐</button>
+                <button>部分采纳</button>
+                <button>继续新建</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="screen-dashboard">
+          <div class="page-header">
+            <div>
+              <div class="eyebrow">领导视图</div>
+              <h2>项目运行成效看板</h2>
+            </div>
+            <div class="page-actions">
+              <button>近30天</button>
+              <button>累计</button>
+              <button class="primary-btn">导出汇报图</button>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card"><span>智能取数命中率</span><strong>72%</strong><em>较上月 +8%</em></div>
+            <div class="metric-card"><span>标准推荐采纳率</span><strong>48%</strong><em>较上月 +6%</em></div>
+            <div class="metric-card"><span>重复标准识别准确率</span><strong>83%</strong><em>稳定提升</em></div>
+            <div class="metric-card"><span>平均定位时长下降</span><strong>41%</strong><em>开发准备提效明显</em></div>
+          </div>
+
+          <div class="grid three-col">
+            <div class="panel chart-card">
+              <div class="panel-header"><h3>调用趋势</h3></div>
+              <div class="fake-chart bars">
+                <span style="height: 38%"></span>
+                <span style="height: 52%"></span>
+                <span style="height: 60%"></span>
+                <span style="height: 72%"></span>
+                <span style="height: 80%"></span>
+              </div>
+            </div>
+            <div class="panel chart-card">
+              <div class="panel-header"><h3>问题分布</h3></div>
+              <div class="donut-wrap">
+                <div class="donut"></div>
+                <ul>
+                  <li>命名问题 34%</li>
+                  <li>重复标准 29%</li>
+                  <li>值域问题 21%</li>
+                  <li>定义不完整 16%</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel chart-card">
+              <div class="panel-header"><h3>覆盖系统</h3></div>
+              <div class="coverage-list">
+                <div><span>CRM</span><strong>已接入</strong></div>
+                <div><span>核心</span><strong>已接入</strong></div>
+                <div><span>风险</span><strong>接入中</strong></div>
+                <div><span>零售画像</span><strong>规划中</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

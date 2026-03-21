@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: realmflow
+      POSTGRES_USER: realmflow
+      POSTGRES_PASSWORD: realmflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+  panel:
+    image: golang:1.21-alpine
+    ports:
+      - "6365:6365"
+    volumes:
+      - ./panel:/app/panel
+      - ./config:/app/config
+    working_dir: /app
+    command: ./panel
+    depends_on:
+      - postgres
+    restart: always
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "6366:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    restart: always
+
+  agent:
+    image: alpine:3.18
+    volumes:
+      - ./agent:/app/agent
+    working_dir: /app
+    command: ./agent
+    restart: always
+
+volumes:
+  postgres_data:

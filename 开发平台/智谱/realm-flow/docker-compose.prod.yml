@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: realmflow-postgres
+    environment:
+      POSTGRES_DB: realmflow
+      POSTGRES_USER: realmflow
+      POSTGRES_PASSWORD: realmflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - realmflow-network
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U realmflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  panel:
+    image: alpine:latest
+    container_name: realmflow-panel
+    working_dir: /app
+    command: ./panel
+    volumes:
+      - ./bin/panel:/app/panel:ro
+    environment:
+      - DATABASE_URL=postgres://realmflow:realmflow@postgres:5432/realmflow?sslmode=disable
+      - JWT_SECRET=realm-flow-secret-key-change-in-production
+      - PORT=6365
+    ports:
+      - "6365:6365"
+    networks:
+      - realmflow-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+
+  frontend:
+    image: nginx:alpine
+    container_name: realmflow-frontend
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "6366:80"
+    networks:
+      - realmflow-network
+    depends_on:
+      - panel
+    restart: always
+
+networks:
+  realmflow-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

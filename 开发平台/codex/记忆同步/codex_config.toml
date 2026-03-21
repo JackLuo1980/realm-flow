@@ -1,13 +1,6 @@
 # codex_config.toml
 
 - 来源: `/Users/jack/.codex/config.toml`
-- 同步时间: `2026-03-21 12:41:08 CST`
-
----
-
-# codex_config.toml
-
-- 来源: `/Users/jack/.codex/config.toml`
 - 同步时间: `2026-03-20 13:17:57 CST`
 
 ---
@@ -38,6 +31,5 @@ url = "https://mcp.figma.com/mcp"
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
-
 
 
