@@ -37,12 +37,7 @@ npm run dev
 ## Docker deployment
 
 ```bash
-cp .env.example .env
-docker compose up -d --build
-```
-
-For the test environment, use the override file:
-
-```bash
 docker compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
 ```
+
+The base compose file defines the backend and frontend services. The test override publishes them on `16365` and `16366`.

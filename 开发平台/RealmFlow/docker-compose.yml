@@ -12,8 +12,8 @@ services:
       CORS_ORIGINS: "*"
     volumes:
       - realmflow-data:/data
-    ports:
-      - "${BACKEND_HOST_PORT:-6365}:6365"
+    expose:
+      - "6365"
     restart: unless-stopped
 
   frontend:
@@ -22,10 +22,9 @@ services:
     container_name: realmflow-frontend
     depends_on:
       - backend
-    ports:
-      - "${FRONTEND_HOST_PORT:-6366}:80"
+    expose:
+      - "80"
     restart: unless-stopped
 
 volumes:
   realmflow-data:
-
