@@ -1,0 +1,9 @@
+services:
+  backend:
+    ports:
+      - "16365:6365"
+
+  frontend:
+    ports:
+      - "16366:80"
+

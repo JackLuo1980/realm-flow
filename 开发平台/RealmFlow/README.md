@@ -12,6 +12,7 @@ Repository layout:
 - `go-backend/` Go API and domain model
 - `vite-frontend/` React UI shell
 - `01-项目概述/`, `02-架构设计/`, `03-功能模块/`, `04-开发日志/`, `05-部署运维/` project notes
+- `docker-compose.yml` Docker deployment for separated backend/frontend containers
 
 Development notes:
 - The project is being rebuilt from scratch.
@@ -33,3 +34,15 @@ npm install
 npm run dev
 ```
 
+## Docker deployment
+
+```bash
+cp .env.example .env
+docker compose up -d --build
+```
+
+For the test environment, use the override file:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
+```

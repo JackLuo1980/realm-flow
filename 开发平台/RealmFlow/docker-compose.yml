@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./go-backend
+    container_name: realmflow-backend
+    environment:
+      APP_ENV: production
+      HTTP_PORT: "6365"
+      DATABASE_URL: file:/data/realmflow.db?_foreign_keys=on
+      JWT_SECRET: ${JWT_SECRET:-realmflow-production-secret}
+      JWT_ISSUER: realmflow
+      CORS_ORIGINS: "*"
+    volumes:
+      - realmflow-data:/data
+    ports:
+      - "${BACKEND_HOST_PORT:-6365}:6365"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./vite-frontend
+    container_name: realmflow-frontend
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_HOST_PORT:-6366}:80"
+    restart: unless-stopped
+
+volumes:
+  realmflow-data:
+
