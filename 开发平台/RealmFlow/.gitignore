@@ -1,0 +1,22 @@
+.DS_Store
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+*.log
+*.tmp
+*.swp
+*.tsbuildinfo
+vite-frontend/vite.config.js
+vite-frontend/vite.config.d.ts
+
+# Go
+bin/
+*.exe
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
