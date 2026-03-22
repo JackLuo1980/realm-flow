@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-22 09:53:51 CST`
+- 同步时间: `2026-03-22 10:04:14 CST`
 
 ---
 
@@ -59,4 +59,5 @@ When user says any of the following, add/update entries in this file:
 - Uzumaru Bot 当前最终展示基线：/nm 顶部同一行显示当前节点与总数（当前含国旗，总数数字加粗），文本为『📍 当前：*{cur}*                  📊 共 *{total}* 个节点』；Telegram 不支持单独字体颜色与字号放大。
 - Cloudflare DDNS 若出现‘域名与IP不符’，先核对：root crontab/systemd是否在跑；再对比 Cloudflare API 记录与权威 NS（两个 NS）返回，避免只看单个解析器误判。
 - 当域名SSH失败且日志显示连接到198.18.x.x时，优先判断本地代理Fake-IP污染；可在~/.ssh/config为该域名固定HostName真实IP与Port，绕过本地DNS改写。
+- Cloudflare DDNS 出现同一记录反复跳IP时，先查 user/audit_logs 按 resource.id 看 actor.ip；若不同IP交替写入即为多客户端抢写。
 

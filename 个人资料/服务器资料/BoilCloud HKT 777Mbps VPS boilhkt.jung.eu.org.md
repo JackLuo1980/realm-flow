@@ -12,7 +12,7 @@ created: 2026-03-19 09:28
 
 | Password    | rwhHz8v94ZXuoiYpRDLb |
 | ----------- | -------------------- |
-| Domain name | hkt.jung.eu.org      |
+| Domain name | boilhkt.jung.eu.org  |
 | IP          | 168.70.99.63         |
 | Bandwidth   |                      |
 | Email账号     | luoming.cn@gmail.com |
@@ -29,7 +29,7 @@ Username:    7ih1C8nMlr
 Password:    qYZZHpsbtd
 Port:        20039
 WebBasePath: vArWY1oJgg4ZqQVq4L
-Access URL:  http://hkt.jung.eu.org:20039/vArWY1oJgg4ZqQVq4L
+Access URL:  http://boilhkt.jung.eu.org:20039/vArWY1oJgg4ZqQVq4L
 ═══════════════════════════════════════════
 ```
 
@@ -47,7 +47,7 @@ Access URL:  http://hkt.jung.eu.org:20039/vArWY1oJgg4ZqQVq4L
 ## SS
 
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206aXpDWEs4dWxBckl0RGU3R1pyOE5hY2tLbFNhOTh1U1F3aWh2Z0tBaGx2VT06ZnJtUzFkVUlySkZ4aWRrNVo4K3Z1UjRTOXgxM1RIaEdCMDN2OFhOYTNOQT0@hkt.jung.eu.org:43599?type=tcp#BoilCloud%20HKT%20777Mbps%20VPS-eoe9hb7x
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206aXpDWEs4dWxBckl0RGU3R1pyOE5hY2tLbFNhOTh1U1F3aWh2Z0tBaGx2VT06ZnJtUzFkVUlySkZ4aWRrNVo4K3Z1UjRTOXgxM1RIaEdCMDN2OFhOYTNOQT0@boilhkt.jung.eu.org:43599?type=tcp#BoilCloud%20HKT%20777Mbps%20VPS-eoe9hb7x
 ```
 
 

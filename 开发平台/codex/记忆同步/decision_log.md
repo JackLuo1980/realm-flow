@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-22 09:53:51 CST`
+- 同步时间: `2026-03-22 10:04:14 CST`
 
 ---
 
@@ -278,4 +278,10 @@
 - Decision: 在本机 ~/.ssh/config 为 Host hkt.jung.eu.org 固定 HostName=218.103.144.184、Port=25348、User=root。
 - Why: 可绕过本地DNS/Fake-IP污染，直接走真实目标主机与端口。
 - Follow-up: 后续遇到同类现象先看 ssh -vv 的 Connecting to 字段；若是198.18网段先处理本地代理DNS策略。
+
+## 2026-03-22 - DDNS抢写冲突修复（hkt->boilhkt分离）
+- Background: hkt.jung.eu.org 在218与168两台机之间反复被改写，ITDOG会间歇看到168.70.99.63。
+- Decision: 将168.70.99.63的/mnt/ddns.env改为CFRECORD_NAME_IPV4=boilhkt，并保留218服务器负责hkt；同时修复168上ddns.sh的dig参数顺序错误。
+- Why: 把不同服务器绑定到不同子域名可消除抢写，审计日志可直接证明冲突来源。
+- Follow-up: 后续如仍有异常，优先在Cloudflare审计日志中按record_id追踪actor.ip，并建议更换Global API Key改用最小权限Token。
 
