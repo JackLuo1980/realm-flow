@@ -18,11 +18,11 @@
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    LjgUIrnC7p
-Password:    LNQnpPlQpv
-Port:        11910
-WebBasePath: FGN4ciiqgX4jD5pv59
-Access URL:  https://45.129.9.96:11910/FGN4ciiqgX4jD5pv59
+Username:    rUbluAqpYq
+Password:    XvSKIcJhrJ
+Port:        51758
+WebBasePath: P74Swfc0OvYz7Q4HZC
+Access URL:  https://45.129.9.96:51758/P74Swfc0OvYz7Q4HZC
 ═══════════════════════════════════════════
 
 ```
@@ -33,7 +33,7 @@ Access URL:  https://45.129.9.96:11910/FGN4ciiqgX4jD5pv59
 
 ### Relity
 ```
-vless://6d3b1a13-3d9b-441e-8c67-2f89e0297b91@45.129.9.96:34326?type=tcp&encryption=none&security=reality&pbk=bk1FrUSAf0CA8BuFO2vOymyzPfAtGT2SleUxjYtm3RM&fp=chrome&sni=www.tesla.com&sid=6a&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
+vless://444743e4-fc7a-4fac-89b8-6015cc43b2b4@45.129.9.96:22180?type=tcp&encryption=none&security=reality&pbk=EQ0re4hyMYL4-CkVT4K61ll7YeRxnfkQ0WkKRpTprE4&fp=chrome&sni=aws.amazon.com&sid=24c289b82c755c&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
 
 ```
 
