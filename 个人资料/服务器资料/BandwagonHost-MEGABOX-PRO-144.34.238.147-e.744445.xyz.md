@@ -1,3 +1,9 @@
+---
+id: 20260321125909
+tags:
+  - VPS
+created: 2026-03-22 13:02
+---
 <span style="font-size:16pt;"><b>Information：</b></span>
 
 | Password | bd7jESNzQbM9 |
@@ -10,26 +16,45 @@
 | Name | **BandwagonHost-PowerBox** |
 
 
-优质线路
 
+## Information
 
-
-<span style="font-size:16pt;"><b>VPS Link：</b></span>
-
-| <span style="font-family:.PingFangUITextSC-Bold;font-size:14pt;"><b>序号</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接类型</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接信息</b></span> |
-| -- | -- | -- |
-| **1** | **VMESS** |  |
-| **2** | **VLESS** |  |
-| **3** | **REALITY** | vless://905acd3f-683d-4061-9fb0-cfc5e366d1ac@e.744445.xyz:55200?type=tcp&encryption=none&security=reality&pbk=X_JZXnEagzeYapYyYM98iDLRBzSREa5Al_Mhlhb421A&fp=chrome&sni=tesla.com&sid=ad&spx=%2F&flow=xtls-rprx-vision#BandwagonHost-MEGABOX-PRO |
-| **4** | **Surge** |  |
-| **5** | **Clash** |  |
-| **6** | **Quantumult X** |  |
-
-
-#BandwagonHost #US 
+| Password    |  |
+|-------------|--|
+| Domain name |  |
+| IP          |  |
+| Bandwidth   |  |
+| Email账号   |  |
 
 ---
-## 落地节点
 
-<!-- flux-auto:start -->
-<!-- flux-auto:end -->
+## Account Information
+
+```
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    4T4PbeNM7F
+Password:    koxpEZ7MKn
+Port:        23197
+WebBasePath: GlYDBuhsFMGwfiK2AQ
+Access URL:  https://144.34.238.147:23197/GlYDBuhsFMGwfiK2AQ
+═══════════════════════════════════════════
+```
+
+---
+
+## VPS Link
+
+### Reality
+
+```
+vless://9575f5b6-cffe-4e07-bfc9-024746459ab1@144.34.238.147:21192?type=tcp&encryption=none&security=reality&pbk=1P_nGnaJbXl0DpBREj5A9zIqO2RYzlPs-Bl0jodwin4&fp=chrome&sni=www.oracle.com&sid=b924aa&spx=%2F&flow=xtls-rprx-vision#BandwagonHost-MEGABOX-PRO
+```
+
+
+## SS
+
+```
+
+```

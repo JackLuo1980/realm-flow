@@ -33,7 +33,7 @@ Access URL:  https://45.129.9.96:46949/GkNKBe1yx0By9iUuXJ
 
 ### Relity
 ```
-vless://444743e4-fc7a-4fac-89b8-6015cc43b2b4@45.129.9.96:22180?type=tcp&encryption=none&security=reality&pbk=EQ0re4hyMYL4-CkVT4K61ll7YeRxnfkQ0WkKRpTprE4&fp=chrome&sni=aws.amazon.com&sid=24c289b82c755c&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
+vless://2f831748-f26e-410b-ab29-865c676e2996@45.129.9.96:14060?type=tcp&encryption=none&security=reality&pbk=dbJ8Y4flpsiozSXE6u6pgbRn4KMZJqfsjrZ-6d-02Ss&fp=chrome&sni=www.intel.com&sid=a018&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
 
 ```
 
