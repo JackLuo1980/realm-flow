@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-21 17:35:09 CST`
+- 同步时间: `2026-03-22 09:53:51 CST`
 
 ---
 
@@ -56,4 +56,7 @@ When user says any of the following, add/update entries in this file:
 - Fork-Nft 2026-03-20 联调结论：`/etc/relay-forwards.conf` 字段顺序为 `name|host|target_port|relay_port`；若同步脚本按 `in_port|target_port` 解析会导致端口错位（诊断失败、面板映射错误）。
 - Fork-Nft 2026-03-20 线上修复结论：PO0 同步后应保持 `JP-CO 31000->198.176.52.9:55894`、`HK-Jinx 31001->172.81.111.70:13608`、`Boil HKT 12071->hktnat.jung.eu.org:23202`。
 - nft-only 场景流量统计基线：开启 nft `counter` 并部署 `nft-flow-exporter`（10s 定时上报 `/flow/upload`）后，面板 `forward.inFlow` 可持续增长。
+- Uzumaru Bot 当前最终展示基线：/nm 顶部同一行显示当前节点与总数（当前含国旗，总数数字加粗），文本为『📍 当前：*{cur}*                  📊 共 *{total}* 个节点』；Telegram 不支持单独字体颜色与字号放大。
+- Cloudflare DDNS 若出现‘域名与IP不符’，先核对：root crontab/systemd是否在跑；再对比 Cloudflare API 记录与权威 NS（两个 NS）返回，避免只看单个解析器误判。
+- 当域名SSH失败且日志显示连接到198.18.x.x时，优先判断本地代理Fake-IP污染；可在~/.ssh/config为该域名固定HostName真实IP与Port，绕过本地DNS改写。
 

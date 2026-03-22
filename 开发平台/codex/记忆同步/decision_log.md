@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-21 17:35:09 CST`
+- 同步时间: `2026-03-22 09:53:51 CST`
 
 ---
 
@@ -236,4 +236,46 @@
 - Decision: Keep `memory.md` and `decision_log.md` in the same concise Chinese operational style, and mirror the same content into `/Users/jack/Library/Mobile Documents/iCloud~md~obsidian/Documents/Jack Luo/开发平台/codex/记忆同步`.
 - Why: Unified wording makes preferences easier to reconstruct after session resets or environment changes, and reduces drift between local and Obsidian copies.
 - Follow-up: After future memory updates, run the sync script immediately and preserve the same terse, actionable phrasing in both places.
+
+## 2026-03-21 - Uzumaru Globe Bot 替换部署基线
+- Background: 用户要求在 198.176.54.180:21003 上用 LibertyLucas/Uzumaru_Globe_Switch 替换现有同类机器人脚本
+- Decision: 先识别现网运行目录与进程（/opt/tg-exit-bot + python3 bot.py），再备份目录、注入现有 token/管理员配置、覆盖脚本并重启验收
+- Why: 避免直接覆盖导致配置丢失或服务不可用，且可快速回滚
+- Follow-up: 后续同类替换默认执行：先定位运行方式->做时间戳备份->迁移配置->重启并检查 Telegram getMe/deleteWebhook/Application started 日志
+
+## 2026-03-21 - Uzumaru Bot 慢响应与 Socket is closed 修复
+- Background: 新仓库脚本部署后，/nm 切换时报 Socket is closed 且响应慢
+- Decision: 将 bot 的 SSH 目标改为本机 127.0.0.1:22（避免走外网回环 198.176.54.180:21003），并把切换回调改为仅发送一次 selection，不再额外发送 '0'
+- Why: 外网回环端口会出现 SSH banner 读取失败与时延抖动；双重输入会在 out.sh 自动退出后触发通道关闭异常
+- Follow-up: 后续同机部署的 SSH 控制型 bot 默认优先使用本机 SSH 端口并避免重复发送退出指令；出现 Socket is closed 先检查是否脚本已自行退出
+
+## 2026-03-21 - Uzumaru Bot 回滚初始版并做轻量提速
+- Background: 用户要求恢复最初版本并改善响应速度
+- Decision: 回滚到 /opt/tg-exit-bot-backup/20260321-111744/bot.py，并仅调整超时与固定等待（API max-time 15->6，IP查询 8->3，sleep 2->0.6）
+- Why: 在不改功能链路的前提下减少等待与慢请求阻塞，降低体感延迟
+- Follow-up: 后续此类需求优先回滚到已验证版本，再做超时/等待参数级优化，避免结构性改动引入新故障
+
+## 2026-03-21 - Uzumaru Bot 全量改动归档（部署-回滚-样式定稿）
+- Background: 用户要求将 LibertyLucas/Uzumaru_Globe_Switch 部署到 198.176.54.180:21003 并替换同类脚本，后续又要求恢复初始版并连续微调 UI 文案样式
+- Decision: 最终采用“初始稳定版本 + 轻量性能参数优化 + 文案样式定稿”方案：1) 运行脚本为 /opt/tg-exit-bot/bot.py；2) 节点总数文本使用加粗数字；3) 当前节点增加国旗并与总数同一行对齐；4) 不再继续改颜色（Telegram 不支持）
+- Why: 避免在功能路径上反复重构导致不稳定，保留稳定实现并通过最小改动满足展示诉求；同时将最终展示细节固化，后续可直接复用
+- Follow-up: 当前最终版本口径：/nm 顶部行为为『📍 当前：*{cur}*                  📊 共 *{total}* 个节点』；机器人进程以 python3 /opt/tg-exit-bot/bot.py 单实例运行；后续同类需求优先在该基线做增量样式调整
+
+## 2026-03-21 - Uzumaru 双端口环境脚本统一升级基线
+- Background: 用户要求将优化后 bot 从 21003 环境同步升级到 22009 环境，并在 Obsidian 单独建项目记录
+- Decision: 以 21003 的 /opt/tg-exit-bot/bot.py 作为标准源，校验哈希后覆盖到 22009 同路径，并通过 rc-service tg-exit-bot restart 验收
+- Why: 用哈希一致性可避免误传版本；按目标机原有守护方式重启可降低运行风险
+- Follow-up: 后续双环境同步优先执行：源脚本哈希确认 -> 目标覆盖 -> 服务重启 -> 日志出现 Application started -> 回填到 Obsidian 项目记录
+
+## 2026-03-22 - DDNS 稳定性修复基线（Cloudflare）
+- Background: hkt.jung.eu.org 频繁与服务器IP不一致，现场发现初始化标记存在但 root crontab 丢失，原脚本依赖 ip.sb 且可用性不稳定。
+- Decision: 改为 /root/ddns_cf.sh + systemd timer 每5分钟执行，使用多IP探针回退（ipify/ifconfig.me/icanhazip），并保留 Cloudflare 记录的 proxied 配置。
+- Why: systemd timer 比用户 crontab 更稳，且多探针能降低单站点403导致的更新失败风险。
+- Follow-up: 后续排查必须同时检查 Cloudflare API 值、两个权威 NS 返回值、以及公共DNS收敛状态。
+
+## 2026-03-22 - SSH域名连接失败排障基线（本地Fake-IP）
+- Background: hkt.jung.eu.org 公网解析正常，但本机ssh调试显示被解析到198.18.0.45并在kex前断开。
+- Decision: 在本机 ~/.ssh/config 为 Host hkt.jung.eu.org 固定 HostName=218.103.144.184、Port=25348、User=root。
+- Why: 可绕过本地DNS/Fake-IP污染，直接走真实目标主机与端口。
+- Follow-up: 后续遇到同类现象先看 ssh -vv 的 Connecting to 字段；若是198.18网段先处理本地代理DNS策略。
 
