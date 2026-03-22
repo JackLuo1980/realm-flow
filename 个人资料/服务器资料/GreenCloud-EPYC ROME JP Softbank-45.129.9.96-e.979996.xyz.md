@@ -18,11 +18,11 @@
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    rUbluAqpYq
-Password:    XvSKIcJhrJ
-Port:        51758
-WebBasePath: P74Swfc0OvYz7Q4HZC
-Access URL:  https://45.129.9.96:51758/P74Swfc0OvYz7Q4HZC
+Username:    5pMQd7etQv
+Password:    aOQz3wyCVY
+Port:        46949
+WebBasePath: GkNKBe1yx0By9iUuXJ
+Access URL:  https://45.129.9.96:46949/GkNKBe1yx0By9iUuXJ
 ═══════════════════════════════════════════
 
 ```
