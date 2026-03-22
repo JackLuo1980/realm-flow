@@ -23,7 +23,15 @@ created: 2026-03-22 19:16
 ## Account Information
 
 ```
-
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    ANkAPwCeI1
+Password:    J3b55fKMts
+Port:        4364
+WebBasePath: HA4T4AmShC2k0OkGux
+Access URL:  https://23.165.248.39:4364/HA4T4AmShC2k0OkGux
+═══════════════════════════════════════════
 ```
 
 ---
