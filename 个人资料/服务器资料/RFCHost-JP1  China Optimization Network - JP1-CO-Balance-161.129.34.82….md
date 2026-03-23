@@ -6,14 +6,14 @@ created: 2026-03-22 13:34
 ---
 <span style="font-size:16pt;"><b>Information：</b></span>
 
-| Password | cbvK5V1Q8v2d2 |
-| -- | -- |
-| Domain name | **a.lowlife.eu.org** |
-| IP | **161.129.34.57** |
-| Bandwidth | 500G |
-| <span style="color:#ff260ff;">Netflix</span> | Originals Only |
+| Password                                     | cbvK5V1Q8v2d2                            |
+| -------------------------------------------- | ---------------------------------------- |
+| Domain name                                  | **a.lowlife.eu.org**                     |
+| IP                                           | 161.129.34.82                            |
+| Bandwidth                                    | 500G                                     |
+| <span style="color:#ff260ff;">Netflix</span> | Originals Only                           |
 | <span style="color:#ff260ff;">Chatgpt</span> | <span style="color:#ff260ff;">Yes</span> |
-| Name | **BandwagonHost-PowerBox** |
+| Name                                         | **BandwagonHost-PowerBox**               |
 
 
 ## Information
@@ -37,7 +37,7 @@ Username:    Th9YvufDWB
 Password:    OPpAa9C2VI
 Port:        40603
 WebBasePath: qX1rsSlyMgbHisxFIJ
-Access URL:  https://161.129.34.57:40603/qX1rsSlyMgbHisxFIJ
+Access URL:  https://161.129.34.82:40603/qX1rsSlyMgbHisxFIJ
 ═══════════════════════════════════════════
 ```
 
