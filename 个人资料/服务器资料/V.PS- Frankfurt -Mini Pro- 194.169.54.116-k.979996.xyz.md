@@ -22,11 +22,11 @@ tags:
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    cwd51CuByK
-Password:    moTT42z6WD
-Port:        5031
-WebBasePath: eqXO5c4a5dyOZPmF6S
-Access URL:  https://194.169.54.116:5031/eqXO5c4a5dyOZPmF6S
+Username:    pohyEgpnGy
+Password:    iKxpzYSpjb
+Port:        7753
+WebBasePath: tqIH3bwR5j06c3MHdy
+Access URL:  https://194.169.54.116:7753/tqIH3bwR5j06c3MHdy
 ═══════════════════════════════════════════
 
 2026/12/22
@@ -38,7 +38,7 @@ Access URL:  https://194.169.54.116:5031/eqXO5c4a5dyOZPmF6S
 
 ### Relity
 ```
-vless://1edd4cb3-c0c1-423b-9a1d-53a17da1e44a@194.169.54.116:11291?type=tcp&security=reality&pbk=xyUc-WnoBK_tXhBv7W7p58uK3nXLC71MSIX7IGyGDiw&fp=chrome&sni=tesla.com&sid=c5&spx=%2F&flow=xtls-rprx-vision#V_PS-_20Frankfurt%20-Mini%20Pro
+vless://ed63aef5-027c-4cbc-9420-dc8b3a8cf53f@194.169.54.116:58553?type=tcp&encryption=none&security=reality&pbk=pVLYDiMCOLIHx5MZ4qLr3cVGqVRUJLvv4a5i-4mA_Gc&fp=chrome&sni=www.sony.com&sid=2ced63&spx=%2F&flow=xtls-rprx-vision#V.PS-%20Frankfurt%20-Mini%20Pro
 ```
 
 
