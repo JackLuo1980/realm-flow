@@ -14,15 +14,14 @@
 
 ## Account Information
 ```
-
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    5pMQd7etQv
-Password:    aOQz3wyCVY
-Port:        46949
-WebBasePath: GkNKBe1yx0By9iUuXJ
-Access URL:  https://45.129.9.96:46949/GkNKBe1yx0By9iUuXJ
+Username:    4H4hoD4tyU
+Password:    xKET3Bvm8A
+Port:        49866
+WebBasePath: nNFH6nJBNA5b2FVxbg
+Access URL:  https://45.129.9.96:49866/nNFH6nJBNA5b2FVxbg
 ═══════════════════════════════════════════
 
 ```
@@ -33,7 +32,7 @@ Access URL:  https://45.129.9.96:46949/GkNKBe1yx0By9iUuXJ
 
 ### Relity
 ```
-vless://2f831748-f26e-410b-ab29-865c676e2996@45.129.9.96:14060?type=tcp&encryption=none&security=reality&pbk=dbJ8Y4flpsiozSXE6u6pgbRn4KMZJqfsjrZ-6d-02Ss&fp=chrome&sni=www.intel.com&sid=a018&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
+vless://9aceffca-faf0-404f-a205-929081d1556e@45.129.9.96:46379?type=tcp&encryption=none&security=reality&pbk=P-DVv5qaDLAv9tuEmjhO4uKhXgaERpTI7e3fnrQn7g0&fp=chrome&sni=www.amd.com&sid=dcf9f417&spx=%2F&flow=xtls-rprx-vision#GreenCloud-EPYC%20ROME%20JP%20Softbank
 
 ```
 
