@@ -16,6 +16,8 @@
 curl -fsSL https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main/install.sh | bash
 ```
 
+- 安装入口会自动判断服务器是否位于国内，国内自动切换到国内下载源，国外保持 GitHub 原地址。
+
 ## 本地执行
 
 ```bash

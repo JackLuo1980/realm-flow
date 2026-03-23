@@ -35,8 +35,15 @@ created: 2026-03-02 19:19
 ## Account Information
 
 ```
-Please set the login username : jack
-Please set the login password : lpsz800203
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    DEIZtGTr7y
+Password:    wU9rCyuUEz
+Port:        25460
+WebBasePath: IfZbTPAzmUhf7FZndr
+Access URL:  https://172.81.111.120:25460/IfZbTPAzmUhf7FZndr
+═══════════════════════════════════════════
 ```
 
 ---

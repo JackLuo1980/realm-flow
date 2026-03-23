@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-REPO_RAW_BASE="${REPO_RAW_BASE:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
+REPO_RAW_BASE_GLOBAL="${REPO_RAW_BASE_GLOBAL:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
+REPO_RAW_BASE_CN="${REPO_RAW_BASE_CN:-https://imgcache.yyyisp.com/shell/JackLuo1980/one-click-system-tuning/main}"
 FILES=(
   "one-click-system-tuning.sh"
   "step-1-bootstrap.sh"
@@ -14,6 +15,29 @@ FILES=(
 
 need_cmd() {
   command -v "$1" >/dev/null 2>&1
+}
+
+detect_country_code() {
+  if ! need_cmd curl; then
+    echo ""
+    return 0
+  fi
+
+  curl -fsSL --max-time 3 https://ipapi.co/country/ 2>/dev/null | tr -d '[:space:]' || true
+}
+
+pick_repo_raw_base() {
+  local country_code
+  country_code="$(detect_country_code)"
+
+  case "$country_code" in
+    CN)
+      printf '%s' "$REPO_RAW_BASE_CN"
+      ;;
+    *)
+      printf '%s' "$REPO_RAW_BASE_GLOBAL"
+      ;;
+  esac
 }
 
 ensure_fetcher() {
@@ -46,8 +70,16 @@ main() {
   tmp_dir="$(mktemp -d)"
   trap 'rm -rf "$tmp_dir"' EXIT
 
+  repo_raw_base="$(pick_repo_raw_base)"
+
   for file in "${FILES[@]}"; do
-    download_file "${REPO_RAW_BASE}/${file}" "${tmp_dir}/${file}"
+    if ! download_file "${repo_raw_base}/${file}" "${tmp_dir}/${file}"; then
+      if [[ "$repo_raw_base" != "$REPO_RAW_BASE_GLOBAL" ]]; then
+        download_file "${REPO_RAW_BASE_GLOBAL}/${file}" "${tmp_dir}/${file}"
+      else
+        return 1
+      fi
+    fi
     chmod +x "${tmp_dir}/${file}"
   done
 
