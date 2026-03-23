@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-23 19:26:29 CST`
+- 同步时间: `2026-03-23 19:32:02 CST`
 
 ---
 
@@ -71,4 +71,6 @@ When user says any of the following, add/update entries in this file:
 - Cloudflare DDNS 出现同一记录反复跳IP时，先查 user/audit_logs 按 resource.id 看 actor.ip；若不同IP交替写入即为多客户端抢写。
 - 38.207.191.187:5522 的 `xray` 对外端口是 `44312`，`x-ui` 监听 `2096/51685`，`tcpdump` 已可用，15 秒短抓包未见持续入站。
 - 109.107.137.44 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续按 SSH -> 代理端口 -> 短抓包的流程巡检。
+- 45.129.9.96 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续按 SSH -> 代理端口 -> 短抓包的流程巡检。
+- 45.129.9.96 实际可从 `22` 登录；`xray` 对外端口是 `14060`，`x-ui` 监听 `2096/46949`，安装 `tcpdump` 后对这两个口短抓包未见持续入站。
 
