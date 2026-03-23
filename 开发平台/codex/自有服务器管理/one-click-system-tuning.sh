@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-KEJILION_URL="https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh"
 DEFAULT_TIMEZONE="Asia/Shanghai"
 
 usage() {
@@ -71,10 +70,12 @@ update_apt() {
   DEBIAN_FRONTEND=noninteractive apt-get update -y
 }
 
-download_kejilion() {
-  log "Downloading kejilion.sh"
-  curl -sS -O "$KEJILION_URL"
-  chmod +x kejilion.sh
+ensure_local_kejilion() {
+  if [[ ! -f ./kejilion.sh ]]; then
+    echo "Missing local kejilion.sh. Please keep it in the same directory as this script."
+    exit 1
+  fi
+  chmod +x ./kejilion.sh
 }
 
 kejilion_needs_license() {
@@ -133,9 +134,11 @@ Will perform:
 ------------------------------------------------
 EOF
 
+  cd "$(dirname "${BASH_SOURCE[0]}")"
+
   install_curl_first
   update_apt
-  download_kejilion
+  ensure_local_kejilion
   run_kejilion_steps
   set_timezone "$timezone"
 

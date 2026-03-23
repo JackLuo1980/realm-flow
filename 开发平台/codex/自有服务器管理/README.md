@@ -1,10 +1,10 @@
 # Kejilion Server Bootstrap
 
-把你常用的服务器初始化流程合并成一个脚本：
+把你常用的服务器初始化流程合并成一个独立脚本仓库，运行时不会再去拉外部 `kejilion.sh`。
 
 1. `apt-get install curl`
 2. `apt-get update`
-3. 下载 `kejilion.sh`
+3. 使用仓库自带的 `kejilion.sh`
 4. 自动执行 `4 -> 32`
 5. 自动执行 `5 -> 11`
 6. 自动执行 `13 -> 22`
@@ -31,4 +31,6 @@ sudo bash one-click-system-tuning.sh --timezone Asia/Shanghai
 ## 说明
 
 - 脚本只做上面的这些步骤，不额外加入其他调优项。
-- `install.sh` 只是在线入口，会拉起主脚本执行。
+- `kejilion.sh` 已经 vendored 到本仓库，运行时不再访问外部科技脚本地址。
+- `install.sh` 会把主脚本和 `kejilion.sh` 一起下载到临时目录再执行。
+- 第三方来源说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

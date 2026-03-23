@@ -4,6 +4,7 @@ set -euo pipefail
 
 REPO_RAW_BASE="${REPO_RAW_BASE:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
 TARGET_SCRIPT_URL="${TARGET_SCRIPT_URL:-${REPO_RAW_BASE}/one-click-system-tuning.sh}"
+KEJILION_SCRIPT_URL="${KEJILION_SCRIPT_URL:-${REPO_RAW_BASE}/kejilion.sh}"
 
 need_cmd() {
   command -v "$1" >/dev/null 2>&1
@@ -28,17 +29,28 @@ ensure_curl_or_wget() {
   fi
 }
 
-download_to_stdout() {
+download_file() {
+  local url="$1"
+  local output="$2"
   if need_cmd curl; then
-    curl -fsSL "$1"
+    curl -fsSL "$url" -o "$output"
   else
-    wget -qO- "$1"
+    wget -qO "$output" "$url"
   fi
 }
 
 main() {
   ensure_curl_or_wget
-  exec bash <(download_to_stdout "$TARGET_SCRIPT_URL") "$@"
+
+  tmp_dir="$(mktemp -d)"
+  trap 'rm -rf "$tmp_dir"' EXIT
+
+  download_file "$TARGET_SCRIPT_URL" "$tmp_dir/one-click-system-tuning.sh"
+  download_file "$KEJILION_SCRIPT_URL" "$tmp_dir/kejilion.sh"
+  chmod +x "$tmp_dir/one-click-system-tuning.sh" "$tmp_dir/kejilion.sh"
+
+  cd "$tmp_dir"
+  bash ./one-click-system-tuning.sh "$@"
 }
 
 main "$@"
