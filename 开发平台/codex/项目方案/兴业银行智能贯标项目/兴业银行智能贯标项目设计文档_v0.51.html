@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>兴业银行智能贯标项目设计文档 v0.51</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">兴业银行智能贯标项目设计文档 v0.51</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#兴业银行智能贯标项目设计文档"
+id="toc-兴业银行智能贯标项目设计文档">兴业银行智能贯标项目设计文档</a>
+<ul>
+<li><a href="#文档信息" id="toc-文档信息">1. 文档信息</a></li>
+<li><a href="#项目概述" id="toc-项目概述">2. 项目概述</a>
+<ul>
+<li><a href="#项目背景" id="toc-项目背景">2.1 项目背景</a></li>
+<li><a href="#现状问题" id="toc-现状问题">2.2 现状问题</a></li>
+<li><a href="#项目价值" id="toc-项目价值">2.3 项目价值</a></li>
+</ul></li>
+<li><a href="#项目目标" id="toc-项目目标">3. 项目目标</a>
+<ul>
+<li><a href="#一期目标" id="toc-一期目标">3.1 一期目标</a></li>
+<li><a href="#成功指标" id="toc-成功指标">3.2 成功指标</a></li>
+</ul></li>
+<li><a href="#建设原则" id="toc-建设原则">4. 建设原则</a></li>
+<li><a href="#项目范围" id="toc-项目范围">5. 项目范围</a>
+<ul>
+<li><a href="#一期范围" id="toc-一期范围">5.1 一期范围</a></li>
+<li><a href="#一期不做" id="toc-一期不做">5.2 一期不做</a></li>
+</ul></li>
+<li><a href="#用户与场景" id="toc-用户与场景">6. 用户与场景</a>
+<ul>
+<li><a href="#目标用户" id="toc-目标用户">6.1 目标用户</a></li>
+<li><a href="#核心场景" id="toc-核心场景">6.2 核心场景</a></li>
+</ul></li>
+<li><a href="#业务方案" id="toc-业务方案">7. 业务方案</a>
+<ul>
+<li><a href="#业务闭环" id="toc-业务闭环">7.1 业务闭环</a></li>
+<li><a href="#贯标率提升闭环" id="toc-贯标率提升闭环">7.2
+贯标率提升闭环</a></li>
+<li><a href="#核心能力模块" id="toc-核心能力模块">7.3
+核心能力模块</a></li>
+</ul></li>
+<li><a href="#技术架构" id="toc-技术架构">8. 技术架构</a>
+<ul>
+<li><a href="#总体架构" id="toc-总体架构">8.1 总体架构</a></li>
+<li><a href="#技术栈" id="toc-技术栈">8.2 技术栈</a></li>
+<li><a href="#数据库兼容" id="toc-数据库兼容">8.3 数据库兼容</a></li>
+</ul></li>
+<li><a href="#知识库设计" id="toc-知识库设计">9. 知识库设计</a>
+<ul>
+<li><a href="#知识源范围" id="toc-知识源范围">9.1 知识源范围</a></li>
+<li><a href="#知识库分层" id="toc-知识库分层">9.2 知识库分层</a></li>
+<li><a href="#核心数据实体" id="toc-核心数据实体">9.3
+核心数据实体</a></li>
+</ul></li>
+<li><a href="#智能能力设计" id="toc-智能能力设计">10. 智能能力设计</a>
+<ul>
+<li><a href="#标准推荐" id="toc-标准推荐">10.1 标准推荐</a></li>
+<li><a href="#重复检测" id="toc-重复检测">10.2 重复检测</a></li>
+<li><a href="#智能纠错" id="toc-智能纠错">10.3 智能纠错</a></li>
+<li><a href="#智能取数" id="toc-智能取数">10.4 智能取数</a></li>
+</ul></li>
+<li><a href="#风险与应对" id="toc-风险与应对">11. 风险与应对</a>
+<ul>
+<li><a href="#项目风险" id="toc-项目风险">11.1 项目风险</a></li>
+<li><a href="#技术风险" id="toc-技术风险">11.2 技术风险</a></li>
+<li><a href="#回退方案" id="toc-回退方案">11.3 回退方案</a></li>
+</ul></li>
+<li><a href="#实施计划" id="toc-实施计划">12. 实施计划</a>
+<ul>
+<li><a href="#阶段划分" id="toc-阶段划分">12.1 阶段划分</a></li>
+<li><a href="#工作量估算" id="toc-工作量估算">12.2 工作量估算</a></li>
+<li><a href="#里程碑" id="toc-里程碑">12.3 里程碑</a></li>
+</ul></li>
+<li><a href="#团队配置" id="toc-团队配置">13. 团队配置</a>
+<ul>
+<li><a href="#推荐配置" id="toc-推荐配置">13.1 推荐配置</a></li>
+<li><a href="#最小可行团队" id="toc-最小可行团队">13.2
+最小可行团队</a></li>
+</ul></li>
+<li><a href="#待确认事项" id="toc-待确认事项">14. 待确认事项</a></li>
+<li><a href="#建议结论" id="toc-建议结论">15. 建议结论</a></li>
+<li><a href="#附录" id="toc-附录">附录</a>
+<ul>
+<li><a href="#a.-参考资料" id="toc-a.-参考资料">A. 参考资料</a></li>
+<li><a href="#b.-术语说明" id="toc-b.-术语说明">B. 术语说明</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="兴业银行智能贯标项目设计文档">兴业银行智能贯标项目设计文档</h1>
+<h2 id="文档信息">1. 文档信息</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目名称</td>
+<td>兴业银行智能贯标项目</td>
+</tr>
+<tr>
+<td>文档版本</td>
+<td>v0.51</td>
+</tr>
+<tr>
+<td>文档状态</td>
+<td>方案评审稿</td>
+</tr>
+<tr>
+<td>适用对象</td>
+<td>科技部门、开发人员、架构评审、项目实施团队、管理层</td>
+</tr>
+<tr>
+<td>创建日期</td>
+<td>2026-03-19</td>
+</tr>
+<tr>
+<td>更新日期</td>
+<td>2026-03-23</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="项目概述">2. 项目概述</h2>
+<h3 id="项目背景">2.1 项目背景</h3>
+<p>兴业银行现有贯标系统为自研单体应用，已配套数据字典系统。根据业务需求，智能贯标能力应作为辅助工具嵌入现有数据字典系统，而非独立建设。</p>
+<p>在监管强化数据安全、模型合规和信创适配的要求下，需在不改变现有入口和流程的前提下，为”数据字典
++ 贯标”场景提供可建议、可解释、可审核、可追溯的辅助能力。</p>
+<h3 id="现状问题">2.2 现状问题</h3>
+<table>
+<thead>
+<tr>
+<th>问题类型</th>
+<th>具体表现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编制效率低</td>
+<td>标准命名、定义、口径编制依赖人工，周期长</td>
+</tr>
+<tr>
+<td>标准重复</td>
+<td>不同条线对同一业务对象存在”近义不同名、同名不同义”问题</td>
+</tr>
+<tr>
+<td>评审依赖经验</td>
+<td>标准评审质量依赖专家经验，缺乏统一检查机制</td>
+</tr>
+<tr>
+<td>知识未沉淀</td>
+<td>历史标准、监管要求、业务术语缺乏统一语义映射</td>
+</tr>
+<tr>
+<td>贯标率管理难</td>
+<td>各业务系统贯标率考核前集中补录，效率低、质量不稳定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="项目价值">2.3 项目价值</h3>
+<table>
+<thead>
+<tr>
+<th>受益方</th>
+<th>价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开发人员</td>
+<td>降低找数、问数、重复建标成本</td>
+</tr>
+<tr>
+<td>数据字典系统</td>
+<td>从”被动查询”升级为”可推荐、可建标辅助”的主动服务</td>
+</tr>
+<tr>
+<td>贯标体系</td>
+<td>沉淀标准知识库、审核规则库、智能推荐能力</td>
+</tr>
+<tr>
+<td>科技部门</td>
+<td>构建符合信创要求、可私有化部署的能力底座</td>
+</tr>
+<tr>
+<td>管理层</td>
+<td>形成可量化、可追溯的提效成果</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="项目目标">3. 项目目标</h2>
+<h3 id="一期目标">3.1 一期目标</h3>
+<p>基于现有数据字典系统，建设内嵌式智能贯标辅助能力：</p>
+<ul>
+<li>完成智能贯标核心闭环（不引入血缘数据库）</li>
+<li>建成可私有化部署的标准知识库</li>
+<li>接入 Qwen3 和 DeepSeek3 两类模型</li>
+<li>形成标准新增、变更、评审三类场景的智能辅助</li>
+<li>形成开发人员智能取数与建标建议能力</li>
+<li>形成接入系统贯标率分析与整改辅助能力</li>
+<li>与现有数据字典及贯标系统打通</li>
+</ul>
+<h3 id="成功指标">3.2 成功指标</h3>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 38%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>指标</th>
+<th>一期目标</th>
+<th>统计口径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>智能取数命中率</td>
+<td>≥70%</td>
+<td>命中可直接使用对象的查询数 / 总查询数</td>
+</tr>
+<tr>
+<td>取数定位时长下降</td>
+<td>≥40%</td>
+<td>上线前后典型查询定位时长对比</td>
+</tr>
+<tr>
+<td>标准推荐采纳率</td>
+<td>≥45%</td>
+<td>被人工采纳的推荐数 / 总推荐数</td>
+</tr>
+<tr>
+<td>重复标准识别准确率</td>
+<td>≥80%</td>
+<td>抽样复核正确数 / 系统判重数</td>
+</tr>
+<tr>
+<td>智能纠错命中率</td>
+<td>≥75%</td>
+<td>被认可的纠错建议数 / 总建议数</td>
+</tr>
+<tr>
+<td>标准编制耗时下降</td>
+<td>≥30%</td>
+<td>上线前后同类标准编制时长对比</td>
+</tr>
+<tr>
+<td>评审工作量下降</td>
+<td>≥25%</td>
+<td>标准评审工时对比</td>
+</tr>
+<tr>
+<td>知识入库覆盖率</td>
+<td>≥80%</td>
+<td>已纳入知识库的资料 / 应纳资料</td>
+</tr>
+<tr>
+<td>接入系统贯标率提升</td>
+<td>≥15%</td>
+<td>上线前后平均贯标率对比</td>
+</tr>
+<tr>
+<td>低贯标率系统整改闭环率</td>
+<td>≥70%</td>
+<td>治理周期内完成整改的系统数 / 低贯标率系统总数</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="建设原则">4. 建设原则</h2>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>嵌入优先</td>
+<td>能力嵌入现有数据字典系统，不建独立入口</td>
+</tr>
+<tr>
+<td>知识先行</td>
+<td>先建设知识库和规则体系，再做模型增强</td>
+</tr>
+<tr>
+<td>私有部署</td>
+<td>模型、知识、日志、审计能力内网部署</td>
+</tr>
+<tr>
+<td>信创兼容</td>
+<td>应用、中间件、数据库、OS 采用国产兼容路线</td>
+</tr>
+<tr>
+<td>人机协同</td>
+<td>系统只给建议，不绕过人工审批</td>
+</tr>
+<tr>
+<td>可追溯</td>
+<td>每条推荐、判重、纠错结果可回溯到依据</td>
+</tr>
+<tr>
+<td>小步快跑</td>
+<td>一期聚焦知识库+推荐+判重+纠错核心能力</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="项目范围">5. 项目范围</h2>
+<h3 id="一期范围">5.1 一期范围</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>知识建设</td>
+<td>数据标准知识库建设、知识加工与清洗</td>
+</tr>
+<tr>
+<td>系统改造</td>
+<td>数据字典内嵌入口、贯标系统适配</td>
+</tr>
+<tr>
+<td>智能能力</td>
+<td>标准推荐、重复检测、智能纠错、智能取数、建标建议</td>
+</tr>
+<tr>
+<td>流程支持</td>
+<td>审核工作台、人工确认闭环、反馈回流</td>
+</tr>
+<tr>
+<td>基础设施</td>
+<td>模型服务管理、审计留痕、权限日志、统计看板</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一期不做">5.2 一期不做</h3>
+<ul>
+<li>血缘数据库建设与血缘推理</li>
+<li>主数据、指标标准、数据质量平台</li>
+<li>面向终端客户的对话服务</li>
+<li>独立门户或工作台</li>
+<li>全自动发布（绕过人工审批）</li>
+<li>跨机构数据共享</li>
+</ul>
+<hr />
+<h2 id="用户与场景">6. 用户与场景</h2>
+<h3 id="目标用户">6.1 目标用户</h3>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>核心诉求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全行开发人员</td>
+<td>快速找数、判断是否已有标准、减少沟通成本</td>
+</tr>
+<tr>
+<td>标准管理员</td>
+<td>提升编制效率、降低重复审核成本</td>
+</tr>
+<tr>
+<td>数据架构师</td>
+<td>全局视角、去重能力、规则收敛</td>
+</tr>
+<tr>
+<td>科技管理人员</td>
+<td>看板指标、提效成果、可汇报数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心场景">6.2 核心场景</h3>
+<p><strong>场景一：新增标准时智能推荐</strong> - 输入候选标准信息 -
+系统召回相近标准 - 返回推荐结论、理由、相似标准、置信度</p>
+<p><strong>场景二：评审时重复检测</strong> -
+自动检测同义重复、口径近似、语义相同</p>
+<p><strong>场景三：编写时智能纠错</strong> -
+自动校验命名规范、定义完整性、类型一致性</p>
+<p><strong>场景四：智能取数</strong> - 自然语言查询 → 返回表/字段位置 →
+无结果时生成建标建议</p>
+<p><strong>场景五：贯标率分析与整改</strong> - 统计系统贯标率 →
+识别未贯标对象 → 生成整改建议 → 跟踪整改进度</p>
+<hr />
+<h2 id="业务方案">7. 业务方案</h2>
+<h3 id="业务闭环">7.1 业务闭环</h3>
+<pre><code>开发人员进入数据字典 → 发起查询/新增/评审 → 系统执行规则校验+检索+推理 
+→ 返回建议和依据 → 人工确认 → 结果反哺知识库</code></pre>
+<h3 id="贯标率提升闭环">7.2 贯标率提升闭环</h3>
+<pre><code>采集系统元数据 → 计算贯标率 → 识别未贯标对象 → 生成整改任务 
+→ 人工处理 → 回写状态 → 重新计算贯标率</code></pre>
+<h3 id="核心能力模块">7.3 核心能力模块</h3>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>说明</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>知识接入与加工</td>
+<td>数据字典接入、文档解析、知识清洗</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>标准知识库</td>
+<td>存储结构化标准、非结构化文档</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>规则引擎</td>
+<td>命名/格式/一致性校验</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>智能推荐引擎</td>
+<td>检索增强 + 模型生成</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>重复检测引擎</td>
+<td>相似度检测、规则判重、语义判重</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>智能纠错引擎</td>
+<td>规则 + 模型纠偏建议</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>智能取数引擎</td>
+<td>表字段定位、建标建议</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>贯标率分析引擎</td>
+<td>统计覆盖率、识别缺口、生成建议</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>审核工作台</td>
+<td>人工确认、反馈、留痕</td>
+<td>P0</td>
+</tr>
+<tr>
+<td>模型服务治理</td>
+<td>路由、审计、灰度、评估</td>
+<td>P1</td>
+</tr>
+<tr>
+<td>运营分析看板</td>
+<td>采纳率、问题分布、知识覆盖率</td>
+<td>P1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="技术架构">8. 技术架构</h2>
+<h3 id="总体架构">8.1 总体架构</h3>
+<p>采用”1个内嵌入口 + 1组服务中心 + 3个引擎 + 2类存储 +
+1个模型网关”架构：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内嵌入口</td>
+<td>数据字典系统中的智能贯标助手</td>
+</tr>
+<tr>
+<td>服务中心</td>
+<td>查询编排、推荐判重、纠错建标、审核反馈</td>
+</tr>
+<tr>
+<td>智能引擎</td>
+<td>推荐引擎、判重引擎、纠错引擎</td>
+</tr>
+<tr>
+<td>存储</td>
+<td>关系型数据库（主数据）+ 检索存储（全文/向量索引）</td>
+</tr>
+<tr>
+<td>模型网关</td>
+<td>统一接入 Qwen3、DeepSeek3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="技术栈">8.2 技术栈</h3>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前端</td>
+<td>Vue 3（按行内组件体系）</td>
+</tr>
+<tr>
+<td>后端</td>
+<td>Java 17/21 + Spring Boot</td>
+</tr>
+<tr>
+<td>AI 集成</td>
+<td>Spring AI 或企业统一 SDK</td>
+</tr>
+<tr>
+<td>规则引擎</td>
+<td>Drools / Aviator / 自研</td>
+</tr>
+<tr>
+<td>检索引擎</td>
+<td>Elasticsearch / OpenSearch</td>
+</tr>
+<tr>
+<td>关系数据库</td>
+<td>openGauss、TDSQL（后续兼容 GaussDB）</td>
+</tr>
+<tr>
+<td>缓存</td>
+<td>Redis 或国产兼容</td>
+</tr>
+<tr>
+<td>消息队列</td>
+<td>RocketMQ / Kafka</td>
+</tr>
+<tr>
+<td>模型推理</td>
+<td>vLLM / SGLang / 行内统一平台</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>K8s / OpenShift / 行内部署平台</td>
+</tr>
+</tbody>
+</table>
+<h3 id="数据库兼容">8.3 数据库兼容</h3>
+<ul>
+<li>当前主支持：openGauss</li>
+<li>并行兼容：TDSQL</li>
+<li>后续扩展：GaussDB</li>
+</ul>
+<p><strong>设计原则：</strong> - 核心 SQL
+采用通用语法，避免绑定单一数据库方言 - 差异点通过 DAO 层封装 -
+全文检索、向量检索能力外置</p>
+<hr />
+<h2 id="知识库设计">9. 知识库设计</h2>
+<h3 id="知识源范围">9.1 知识源范围</h3>
+<table>
+<thead>
+<tr>
+<th>知识源</th>
+<th>类型</th>
+<th>一期纳入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据字典系统</td>
+<td>结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>历史标准库</td>
+<td>结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>管理制度文档</td>
+<td>非结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>业务术语表</td>
+<td>结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>监管制度</td>
+<td>非结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>专家经验样本</td>
+<td>半结构化</td>
+<td>是</td>
+</tr>
+<tr>
+<td>元数据血缘</td>
+<td>图谱</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h3 id="知识库分层">9.2 知识库分层</h3>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原始资料层</td>
+<td>保存原始数据（字典表、制度文档等）</td>
+</tr>
+<tr>
+<td>加工标准层</td>
+<td>去重、结构化映射、版本标记、标签分类、文档切片</td>
+</tr>
+<tr>
+<td>语义索引层</td>
+<td>关键词索引、规则标签索引、向量索引、同义词索引</td>
+</tr>
+<tr>
+<td>应用服务层</td>
+<td>向业务系统提供统一知识服务接口</td>
+</tr>
+</tbody>
+</table>
+<h3 id="核心数据实体">9.3 核心数据实体</h3>
+<table>
+<thead>
+<tr>
+<th>实体</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std_standard</td>
+<td>数据标准主表</td>
+</tr>
+<tr>
+<td>std_standard_attr</td>
+<td>标准属性</td>
+</tr>
+<tr>
+<td>std_term</td>
+<td>业务术语</td>
+</tr>
+<tr>
+<td>std_rule</td>
+<td>贯标规则</td>
+</tr>
+<tr>
+<td>kb_document</td>
+<td>知识文档</td>
+</tr>
+<tr>
+<td>kb_document_chunk</td>
+<td>文档切片</td>
+</tr>
+<tr>
+<td>std_data_asset_ref</td>
+<td>数据资产定位（系统/库/表/字段）</td>
+</tr>
+<tr>
+<td>ai_result_record</td>
+<td>结果记录</td>
+</tr>
+<tr>
+<td>std_feedback_record</td>
+<td>反馈记录</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="智能能力设计">10. 智能能力设计</h2>
+<h3 id="标准推荐">10.1 标准推荐</h3>
+<p><strong>流程：</strong> 输入 → 关键词/同义词/向量召回 → 规则过滤 →
+模型推理 → 输出</p>
+<p><strong>输出结构：</strong> - 推荐结论（复用/新增/合并/修改） -
+候选标准 TopN - 推荐理由 + 相似度 + 命中规则 + 依据 + 风险提示</p>
+<h3 id="重复检测">10.2 重复检测</h3>
+<p>三层判重： 1. <strong>规则判重</strong> — 名称/编码/属性完全一致 2.
+<strong>近似判重</strong> — 分词、同义词、编辑距离 3.
+<strong>语义判重</strong> — embedding + 模型判断</p>
+<h3 id="智能纠错">10.3 智能纠错</h3>
+<table>
+<thead>
+<tr>
+<th>规则类型</th>
+<th>检查项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬规则</td>
+<td>命名长度、禁用词、格式、类型一致性</td>
+</tr>
+<tr>
+<td>软规则</td>
+<td>定义完整性、术语一致性、表达歧义</td>
+</tr>
+<tr>
+<td>模型推理</td>
+<td>规范改写、差异提示、修订版本建议</td>
+</tr>
+</tbody>
+</table>
+<h3 id="智能取数">10.4 智能取数</h3>
+<p><strong>流程：</strong> 1. 自然语言输入 2. 识别业务对象、字段语义 3.
+检索数据字典、标准库、知识库 4. 返回：已存在 → 表/字段位置 +
+依据；不存在 → 建标建议</p>
+<hr />
+<h2 id="风险与应对">11. 风险与应对</h2>
+<h3 id="项目风险">11.1 项目风险</h3>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>概率</th>
+<th>影响</th>
+<th>应对措施</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型效果不达标</td>
+<td>中</td>
+<td>高</td>
+<td>分阶段验收，效果不达标可回退人工流程</td>
+</tr>
+<tr>
+<td>知识库质量差</td>
+<td>高</td>
+<td>高</td>
+<td>建立质量标准和审核机制</td>
+</tr>
+<tr>
+<td>数据字典接入延迟</td>
+<td>中</td>
+<td>中</td>
+<td>提前确认接口，准备 Mock 数据</td>
+</tr>
+<tr>
+<td>开源组件不合规</td>
+<td>低</td>
+<td>高</td>
+<td>提前完成安全与许可证评估</td>
+</tr>
+<tr>
+<td>进度延期</td>
+<td>中</td>
+<td>中</td>
+<td>预留缓冲期，关键路径管理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="技术风险">11.2 技术风险</h3>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型幻觉</td>
+<td>强制检索增强、输出依据、人工复核</td>
+</tr>
+<tr>
+<td>越权访问</td>
+<td>检索前置权限过滤</td>
+</tr>
+<tr>
+<td>知识污染</td>
+<td>建立知识审核流程</td>
+</tr>
+<tr>
+<td>数据泄露</td>
+<td>模型输出可追溯、敏感数据分级</td>
+</tr>
+</tbody>
+</table>
+<h3 id="回退方案">11.3 回退方案</h3>
+<p>如果智能能力效果不达标： 1. 可关闭智能推荐，回退到纯人工流程 2.
+知识库仍可作为检索工具使用 3. 模型调用可降级为单模型或禁用</p>
+<hr />
+<h2 id="实施计划">12. 实施计划</h2>
+<h3 id="阶段划分">12.1 阶段划分</h3>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>周期</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>调研与蓝图</td>
+<td>2-4周</td>
+<td>现状调研、蓝图设计、数据盘点</td>
+</tr>
+<tr>
+<td>知识库建设</td>
+<td>4-6周</td>
+<td>数据接入、知识模型、规则梳理</td>
+</tr>
+<tr>
+<td>核心开发</td>
+<td>6-8周</td>
+<td>推荐判重、纠错取数、审核工作台</td>
+</tr>
+<tr>
+<td>联调试点</td>
+<td>4周</td>
+<td>UAT、场景试点、效果评估</td>
+</tr>
+<tr>
+<td>优化推广</td>
+<td>2-4周</td>
+<td>指标复盘、规则优化、场景扩面</td>
+</tr>
+</tbody>
+</table>
+<h3 id="工作量估算">12.2 工作量估算</h3>
+<table>
+<thead>
+<tr>
+<th>工作包</th>
+<th>人周</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需求与架构设计</td>
+<td>6-8</td>
+</tr>
+<tr>
+<td>数据接入与知识加工</td>
+<td>8-12</td>
+</tr>
+<tr>
+<td>核心后端开发</td>
+<td>14-20</td>
+</tr>
+<tr>
+<td>前端页面开发</td>
+<td>8-12</td>
+</tr>
+<tr>
+<td>AI工程与规则建设</td>
+<td>6-10</td>
+</tr>
+<tr>
+<td>联调测试与优化</td>
+<td>8-10</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>50-72</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="里程碑">12.3 里程碑</h3>
+<table>
+<thead>
+<tr>
+<th>里程碑</th>
+<th>时间点</th>
+<th>验收重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1 方案冻结</td>
+<td>第2-4周</td>
+<td>范围、架构、原型、数据模型确认</td>
+</tr>
+<tr>
+<td>M2 知识库可用</td>
+<td>第6-10周</td>
+<td>字典接入、文档入库、检索可跑通</td>
+</tr>
+<tr>
+<td>M3 能力联调完成</td>
+<td>第10-16周</td>
+<td>推荐、判重、纠错、取数全链路可用</td>
+</tr>
+<tr>
+<td>M4 试点验收</td>
+<td>第16-20周</td>
+<td>UAT通过、关键指标可统计</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="团队配置">13. 团队配置</h2>
+<h3 id="推荐配置">13.1 推荐配置</h3>
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>人数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目经理</td>
+<td>1</td>
+<td>排期、协调、风险推进</td>
+</tr>
+<tr>
+<td>产品经理</td>
+<td>1</td>
+<td>需求收敛、原型、验收口径</td>
+</tr>
+<tr>
+<td>后端开发</td>
+<td>2-3</td>
+<td>单体改造、接口、规则、知识服务</td>
+</tr>
+<tr>
+<td>前端开发</td>
+<td>1-2</td>
+<td>智能取数、推荐判重、看板页面</td>
+</tr>
+<tr>
+<td>AI工程师</td>
+<td>1</td>
+<td>模型接入、提示词、RAG编排</td>
+</tr>
+<tr>
+<td>数据工程师</td>
+<td>1</td>
+<td>字典接入、知识清洗、索引构建</td>
+</tr>
+<tr>
+<td>测试工程师</td>
+<td>1</td>
+<td>功能、联调、回归测试</td>
+</tr>
+<tr>
+<td>架构/DBA</td>
+<td>0.5-1</td>
+<td>数据库兼容、部署、性能支持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="最小可行团队">13.2 最小可行团队</h3>
+<ul>
+<li>1名项目/产品负责人</li>
+<li>2名后端开发</li>
+<li>1名前端开发</li>
+<li>1名AI或数据工程师</li>
+<li>1名测试工程师</li>
+</ul>
+<hr />
+<h2 id="待确认事项">14. 待确认事项</h2>
+<table>
+<thead>
+<tr>
+<th>事项</th>
+<th>责任方</th>
+<th>建议确认时限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据字典规模、接口频率、同步方式</td>
+<td>客户</td>
+<td>方案评审前</td>
+</tr>
+<tr>
+<td>前端改造方式（页签/抽屉/侧栏）</td>
+<td>客户</td>
+<td>方案评审前</td>
+</tr>
+<tr>
+<td>已准入中间件、OS、容器平台清单</td>
+<td>客户</td>
+<td>架构设计前</td>
+</tr>
+<tr>
+<td>Qwen3/DeepSeek3 接口协议、并发能力</td>
+<td>客户</td>
+<td>开发前</td>
+</tr>
+<tr>
+<td>现有标准总量、年新增量</td>
+<td>客户</td>
+<td>知识库设计前</td>
+</tr>
+<tr>
+<td>开源组件准入要求</td>
+<td>客户</td>
+<td>技术选型前</td>
+</tr>
+<tr>
+<td>是否允许独立向量数据库</td>
+<td>客户</td>
+<td>架构设计前</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="建议结论">15. 建议结论</h2>
+<p>本项目按”数据字典内嵌、知识库先行、规则约束、模型增强、人机协同、私有部署、信创兼容”路线推进。</p>
+<p>一期目标： 1. 建成标准知识库 2. 做出高可用的推荐、判重、纠错能力 3.
+与现有数据字典系统形成闭环 4. 建立可审计、可持续优化的治理机制</p>
+<hr />
+<h2 id="附录">附录</h2>
+<h3 id="a.-参考资料">A. 参考资料</h3>
+<ul>
+<li>中国银行数据字典平台采购公告</li>
+<li>中国建设银行数据治理公开资料</li>
+<li>中国工商银行 2024 年经营披露</li>
+<li>《生成式人工智能服务管理暂行办法》</li>
+<li>Spring AI 官方文档</li>
+<li>RAGFlow 开源项目</li>
+<li>openGauss 官方网站</li>
+</ul>
+<h3 id="b.-术语说明">B. 术语说明</h3>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>贯标</td>
+<td>数据标准落地执行</td>
+</tr>
+<tr>
+<td>数据字典</td>
+<td>元数据统一管理入口</td>
+</tr>
+<tr>
+<td>知识库</td>
+<td>标准化知识的结构化存储</td>
+</tr>
+<tr>
+<td>RAG</td>
+<td>检索增强生成</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>文档结束</em></p>
+</body>
+</html>
