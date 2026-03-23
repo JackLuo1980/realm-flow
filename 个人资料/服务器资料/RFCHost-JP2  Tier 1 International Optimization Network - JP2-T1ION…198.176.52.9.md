@@ -1,41 +1,50 @@
-<span style="font-size:16pt;"><b>Information：</b></span>
+---
+id: 20260321125909
+tags:
+  - VPS
+created: 2026-03-23 10:38
+---
 
-| Password                                     | **GkDAFp5Klubt**                         |
-| -------------------------------------------- | ---------------------------------------- |
-| Domain name                                  |                                          |
-| IP                                           | 198.176.52.9                             |
-| Bandwidth                                    | 500G                                     |
-| <span style="color:#ff260ff;">Netflix</span> | Originals Only                           |
-| <span style="color:#ff260ff;">Chatgpt</span> | <span style="color:#ff260ff;">Yes</span> |
-| Name                                         | **BandwagonHost-PowerBox**               |
+## Information
 
+| Password    |  |
+|-------------|--|
+| Domain name |  |
+| IP          |  |
+| Bandwidth   |  |
+| Email账号   |  |
 
-###############################################
-Username: YAdTlkwg8J
-Password: wDLSejTcMf
-Port: 22310
-WebBasePath: MczA5wZe4ODqu4ErGR
-Access URL: http://198.176.52.9:22310/MczA5wZe4ODqu4ErGR
-###############################################
-<span style="font-size:16pt;"><b>VPS Link：</b></span>
+---
 
-| <span style="font-family:.PingFangUITextSC-Bold;font-size:14pt;"><b>序号</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接类型</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接信息</b></span>                                                                                                                                                                                                                                                             |
-| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1**                                                                             | **VMESS**                                                                           |                                                                                                                                                                                                                                                                                                                                                 |
-| **2**                                                                             | **VLESS**                                                                           |                                                                                                                                                                                                                                                                                                                                                 |
-| **3**                                                                             | **REALITY**                                                                         | <span style="color:#088ffff;">vless://2f66ced2-37ae-4fc6-a906-45e14f609e27@e.lowlife.eu.org:48936?type=tcp&security=reality&pbk=_wS-Z5poPNdFnE_ZzvhG-1inK47Y3-sox-wY8M-ChhY&fp=chrome&sni=tesla.com&sid=4015&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20%7C%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION-Balance</span> |
-| **4**                                                                             | **Surge**                                                                           |                                                                                                                                                                                                                                                                                                                                                 |
-| **5**                                                                             | **Clash**                                                                           |                                                                                                                                                                                                                                                                                                                                                 |
-| **6**                                                                             | **Quantumult X**                                                                    |                                                                                                                                                                                                                                                                                                                                                 |
-
-SS落地
-
-[[Pasted Graphic 19.png]]
-
-落地SS
+## Account Information
 
 ```
-ss://YWVzLTI1Ni1nY206RFVZcDRLQ3hwTkkxQVNEcjRpSzNPSEpQbUF5WVJuWkZZVENWUzVRRmhpVT0@111.229.215.107:31000?type=tcp#RFCHost-JP2%20%7C%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION-Balance
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    tLJfzw5TC4
+Password:    pdmlBsnRiK
+Port:        40378
+WebBasePath: yXUJH8PW7vkzRAbw4W
+Access URL:  https://198.176.52.9:40378/yXUJH8PW7vkzRAbw4W
+═══════════════════════════════════════════
+```
+
+---
+
+## VPS Link
+
+### Reality
+
+```
+vless://8ed03511-2b3f-496c-92aa-1e4b6343e195@198.176.52.9:25054?type=tcp&encryption=none&security=reality&pbk=yIAHqKekrXoqiPv5-OOI-KlOxegtFPvdP8WBZxt_SUs&fp=chrome&sni=www.nvidia.com&sid=bf24a2&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION
+```
+
+
+## SS
+
+```
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206R0E5WEJYTDZFNHo2ekZLVVBhTW1VU3pDT2luZ1VHMzJ3eHQ3VERURzBIdz06YmR6dUtlQ3RlZVZrcGFuV05MWTk3cmRqVi9UQXFUQk52NS9sWTJNL21zcz0@198.176.52.9:46687?type=tcp#RFCHost-JP2%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION-dlfk69gl
 ```
 
 
