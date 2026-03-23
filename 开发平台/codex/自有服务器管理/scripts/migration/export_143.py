@@ -106,7 +106,7 @@ def load_rows(
         row: dict[str, Any] = {}
         for idx, col in enumerate(columns):
             value = values[idx] if idx < len(values) else None
-            if value == r"\N":
+            if value in (r"\N", "NULL"):
                 row[col["name"]] = None
             elif hex_columns[idx]:
                 row[col["name"]] = bytes.fromhex(value).decode("utf-8") if value else ""
