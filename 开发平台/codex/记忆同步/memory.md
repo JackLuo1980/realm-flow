@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-23 07:59:27 CST`
+- 同步时间: `2026-03-23 08:15:07 CST`
 
 ---
 
@@ -41,6 +41,7 @@ When user says any of the following, add/update entries in this file:
 - Obsidian codex base path is now `/Users/jack/Library/Mobile Documents/iCloud~md~obsidian/Documents/Jack Luo/开发平台/codex/`; new records should be saved under this path.
 - When updating memory, keep the phrasing terse and operational so it can be mirrored cleanly into Obsidian without rewriting the meaning.
 - Use `/Users/jack/Documents/Playground/capture_learning.sh` for standardized memory/decision capture.
+- 服务器巡检默认顺序固定为：先看代理进程和对外监听端口，再对该端口做 15 秒短窗口抓包，最后结合日志判断是否存在持续入站；抓包工具缺失时先补装 `tcpdump`。
 - 国际互联测速时同时看 ping/HTTPS 时延/多地区100MB下载；并记录 remote_ip 判断是否走 IPv6，避免单一指标误判。
 - Komari 面板实际服务器信息已更正：主机 IP 为 159.54.184.3；登录密码为 lpsz800203（按用户最新提供记录）。
 - Komari 出现‘删除提示成功但实际未删除’时，先查磁盘空间；若根分区100%会导致写库异常。此次根因是 /root/komari_sort_by_name.sh 每10分钟备份数据库到 /home/docker/komari/sort_backups，最终打满磁盘。
