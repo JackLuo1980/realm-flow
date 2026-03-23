@@ -21,7 +21,7 @@ Environment:
 
 Examples:
   sudo bash nft-port-map.sh add 12225 172.81.111.70 12225
-  sudo bash nft-port-map.sh add 46687 198.176.52.9 46687
+  sudo bash nft-port-map.sh add 46687 198.176.52.93 46687
   sudo bash nft-port-map.sh delete 54322 54323
   sudo bash nft-port-map.sh list
   sudo bash nft-port-map.sh flush
