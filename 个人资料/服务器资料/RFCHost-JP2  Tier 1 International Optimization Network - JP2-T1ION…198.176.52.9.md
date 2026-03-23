@@ -51,5 +51,12 @@ ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206R0E5WEJYTDZFNHo2ekZLVVBhTW1VU3pDT2luZ1VHMzJ
 ---
 ## 落地节点
 
+SS 腾讯
+
+```
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206R0E5WEJYTDZFNHo2ekZLVVBhTW1VU3pDT2luZ1VHMzJ3eHQ3VERURzBIdz06YmR6dUtlQ3RlZVZrcGFuV05MWTk3cmRqVi9UQXFUQk52NS9sWTJNL21zcz0@111.229.215.107:46687?type=tcp#腾讯云 - RFCHost-JP2%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION
+```
+
+
 <!-- flux-auto:start -->
 <!-- flux-auto:end -->
