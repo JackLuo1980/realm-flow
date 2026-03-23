@@ -24,6 +24,15 @@ curl -fsSL https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning
 sudo bash one-click-system-tuning.sh --timezone Asia/Shanghai
 ```
 
+## nft 端口映射模板
+
+```bash
+sudo bash nft-port-map.sh list
+sudo bash nft-port-map.sh add 12225 172.81.111.70 12225
+sudo bash nft-port-map.sh delete 54322 54323
+sudo bash nft-port-map.sh flush
+```
+
 ## 时区参数
 
 - `Asia/Shanghai`

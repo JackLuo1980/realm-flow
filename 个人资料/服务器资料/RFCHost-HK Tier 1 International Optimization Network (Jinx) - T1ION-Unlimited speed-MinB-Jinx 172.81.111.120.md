@@ -6,18 +6,6 @@ tags:
   - HK
 created: 2026-03-02 19:19
 ---
-<span style="font-size:16pt;"><b>Information：</b></span>
-
-| Password | uuo0iIzN5ooP |
-| -- | -- |
-| Domain name | <span style="color:#088ffff;"><b>g.lowlife.eu.org</b></span> |
-| IP |  |
-| Bandwidth | 20T |
-| <span style="color:#ff260ff;">Netflix</span> | Originals Only |
-| <span style="color:#ff260ff;">Chatgpt</span> | <span style="color:#ff260ff;">Yes</span> |
-| Name |  |
-
-
 
 
 
