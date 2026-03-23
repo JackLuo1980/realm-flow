@@ -36,7 +36,7 @@ Access URL:  https://195.245.242.68:34123/UyhL3UoyXtb3c521N1
 
 ### Relity
 ```
-vless://9702e820-a8fb-42fd-92c2-dca3548cb7c0@tokyo.979996.xyz:57879?type=tcp&encryption=none&security=reality&pbk=C0WzyZNQ0p6DSeXvF8XhAFTiL2K20RKuIq4QCifk6ys&fp=chrome&sni=tesla.com&sid=97ddb4b7&spx=%2F&flow=xtls-rprx-vision#V.PS-Tokyo-Starter%20S2
+vless://bc86c09a-e647-489c-8761-8942f54ea500@195.245.242.68:30831?type=tcp&encryption=none&security=reality&pbk=hrDGIT-2qKaQrjebbBeGiTMO7WAwZVHZcPwUTLGXXBs&fp=chrome&sni=www.tesla.com&sid=4c2bc38b&spx=%2F&flow=xtls-rprx-vision#V.PS-Tokyo-Starter
 ```
 
 
