@@ -22,12 +22,13 @@ created: 2026-03-03 11:07
 
 ```
 ═══════════════════════════════════════════
-
-Username:    MJmKry9n26
-Password:    5HEwAoNKvg
-Port:        6023
-WebBasePath: cR9G0jgnt35R1kOGiV
-Access URL:  https://172.81.111.70:6023/cR9G0jgnt35R1kOGiV
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    wn3r1mGvwK
+Password:    E0c0uu9gCc
+Port:        21320
+WebBasePath: ZqR7ODWK6Iw7NXGVfR
+Access URL:  https://172.81.111.70:21320/ZqR7ODWK6Iw7NXGVfR
 ═══════════════════════════════════════════
 ```
 
