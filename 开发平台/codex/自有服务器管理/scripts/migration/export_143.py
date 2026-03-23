@@ -22,6 +22,7 @@ def build_remote_mysql_cmd(args: argparse.Namespace, query: str) -> list[str]:
             + shlex.quote(args.mysql_user)
             + " "
             + shlex.quote(f"-p{args.mysql_password}")
+            + " --default-character-set=utf8mb4"
             + " -D "
             + shlex.quote(args.mysql_db)
             + " -N -B -e "
@@ -44,6 +45,7 @@ def build_remote_mysql_cmd(args: argparse.Namespace, query: str) -> list[str]:
         "-u",
         args.mysql_user,
         f"-p{args.mysql_password}",
+        "--default-character-set=utf8mb4",
         "-h",
         args.mysql_host,
         "-P",
