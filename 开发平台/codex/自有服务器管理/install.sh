@@ -3,30 +3,31 @@
 set -euo pipefail
 
 REPO_RAW_BASE="${REPO_RAW_BASE:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
-TARGET_SCRIPT_URL="${TARGET_SCRIPT_URL:-${REPO_RAW_BASE}/one-click-system-tuning.sh}"
-KEJILION_SCRIPT_URL="${KEJILION_SCRIPT_URL:-${REPO_RAW_BASE}/kejilion.sh}"
+FILES=(
+  "one-click-system-tuning.sh"
+  "01-bootstrap-curl-update.sh"
+  "02-install-base-tools.sh"
+  "03-enable-bbr.sh"
+  "04-install-fail2ban.sh"
+  "05-set-timezone.sh"
+)
 
 need_cmd() {
   command -v "$1" >/dev/null 2>&1
 }
 
-ensure_curl_or_wget() {
+ensure_fetcher() {
   if need_cmd curl || need_cmd wget; then
     return 0
   fi
 
-  if [ "$(id -u)" -ne 0 ]; then
-    echo "curl or wget is required to fetch the installer. Please install one first, or run as root so apt-get can install curl."
+  if [ "$(id -u)" -ne 0 ] || ! need_cmd apt-get; then
+    echo "curl or wget is required to fetch this installer."
     exit 1
   fi
 
-  if need_cmd apt-get; then
-    DEBIAN_FRONTEND=noninteractive apt-get update -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl ca-certificates
-  else
-    echo "Neither curl nor wget is installed, and apt-get is unavailable."
-    exit 1
-  fi
+  DEBIAN_FRONTEND=noninteractive apt-get update -y
+  DEBIAN_FRONTEND=noninteractive apt-get install -y curl ca-certificates
 }
 
 download_file() {
@@ -40,14 +41,15 @@ download_file() {
 }
 
 main() {
-  ensure_curl_or_wget
+  ensure_fetcher
 
   tmp_dir="$(mktemp -d)"
   trap 'rm -rf "$tmp_dir"' EXIT
 
-  download_file "$TARGET_SCRIPT_URL" "$tmp_dir/one-click-system-tuning.sh"
-  download_file "$KEJILION_SCRIPT_URL" "$tmp_dir/kejilion.sh"
-  chmod +x "$tmp_dir/one-click-system-tuning.sh" "$tmp_dir/kejilion.sh"
+  for file in "${FILES[@]}"; do
+    download_file "${REPO_RAW_BASE}/${file}" "${tmp_dir}/${file}"
+    chmod +x "${tmp_dir}/${file}"
+  done
 
   cd "$tmp_dir"
   bash ./one-click-system-tuning.sh "$@"

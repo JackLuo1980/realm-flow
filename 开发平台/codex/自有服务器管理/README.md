@@ -1,14 +1,14 @@
-# Kejilion Server Bootstrap
+# Kejilion Bootstrap, Rebuilt
 
-把你常用的服务器初始化流程合并成一个独立脚本仓库，运行时不会再去拉外部 `kejilion.sh`。
+这是你自己的独立服务器初始化仓库，不再在运行时调用外部科技脚本。
 
-1. `apt-get install curl`
-2. `apt-get update`
-3. 使用仓库自带的 `kejilion.sh`
-4. 自动执行 `4 -> 32`
-5. 自动执行 `5 -> 11`
-6. 自动执行 `13 -> 22`
-7. 设置时区为 `Asia/Shanghai` 或 `Asia/Hong_Kong`
+## 执行顺序
+
+1. `01-bootstrap-curl-update.sh`
+2. `02-install-base-tools.sh`
+3. `03-enable-bbr.sh`
+4. `04-install-fail2ban.sh`
+5. `05-set-timezone.sh`
 
 ## 在线安装
 
@@ -26,11 +26,10 @@ sudo bash one-click-system-tuning.sh --timezone Asia/Shanghai
 
 - `Asia/Shanghai`
 - `Asia/Hong_Kong`
-- 也支持简写：`sh`、`hk`
+- 简写：`sh`、`hk`
 
 ## 说明
 
-- 脚本只做上面的这些步骤，不额外加入其他调优项。
-- `kejilion.sh` 已经 vendored 到本仓库，运行时不再访问外部科技脚本地址。
-- `install.sh` 会把主脚本和 `kejilion.sh` 一起下载到临时目录再执行。
-- 第三方来源说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+- 每一步都是仓库内的本地脚本。
+- 不再依赖 `kejilion.sh` 的在线地址。
+- 只保留你要的基础工具、BBR、fail2ban 和时区设置。
