@@ -11,7 +11,7 @@ tags:
 | Password    | LL5C6mb8                |
 |-------------|-------------------------|
 | Domain name | tokyo1.979996.xyz       |
-| IP          | 149.62.44.247           |
+| IP          | 149.62.44.27            |
 | Bandwidth   | 1.5TB                   |
 | Email账号     | shanzhukine@outlook.com |
 
