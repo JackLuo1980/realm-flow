@@ -199,7 +199,7 @@ run_step() {
   log "Running ${step_path}"
   if bash "${step_path}" "$@"; then
     log "Completed ${label}"
-    COMPLETED_STEPS+=("${label}")
+    COMPLETED_STEPS+=("${step}")
     step_banner "OK ${label}" "SUCCESS" "green"
   else
     local exit_code=$?
