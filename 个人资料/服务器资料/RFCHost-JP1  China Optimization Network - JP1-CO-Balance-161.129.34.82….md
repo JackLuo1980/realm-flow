@@ -33,11 +33,11 @@ created: 2026-03-22 13:34
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    Th9YvufDWB
-Password:    OPpAa9C2VI
-Port:        40603
-WebBasePath: qX1rsSlyMgbHisxFIJ
-Access URL:  https://161.129.34.82:40603/qX1rsSlyMgbHisxFIJ
+Username:    PWGtTjXAbP
+Password:    BmSAtArP2X
+Port:        18218
+WebBasePath: Fxb9Oe4A5A4L2bxaZy
+Access URL:  https://161.129.34.82:18218/Fxb9Oe4A5A4L2bxaZy
 ═══════════════════════════════════════════
 ```
 
@@ -48,7 +48,7 @@ Access URL:  https://161.129.34.82:40603/qX1rsSlyMgbHisxFIJ
 ### Reality
 
 ```
-vless://0413ad10-93f0-494c-9890-5c68f7a74ac8@161.129.34.57:23620?type=tcp&encryption=none&security=reality&pbk=GQ66mZoHbJIERkZvXyCVDVsSx07HWU4wgfB4KKVcYR8&fp=chrome&sni=www.intel.com&sid=cb&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP1%20%20China%20Optimization%20Network%20-%20JP1-CO-Balance
+vless://c1613ecf-8dff-435d-93ed-6c7b2e57600d@161.129.34.82:13740?type=tcp&encryption=none&security=reality&pbk=DrQx2C8N1jwmJqAWDUYmNloNV7W24FJMZ3Gybjk_CGw&fp=chrome&sni=www.tesla.com&sid=fda75f&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP1%20%20China%20Optimization%20Network%20-%20JP1-CO-Balance
 ```
 
 
