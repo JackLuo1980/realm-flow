@@ -72,12 +72,12 @@ step_details() {
     step-1-bootstrap.sh)
       cat <<'EOF'
 - 已更新 软件源
-- 已安装 命令: curl ca-certificates
 EOF
       ;;
     step-4-tools.sh)
       cat <<'EOF'
-- 已安装 命令: wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git
+- 已安装 命令: curl ca-certificates wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git
+- 已安装 服务: docker
 EOF
       ;;
     step-5-bbr.sh)
