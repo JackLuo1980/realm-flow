@@ -20,11 +20,11 @@ tags:
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    DRUzpLivWe
-Password:    UyPyohlMPd
-Port:        11729
-WebBasePath: JCm5elAZ15aHREkZOo
-Access URL:  https://95.169.166.10:11729/JCm5elAZ15aHREkZOo
+Username:    HljEmtsOa4
+Password:    0cgxuVK16D
+Port:        23410
+WebBasePath: 2KLsq9V3m0wqFlEdmt
+Access URL:  https://95.169.166.10:23410/2KLsq9V3m0wqFlEdmt
 ═══════════════════════════════════════════
 ```
 
@@ -34,7 +34,7 @@ Access URL:  https://95.169.166.10:11729/JCm5elAZ15aHREkZOo
 
 ### Relity
 ```
-vless://d77d118f-dcfe-4e1e-bf3d-f823c4bcfe1f@95.169.166.10:45556?type=tcp&encryption=none&security=reality&pbk=xOaneVzWRWbPG_uLoKo08XMaXKvxwudUthBUV8nf8wY&fp=chrome&sni=www.tesla.com&sid=30b4c99b45ea5d&spx=%2F&flow=xtls-rprx-vision#BageVM-%20Germany%20-%20TINY
+vless://0b9d528e-85ba-4065-9f86-5091b7f26b67@95.169.166.10:11248?type=tcp&encryption=none&security=reality&pbk=MI_Qw2KngVIYatWx2k2s2H3Fmr-9IU3jenHuPmBMeEE&fp=chrome&sni=www.amazon.com&sid=f0&spx=%2F&flow=xtls-rprx-vision#BageVM-%20Germany%20-%20TINY
 ```
 
 

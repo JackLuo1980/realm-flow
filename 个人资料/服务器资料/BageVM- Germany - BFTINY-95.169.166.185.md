@@ -36,7 +36,7 @@ Access URL:  https://95.169.166.185:58739/uUz52st7jYyZORqVar
 
 ### Relity
 ```
-
+vless://32e7136b-8fc0-4525-a6b5-a33fff89fb5c@95.169.166.185:10660?type=tcp&encryption=none&security=reality&pbk=tN-erlOPRtV6Mobltln85z1cWdihqxM5CRKicpW6PHU&fp=chrome&sni=www.tesla.com&sid=135b13fb&spx=%2F&flow=xtls-rprx-vision#BageVM-%20Germany%20-%20BFTINY
 ```
 
 
