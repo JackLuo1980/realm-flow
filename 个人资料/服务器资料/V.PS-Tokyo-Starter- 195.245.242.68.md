@@ -19,14 +19,15 @@ tags:
 
 ## Account Information
 ```
-###############################################
-用户名: cj8/W/t2SF+AwA==
-密  码: o2S+sftBpBKRUw==
-访问路径: QVp4S53ayY2RrZc
-###############################################
-
-xtomtokyo@outlook.com    6.h7YvhnRb%*
-2026/03/01
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    lyuIQridKi
+Password:    jNKSqecowU
+Port:        34123
+WebBasePath: UyhL3UoyXtb3c521N1
+Access URL:  https://195.245.242.68:34123/UyhL3UoyXtb3c521N1
+═══════════════════════════════════════════
 ```
 
 - - -
