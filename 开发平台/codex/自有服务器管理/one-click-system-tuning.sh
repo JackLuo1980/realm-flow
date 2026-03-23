@@ -71,35 +71,36 @@ step_details() {
   case "$1" in
     step-1-bootstrap.sh)
       cat <<'EOF'
-- apt-get update
-- apt-get install curl ca-certificates
+- 已更新 软件源
+- 已安装 命令: curl ca-certificates
 EOF
       ;;
     step-4-tools.sh)
       cat <<'EOF'
-- apt-get install wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git
+- 已安装 命令: wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git
 EOF
       ;;
     step-5-bbr.sh)
       cat <<'EOF'
-- /etc/sysctl.d/99-bbr.conf: net.core.default_qdisc=fq
-- /etc/sysctl.d/99-bbr.conf: net.ipv4.tcp_congestion_control=bbr
-- modprobe tcp_bbr
-- sysctl --system
+- 已写入 配置: /etc/sysctl.d/99-bbr.conf
+- 已启用 调优: fq
+- 已启用 调优: bbr
+- 已加载 内核模块: tcp_bbr
+- 已刷新 系统参数: sysctl --system
 EOF
       ;;
     step-13-apps.sh)
       cat <<'EOF'
-- apt-get update
-- apt-get install fail2ban
-- /etc/fail2ban/jail.d/sshd.local
-- systemctl enable --now fail2ban
+- 已更新 软件源
+- 已安装 防护组件: fail2ban
+- 已写入 配置: /etc/fail2ban/jail.d/sshd.local
+- 已启动 服务: fail2ban
 EOF
       ;;
     step-timezone.sh)
       cat <<EOF
-- timezone: ${DEFAULT_TIMEZONE} or Asia/Hong_Kong
-- timedatectl set-timezone or update /etc/localtime and /etc/timezone
+- 已设置 时区: ${DEFAULT_TIMEZONE} 或 Asia/Hong_Kong
+- 已完成 时区同步
 EOF
       ;;
     *)
