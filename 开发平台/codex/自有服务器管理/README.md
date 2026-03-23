@@ -4,11 +4,11 @@
 
 ## 执行顺序
 
-1. `01 基础初始化`
-2. `04 常用工具`
-3. `05 BBR 调优`
-4. `13 安全防护`
-5. `time 时区设置`
+1. `基础初始化`
+2. `常用工具`
+3. `BBR 调优`
+4. `安全防护`
+5. `时区设置`
 
 ## 在线安装
 
@@ -32,8 +32,8 @@ sudo bash one-click-system-tuning.sh --timezone Asia/Shanghai
 
 - 每一步都是仓库内的本地脚本。
 - 不再依赖 `kejilion.sh`。
-- `01 基础初始化` 对应 `step-1-bootstrap.sh`。
-- `04 常用工具` 对应 `step-4-tools.sh`。
-- `05 BBR 调优` 对应 `step-5-bbr.sh`。
-- `13 安全防护` 对应 `step-13-apps.sh`。
-- `time 时区设置` 对应 `step-timezone.sh`。
+- `基础初始化` 对应 `step-1-bootstrap.sh`。
+- `常用工具` 对应 `step-4-tools.sh`。
+- `BBR 调优` 对应 `step-5-bbr.sh`。
+- `安全防护` 对应 `step-13-apps.sh`。
+- `时区设置` 对应 `step-timezone.sh`。

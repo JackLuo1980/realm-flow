@@ -93,11 +93,11 @@ script_dir() {
 
 step_label() {
   case "$1" in
-    step-1-bootstrap.sh) printf '01 基础初始化' ;;
-    step-4-tools.sh) printf '04 常用工具' ;;
-    step-5-bbr.sh) printf '05 BBR 调优' ;;
-    step-13-apps.sh) printf '13 安全防护' ;;
-    step-timezone.sh) printf 'time 时区设置' ;;
+    step-1-bootstrap.sh) printf '基础初始化' ;;
+    step-4-tools.sh) printf '常用工具' ;;
+    step-5-bbr.sh) printf 'BBR 调优' ;;
+    step-13-apps.sh) printf '安全防护' ;;
+    step-timezone.sh) printf '时区设置' ;;
     *) printf '%s' "$1" ;;
   esac
 }
