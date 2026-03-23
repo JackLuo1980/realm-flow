@@ -22,14 +22,12 @@ tags:
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    OQoKdHpK89
-Password:    atounwDGpC
-Port:        41584
-WebBasePath: fNPAS64Yz7rYG6S7RA
-Access URL:  https://195.245.242.166:41584/fNPAS64Yz7rYG6S7RA
+Username:    tlhHDpSd1M
+Password:    5g3DU2Qmd6
+Port:        7349
+WebBasePath: zO85xBps0pgLckWsAG
+Access URL:  https://195.245.242.166:7349/zO85xBps0pgLckWsAG
 ═══════════════════════════════════════════
-
-2026/2/19
 ```
 
 - - -

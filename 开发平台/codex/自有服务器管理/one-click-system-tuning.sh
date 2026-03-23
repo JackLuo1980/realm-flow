@@ -3,6 +3,7 @@
 set -euo pipefail
 
 DEFAULT_TIMEZONE="Asia/Shanghai"
+COMPLETED_STEPS=()
 
 usage() {
   cat <<'EOF'
@@ -64,6 +65,18 @@ step_banner() {
   fi
 
   printf '%s\n' "$(color_wrap cyan '================================================')"
+}
+
+print_install_summary() {
+  printf '\n%s\n' "$(color_wrap bold '已安装内容清单')"
+  printf '%s\n' "$(color_wrap cyan '------------------------------------------------')"
+
+  local label
+  for label in "${COMPLETED_STEPS[@]}"; do
+    printf '%s %s\n' "$(color_wrap green '✅')" "$label"
+  done
+
+  printf '%s\n' "$(color_wrap cyan '------------------------------------------------')"
 }
 
 require_root() {
@@ -138,6 +151,7 @@ run_step() {
   log "Running ${step_path}"
   if bash "${step_path}" "$@"; then
     log "Completed ${label}"
+    COMPLETED_STEPS+=("${label}")
     step_banner "OK ${label}" "SUCCESS" "green"
   else
     local exit_code=$?
@@ -182,6 +196,7 @@ main() {
   run_step step-13-apps.sh
   run_step step-timezone.sh "$timezone"
   step_banner "DONE" "SUCCESS" "green"
+  print_install_summary
   log "All steps finished successfully"
 }
 

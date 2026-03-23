@@ -22,14 +22,12 @@ tags:
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    lViS3RMuGd
-Password:    ypw7QgTIVj
-Port:        20137
-WebBasePath: tUxCFGrQKVvJwc82sL
-Access URL:  https://193.32.149.152:20137/tUxCFGrQKVvJwc82sL
+Username:    99QME5CP4U
+Password:    fSMusB6mbx
+Port:        51962
+WebBasePath: HcHMgDwaH6Vot20tlE
+Access URL:  https://193.32.149.152:51962/HcHMgDwaH6Vot20tlE
 ═══════════════════════════════════════════
-https://m.979996.xyz:20137/tUxCFGrQKVvJwc82sL/
-2027/11/11
 ```
 
 - - -
@@ -38,7 +36,7 @@ https://m.979996.xyz:20137/tUxCFGrQKVvJwc82sL/
 
 ### Relity
 ```
-vless://fddc644b-3d54-4476-b0c6-6d3499e47990@m.979996.xyz:18849?type=tcp&security=reality&pbk=2ehv3s_qExocVMezNEJi1qt-T-WTm1koBDQEdekH7Aw&fp=chrome&sni=tesla.com&sid=64b20a27&spx=%2F&flow=xtls-rprx-vision#V_PS-Tokyo-Mini
+vless://917aed95-bce2-4c6f-acd1-7db084997d0f@193.32.149.152:22752?type=tcp&encryption=none&security=reality&pbk=dNrtuPgT4CKCYDWxAc-2lc89jN6fwdrJFKyCKLKerR8&fp=chrome&sni=www.amazon.com&sid=be27d325b3&spx=%2F&flow=xtls-rprx-vision#V.PS-Tokyo-Mini
 ```
 
 
