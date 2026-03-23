@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-23 17:51:41 CST`
+- 同步时间: `2026-03-23 19:26:29 CST`
 
 ---
 
@@ -70,4 +70,5 @@ When user says any of the following, add/update entries in this file:
 - 当域名SSH失败且日志显示连接到198.18.x.x时，优先判断本地代理Fake-IP污染；可在~/.ssh/config为该域名固定HostName真实IP与Port，绕过本地DNS改写。
 - Cloudflare DDNS 出现同一记录反复跳IP时，先查 user/audit_logs 按 resource.id 看 actor.ip；若不同IP交替写入即为多客户端抢写。
 - 38.207.191.187:5522 的 `xray` 对外端口是 `44312`，`x-ui` 监听 `2096/51685`，`tcpdump` 已可用，15 秒短抓包未见持续入站。
+- 109.107.137.44 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续按 SSH -> 代理端口 -> 短抓包的流程巡检。
 
