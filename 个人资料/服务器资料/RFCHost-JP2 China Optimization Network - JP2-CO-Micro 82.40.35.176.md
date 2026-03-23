@@ -24,11 +24,11 @@ created: 2026-03-18 19:45
 ═══════════════════════════════════════════
      Panel Installation Complete!         
 ═══════════════════════════════════════════
-Username:    fH8obkEJe8
-Password:    7WVqGNvaic
-Port:        57300
-WebBasePath: UjUPqL2q0za925626y
-Access URL:  https://82.40.35.176:57300/UjUPqL2q0za925626y
+Username:    3v6hVbJFez
+Password:    HvwPEUy7g9
+Port:        27725
+WebBasePath: qpqD0G6ziljF38uYGr
+Access URL:  https://82.40.35.176:27725/qpqD0G6ziljF38uYGr
 ═══════════════════════════════════════════
 ```
 
@@ -39,7 +39,7 @@ Access URL:  https://82.40.35.176:57300/UjUPqL2q0za925626y
 ### Reality
 
 ```
-vless://0e040a28-38d1-4518-9070-659fb02271ce@82.40.35.176:12178?type=tcp&encryption=none&security=reality&pbk=znms9e1Oou-jkpG9pRbro6CWkXbIqtTBXRvkqQqTvk0&fp=chrome&sni=www.icloud.com&sid=24&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20China%20Optimization%20Network%20-%20JP2-CO-Micro
+vless://fbdad530-65d2-44bd-871a-7fb19c3d8a86@82.40.35.176:51813?type=tcp&encryption=none&security=reality&pbk=ujPKWl-PgRMcXyi5pUWhGCEzus4Y9Xc0YcuYMQq7aCI&fp=chrome&sni=www.sony.com&sid=10d20b71&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20China%20Optimization%20Network%20-%20JP2-CO-Micro
 ```
 
 
