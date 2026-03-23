@@ -1,33 +1,42 @@
-# Server Bootstrap
+# One-Click System Tuning
 
-This directory contains a single serial bootstrap script for Debian/Ubuntu servers:
+An open-source, serial one-line bootstrap script for Debian/Ubuntu servers.
 
-- `server-bootstrap.sh`
+## What it does
 
-What it does:
+The script performs the following tasks in order:
 
-1. Runs `apt-get update`
-2. Installs baseline packages such as `curl`, `wget`, `tzdata`, and archive tools
-3. Installs Docker
-4. Installs ZenTao in a Docker container
-5. Installs Cloudreve in a Docker container
-6. Installs Uptime Kuma in a Docker container
-7. Sets the server timezone to `Asia/Shanghai`
+1. Optimizes apt sources and updates the system
+2. Cleans system junk files
+3. Creates a 1G swap file
+4. Installs and enables fail2ban for SSH brute-force protection
+5. Disables common firewalls to open all ports
+6. Enables BBR
+7. Sets timezone to `Asia/Shanghai`
+8. Optimizes DNS automatically for overseas or domestic environments
+9. Sets IPv4 priority
+10. Installs base tools: `docker`, `wget`, `sudo`, `tar`, `unzip`, `socat`, `btop`, `nano`, `vim`
+11. Applies kernel and network sysctl tuning
+12. Changes the SSH port to `5522`
 
-Usage:
+## Usage
 
 ```bash
-sudo bash server-bootstrap.sh
+sudo bash one-click-system-tuning.sh --yes
 ```
 
-Custom timezone:
+If you want to keep the confirmation prompt:
 
 ```bash
-sudo bash server-bootstrap.sh --timezone Asia/Shanghai
+sudo bash one-click-system-tuning.sh
 ```
 
-Default ports:
+## Notes
 
-- ZenTao: `82`
-- Cloudreve: `5212`
-- Uptime Kuma: `3001`
+- The script is designed for Debian and Ubuntu servers.
+- It makes aggressive networking and firewall changes by design.
+- If you run it over SSH, consider using `tmux` or a local console.
+
+## License
+
+MIT
