@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-23 08:15:07 CST`
+- 同步时间: `2026-03-23 08:19:23 CST`
 
 ---
 
@@ -42,6 +42,9 @@ When user says any of the following, add/update entries in this file:
 - When updating memory, keep the phrasing terse and operational so it can be mirrored cleanly into Obsidian without rewriting the meaning.
 - Use `/Users/jack/Documents/Playground/capture_learning.sh` for standardized memory/decision capture.
 - 服务器巡检默认顺序固定为：先看代理进程和对外监听端口，再对该端口做 15 秒短窗口抓包，最后结合日志判断是否存在持续入站；抓包工具缺失时先补装 `tcpdump`。
+- 服务器巡检要把 SSH 端口和 Xray/代理端口分开记录；例如 191.96.11.239 的 SSH 端口是 41153，而对外 Xray 端口是 41155。
+- 107.172.231.70:48356 是少数在短抓包里抓到真实活跃会话的机器，`xray` 端口 `52912` 曾出现来自 `14.145.170.36` 的连接，后续优先复查。
+- 45.127.35.233:48981 的 `sing-box` 端口 `48982` 在短抓包里出现多条活跃会话，后续复查时优先看这个入口。
 - 国际互联测速时同时看 ping/HTTPS 时延/多地区100MB下载；并记录 remote_ip 判断是否走 IPv6，避免单一指标误判。
 - Komari 面板实际服务器信息已更正：主机 IP 为 159.54.184.3；登录密码为 lpsz800203（按用户最新提供记录）。
 - Komari 出现‘删除提示成功但实际未删除’时，先查磁盘空间；若根分区100%会导致写库异常。此次根因是 /root/komari_sort_by_name.sh 每10分钟备份数据库到 /home/docker/komari/sort_backups，最终打满磁盘。
