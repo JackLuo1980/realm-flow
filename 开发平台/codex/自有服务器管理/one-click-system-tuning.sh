@@ -67,13 +67,61 @@ step_banner() {
   printf '%s\n' "$(color_wrap cyan '================================================')"
 }
 
+step_details() {
+  case "$1" in
+    step-1-bootstrap.sh)
+      cat <<'EOF'
+- apt-get update
+- apt-get install curl ca-certificates
+EOF
+      ;;
+    step-4-tools.sh)
+      cat <<'EOF'
+- apt-get install wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git
+EOF
+      ;;
+    step-5-bbr.sh)
+      cat <<'EOF'
+- /etc/sysctl.d/99-bbr.conf: net.core.default_qdisc=fq
+- /etc/sysctl.d/99-bbr.conf: net.ipv4.tcp_congestion_control=bbr
+- modprobe tcp_bbr
+- sysctl --system
+EOF
+      ;;
+    step-13-apps.sh)
+      cat <<'EOF'
+- apt-get update
+- apt-get install fail2ban
+- /etc/fail2ban/jail.d/sshd.local
+- systemctl enable --now fail2ban
+EOF
+      ;;
+    step-timezone.sh)
+      cat <<EOF
+- timezone: ${DEFAULT_TIMEZONE} or Asia/Hong_Kong
+- timedatectl set-timezone or update /etc/localtime and /etc/timezone
+EOF
+      ;;
+    *)
+      printf '%s\n' "$1"
+      ;;
+  esac
+}
+
 print_install_summary() {
   printf '\n%s\n' "$(color_wrap bold '已安装内容清单')"
   printf '%s\n' "$(color_wrap cyan '------------------------------------------------')"
 
+  local step
   local label
-  for label in "${COMPLETED_STEPS[@]}"; do
+  local detail
+  for step in "${COMPLETED_STEPS[@]}"; do
+    label="$(step_label "$step")"
     printf '%s %s\n' "$(color_wrap green '✅')" "$label"
+    while IFS= read -r detail; do
+      [[ -z "$detail" ]] && continue
+      printf '  %s\n' "$detail"
+    done < <(step_details "$step")
   done
 
   printf '%s\n' "$(color_wrap cyan '------------------------------------------------')"
