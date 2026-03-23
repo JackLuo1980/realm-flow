@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-23 08:33:53 CST`
+- 同步时间: `2026-03-23 12:15:42 CST`
 
 ---
 
@@ -69,4 +69,5 @@ When user says any of the following, add/update entries in this file:
 - Cloudflare DDNS 若出现‘域名与IP不符’，先核对：root crontab/systemd是否在跑；再对比 Cloudflare API 记录与权威 NS（两个 NS）返回，避免只看单个解析器误判。
 - 当域名SSH失败且日志显示连接到198.18.x.x时，优先判断本地代理Fake-IP污染；可在~/.ssh/config为该域名固定HostName真实IP与Port，绕过本地DNS改写。
 - Cloudflare DDNS 出现同一记录反复跳IP时，先查 user/audit_logs 按 resource.id 看 actor.ip；若不同IP交替写入即为多客户端抢写。
+- 38.207.191.187:5522 的 `xray` 对外端口是 `44312`，`x-ui` 监听 `2096/51685`，`tcpdump` 已可用，15 秒短抓包未见持续入站。
 
