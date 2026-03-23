@@ -63,32 +63,56 @@ def remote_query(args: argparse.Namespace, query: str) -> str:
     return run_command(build_remote_mysql_cmd(args, query))
 
 
-def load_columns(args: argparse.Namespace, table: str) -> list[str]:
+def load_columns(args: argparse.Namespace, table: str) -> list[dict[str, str]]:
     output = remote_query(args, f"show columns from `{table}`;")
-    columns: list[str] = []
+    columns: list[dict[str, str]] = []
     for line in output.splitlines():
         if not line.strip():
             continue
-        columns.append(line.split("\t", 1)[0])
+        name, col_type = line.split("\t", 2)[:2]
+        columns.append({"name": name, "type": col_type})
     return columns
 
 
-def load_rows(args: argparse.Namespace, table: str, columns: list[str]) -> list[dict[str, Any]]:
+def is_text_type(col_type: str) -> bool:
+    lowered = col_type.lower()
+    return any(token in lowered for token in ("char", "text", "blob", "json"))
+
+
+def load_rows(
+    args: argparse.Namespace, table: str, columns: list[dict[str, str]]
+) -> list[dict[str, Any]]:
     if not columns:
         return []
     exprs = []
+    hex_columns: list[bool] = []
     for col in columns:
-        exprs.append(f"'{col}'")
-        exprs.append(f"`{col}`")
-    order_clause = " order by `id`" if "id" in columns else ""
-    query = f"select json_object({', '.join(exprs)}) as row_json from `{table}`{order_clause};"
+        name = col["name"]
+        if is_text_type(col["type"]):
+            exprs.append(f"hex(`{name}`)")
+            hex_columns.append(True)
+        else:
+            exprs.append(f"`{name}`")
+            hex_columns.append(False)
+    order_clause = " order by `id`" if any(col["name"] == "id" for col in columns) else ""
+    query = f"select {', '.join(exprs)} from `{table}`{order_clause};"
     output = remote_query(args, query)
     rows = []
     for line in output.splitlines():
         line = line.strip()
         if not line:
             continue
-        rows.append(json.loads(line))
+        values = line.split("\t")
+        row: dict[str, Any] = {}
+        for idx, col in enumerate(columns):
+            value = values[idx] if idx < len(values) else None
+            if value == r"\N":
+                row[col["name"]] = None
+            elif hex_columns[idx]:
+                row[col["name"]] = bytes.fromhex(value).decode("utf-8") if value else ""
+            else:
+                row[col["name"]] = value
+        rows.append(row)
     return rows
 
 
@@ -108,7 +132,7 @@ def export_snapshot(args: argparse.Namespace) -> dict[str, Any]:
         columns = load_columns(args, table)
         rows = load_rows(args, table, columns)
         payload["tables"][table] = {
-            "columns": columns,
+            "columns": [c["name"] for c in columns],
             "row_count": len(rows),
             "rows": rows,
         }
