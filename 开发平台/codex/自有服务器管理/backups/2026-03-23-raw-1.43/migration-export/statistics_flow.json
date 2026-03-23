@@ -1,0 +1,381 @@
+{
+  "columns": [
+    "id",
+    "user_id",
+    "flow",
+    "total_flow",
+    "time",
+    "created_time"
+  ],
+  "row_count": 46,
+  "rows": [
+    {
+      "created_time": 1774011600011,
+      "flow": 4709395190,
+      "id": 1153,
+      "time": "21:00",
+      "total_flow": 843121446176,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774015200003,
+      "flow": 1445967648,
+      "id": 1154,
+      "time": "22:00",
+      "total_flow": 844567413824,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774018800010,
+      "flow": 619145734,
+      "id": 1155,
+      "time": "23:00",
+      "total_flow": 845186559558,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774022400002,
+      "flow": 421580634,
+      "id": 1156,
+      "time": "00:00",
+      "total_flow": 845608140192,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774026000008,
+      "flow": 43026786,
+      "id": 1157,
+      "time": "01:00",
+      "total_flow": 845651166978,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774029600003,
+      "flow": 4303534,
+      "id": 1158,
+      "time": "02:00",
+      "total_flow": 845655470512,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774033200001,
+      "flow": 60011670,
+      "id": 1159,
+      "time": "03:00",
+      "total_flow": 845715482182,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774036800005,
+      "flow": 82567592,
+      "id": 1160,
+      "time": "04:00",
+      "total_flow": 845798049774,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774040400003,
+      "flow": 133314712,
+      "id": 1161,
+      "time": "05:00",
+      "total_flow": 845931364486,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774044000003,
+      "flow": 61336226,
+      "id": 1162,
+      "time": "06:00",
+      "total_flow": 845992700712,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774047600001,
+      "flow": 13591546,
+      "id": 1163,
+      "time": "07:00",
+      "total_flow": 846006292258,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774051200001,
+      "flow": 297342826,
+      "id": 1164,
+      "time": "08:00",
+      "total_flow": 846303635084,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774054800005,
+      "flow": 43957820,
+      "id": 1165,
+      "time": "09:00",
+      "total_flow": 846347592904,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774058400009,
+      "flow": 1471493240,
+      "id": 1166,
+      "time": "10:00",
+      "total_flow": 847819086144,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774062000000,
+      "flow": 5471566490,
+      "id": 1167,
+      "time": "11:00",
+      "total_flow": 853290652634,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774065600003,
+      "flow": 196387932,
+      "id": 1168,
+      "time": "12:00",
+      "total_flow": 853487040566,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774069200023,
+      "flow": 5779045478,
+      "id": 1169,
+      "time": "13:00",
+      "total_flow": 859266086044,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774072800028,
+      "flow": 1452805072,
+      "id": 1170,
+      "time": "14:00",
+      "total_flow": 860718891116,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774076400019,
+      "flow": 1259612492,
+      "id": 1171,
+      "time": "15:00",
+      "total_flow": 861978503608,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774080000005,
+      "flow": 3537396856,
+      "id": 1172,
+      "time": "16:00",
+      "total_flow": 865515900464,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774083600003,
+      "flow": 1014594278,
+      "id": 1173,
+      "time": "17:00",
+      "total_flow": 866530494742,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774087200002,
+      "flow": 1190909842,
+      "id": 1174,
+      "time": "18:00",
+      "total_flow": 867721404584,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774090800006,
+      "flow": 501558802,
+      "id": 1175,
+      "time": "19:00",
+      "total_flow": 868222963386,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774094400009,
+      "flow": 472168528,
+      "id": 1176,
+      "time": "20:00",
+      "total_flow": 868695131914,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774098000002,
+      "flow": 435223656,
+      "id": 1177,
+      "time": "21:00",
+      "total_flow": 869130355570,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774101600003,
+      "flow": 709564004,
+      "id": 1178,
+      "time": "22:00",
+      "total_flow": 869839919574,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774105200008,
+      "flow": 326688472,
+      "id": 1179,
+      "time": "23:00",
+      "total_flow": 870166608046,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774108800003,
+      "flow": 12073702,
+      "id": 1180,
+      "time": "00:00",
+      "total_flow": 870178681748,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774112400000,
+      "flow": 482909689,
+      "id": 1181,
+      "time": "01:00",
+      "total_flow": 870661591437,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774116000001,
+      "flow": 367352817,
+      "id": 1182,
+      "time": "02:00",
+      "total_flow": 871028944254,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774119600004,
+      "flow": 62135622,
+      "id": 1183,
+      "time": "03:00",
+      "total_flow": 871091079876,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774123200006,
+      "flow": 20641370,
+      "id": 1184,
+      "time": "04:00",
+      "total_flow": 871111721246,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774126800004,
+      "flow": 30859670,
+      "id": 1185,
+      "time": "05:00",
+      "total_flow": 871142580916,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774130400001,
+      "flow": 23694772,
+      "id": 1186,
+      "time": "06:00",
+      "total_flow": 871166275688,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774134000004,
+      "flow": 42448904,
+      "id": 1187,
+      "time": "07:00",
+      "total_flow": 871208724592,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774137600001,
+      "flow": 409386148,
+      "id": 1188,
+      "time": "08:00",
+      "total_flow": 871618110740,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774141200004,
+      "flow": 6257316192,
+      "id": 1189,
+      "time": "09:00",
+      "total_flow": 877875426932,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774144800003,
+      "flow": 2091072700,
+      "id": 1190,
+      "time": "10:00",
+      "total_flow": 879966499632,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774148400005,
+      "flow": 1063618396,
+      "id": 1191,
+      "time": "11:00",
+      "total_flow": 881030118028,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774152000002,
+      "flow": 3392597039,
+      "id": 1192,
+      "time": "12:00",
+      "total_flow": 884422715067,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774155600002,
+      "flow": 1084346136,
+      "id": 1193,
+      "time": "13:00",
+      "total_flow": 885507061203,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774159200004,
+      "flow": 1339699105,
+      "id": 1194,
+      "time": "14:00",
+      "total_flow": 886846760308,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774170000019,
+      "flow": 771741106,
+      "id": 1195,
+      "time": "17:00",
+      "total_flow": 887618501414,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774173600003,
+      "flow": 1468744320,
+      "id": 1196,
+      "time": "18:00",
+      "total_flow": 889087245734,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774177200002,
+      "flow": 827741984,
+      "id": 1197,
+      "time": "19:00",
+      "total_flow": 889914987718,
+      "user_id": 1
+    },
+    {
+      "created_time": 1774180800003,
+      "flow": 184009704,
+      "id": 1198,
+      "time": "20:00",
+      "total_flow": 890098997422,
+      "user_id": 1
+    }
+  ]
+}

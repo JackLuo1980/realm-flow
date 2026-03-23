@@ -1,0 +1,16 @@
+{
+  "docker_container": "gost-mysql",
+  "mysql_db": "BoFfpNBeXA8Yjt24",
+  "mysql_host": "127.0.0.1",
+  "mysql_port": 3306,
+  "ssh_host": "185.117.73.38",
+  "ssh_user": "root",
+  "tables": {
+    "forward": 104,
+    "node": 34,
+    "speed_limit": 0,
+    "statistics_flow": 46,
+    "tunnel": 35,
+    "user": 1
+  }
+}
