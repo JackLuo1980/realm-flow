@@ -31,8 +31,7 @@ def main() -> int:
     try:
         print("counts:")
         for table in TABLES:
-            source_meta = snapshot["tables"].get(table)
-            source_count = source_meta["row_count"] if source_meta else "n/a"
+            source_count = snapshot["tables"].get(table)
             target_count = conn.execute(f"select count(*) as c from {table}").fetchone()["c"]
             print(f"- {table}: source={source_count} target={target_count}")
         print("sample forwards:")
