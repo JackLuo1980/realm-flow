@@ -41,7 +41,7 @@ Access URL:  https://158.180.92.8:49117/sPYw7wqpSv0HfJoKt6
 ### Reality
 
 ```
-
+vless://57e05e35-f2e0-443d-ba2b-01d7de7aa386@158.180.92.8:24574?type=tcp&encryption=none&security=reality&pbk=Pmiy9fAwAE8Ak6WjSaxxYZ53-wlqry26alqlYa56ujw&fp=chrome&sni=www.oracle.com&sid=64f060b92ce1c5ea&spx=%2F&flow=xtls-rprx-vision#Oracle-KR%20S2
 ```
 
 
