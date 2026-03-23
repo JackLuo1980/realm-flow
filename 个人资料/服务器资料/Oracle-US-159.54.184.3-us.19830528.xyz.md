@@ -2,6 +2,8 @@
 id: 20260321125909
 tags:
   - VPS
+  - oracle
+  - US
 created: 2026-03-23 17:10
 ---
 OracleVPS.us

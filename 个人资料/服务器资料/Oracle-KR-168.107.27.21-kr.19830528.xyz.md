@@ -2,6 +2,8 @@
 id: 20260321125909
 tags:
   - VPS
+  - oracle
+  - kr
 created: 2026-03-23 17:19
 ---
 Oracle.KR
