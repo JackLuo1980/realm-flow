@@ -5,11 +5,11 @@ set -euo pipefail
 REPO_RAW_BASE="${REPO_RAW_BASE:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
 FILES=(
   "one-click-system-tuning.sh"
-  "01-bootstrap-curl-update.sh"
-  "02-install-base-tools.sh"
-  "03-enable-bbr.sh"
-  "04-install-fail2ban.sh"
-  "05-set-timezone.sh"
+  "step-1-bootstrap.sh"
+  "step-4-tools.sh"
+  "step-5-bbr.sh"
+  "step-13-apps.sh"
+  "step-timezone.sh"
 )
 
 need_cmd() {
@@ -52,7 +52,7 @@ main() {
   done
 
   cd "$tmp_dir"
-  bash ./one-click-system-tuning.sh "$@"
+  bash ./one-click-system-tuning.sh --yes "$@"
 }
 
 main "$@"

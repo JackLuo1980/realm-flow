@@ -13,4 +13,4 @@ if ! command -v apt-get >/dev/null 2>&1; then
 fi
 
 DEBIAN_FRONTEND=noninteractive apt-get update -y
-DEBIAN_FRONTEND=noninteractive apt-get install -y curl
+DEBIAN_FRONTEND=noninteractive apt-get install -y curl ca-certificates
