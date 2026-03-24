@@ -59,6 +59,8 @@ Expect some or all of the following:
    - wording
    - emphasis
    - sentence structure
+13. When the user provides a team-resume template, populate the template directly and save a new file using the pattern `客户名称人员团队简历-姓名.docx` or the user's requested naming convention.
+14. For template-based rewriting, preserve the source facts, align the wording to the target role, and prefer bank/risk-management phrasing when the role belongs to that family.
 
 ## Guardrails
 
@@ -90,6 +92,7 @@ Expect some or all of the following:
 - `个人简历重组稿`
 - `差异化检查表`
 - `待确认事项表`
+- `团队简历模板填充稿`
 
 ## Practical writing rules
 
