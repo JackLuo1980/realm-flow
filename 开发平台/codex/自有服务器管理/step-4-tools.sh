@@ -15,6 +15,8 @@ fi
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
   curl \
   ca-certificates \
+  cron \
+  acme.sh \
   wget \
   sudo \
   socat \
@@ -29,7 +31,82 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
   vim \
   nano \
   git \
-  docker.io
+  gnupg \
+  lsb-release
+
+purge_conflicting_docker_packages() {
+  local pkgs=(
+    docker-buildx
+    docker-buildx-plugin
+    docker-compose
+  )
+  local pkg
+
+  for pkg in "${pkgs[@]}"; do
+    if dpkg -s "$pkg" >/dev/null 2>&1; then
+      DEBIAN_FRONTEND=noninteractive apt-get purge -y "$pkg" >/dev/null 2>&1 || true
+    fi
+  done
+}
+
+print_docker_ce_diagnostics() {
+  echo "Docker CE 安装失败，正在打印检测信息并准备重试..."
+  echo "=== /etc/os-release ==="
+  cat /etc/os-release
+  echo "=== 冲突包状态 ==="
+  dpkg -l | awk '/docker-(buildx|compose)|docker\.io|containerd|runc/ {print}' || true
+  echo "=== Docker 仓库信息 ==="
+  cat /etc/apt/sources.list.d/docker.list 2>/dev/null || true
+  echo "=== Docker 包候选信息 ==="
+  apt-cache policy docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin || true
+}
+
+install_docker_ce() {
+  local os_id="${ID:-}"
+  local os_version="${VERSION_CODENAME:-}"
+  local docker_list_path="/etc/apt/sources.list.d/docker.list"
+
+  if [[ -z "$os_id" || -z "$os_version" ]]; then
+    . /etc/os-release
+    os_id="${ID:-}"
+    os_version="${VERSION_CODENAME:-}"
+  fi
+
+  if [[ -z "$os_id" || -z "$os_version" ]]; then
+    echo "Unable to detect distribution for Docker CE repository setup."
+    exit 1
+  fi
+
+  install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/${os_id}/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  chmod a+r /etc/apt/keyrings/docker.gpg
+
+  cat >"${docker_list_path}" <<EOF
+deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/${os_id} ${os_version} stable
+EOF
+
+  apt_get_docker_packages() {
+    DEBIAN_FRONTEND=noninteractive apt-get update -y
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      docker-ce \
+      docker-ce-cli \
+      containerd.io \
+      docker-buildx-plugin \
+      docker-compose-plugin
+  }
+
+  purge_conflicting_docker_packages
+  if apt_get_docker_packages; then
+    return 0
+  fi
+
+  print_docker_ce_diagnostics
+  purge_conflicting_docker_packages
+  DEBIAN_FRONTEND=noninteractive apt-get update -y
+  apt_get_docker_packages
+}
+
+install_docker_ce
 
 if command -v systemctl >/dev/null 2>&1; then
   systemctl enable --now docker >/dev/null 2>&1 || true
