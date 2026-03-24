@@ -39,7 +39,7 @@ Access URL:  https://154.17.30.233:57117/DE2nbZOVLyUm6iN7J0
 ### Reality
 
 ```
-
+vless://0cda756f-c293-414d-aff6-a28ab53c8cfd@154.17.30.233:16243?type=tcp&encryption=none&security=reality&pbk=JJvQF0lp2xO_4AKcwPEB1vYsFfPYI9_i_sRv8BSFMwk&fp=chrome&sni=www.apple.com&sid=492b008aa9395a&spx=%2F&flow=xtls-rprx-vision#DMIT-LAX.AN4.Pro.Echo%20(TYO)
 ```
 
 
