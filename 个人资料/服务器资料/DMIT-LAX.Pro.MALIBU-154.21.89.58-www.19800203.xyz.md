@@ -39,7 +39,7 @@ Access URL:  http://154.21.89.58:14942/MZ0dzhHUBXg7pjqlbZ
 ### Reality
 
 ```
-
+vless://69cb27bf-a4b5-4716-bb1d-b90801b24aea@154.21.89.58:36397?type=tcp&encryption=none&security=reality&pbk=eb4zASkV7Xv41gIl7Eo-zRYuQaXaE5DlwXBZkQjaOUs&fp=chrome&sni=www.nvidia.com&sid=81&spx=%2F&flow=xtls-rprx-vision#DMIT-LAX.Pro.MALIBU
 ```
 
 
