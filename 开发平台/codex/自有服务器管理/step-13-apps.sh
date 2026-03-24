@@ -12,7 +12,12 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 1
 fi
 
-APT_OPTS=(-o Dpkg::Lock::Timeout=300 -o Acquire::Retries=3)
+APT_OPTS=(
+  -o Dpkg::Lock::Timeout=300
+  -o Acquire::Retries=3
+  -o Dpkg::Options::=--force-confdef
+  -o Dpkg::Options::=--force-confold
+)
 
 DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" update -y
 DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y fail2ban
