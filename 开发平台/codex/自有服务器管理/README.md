@@ -17,6 +17,7 @@ curl -fsSL https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning
 ```
 
 - 安装入口会自动判断服务器是否位于国内，国内自动切换到国内下载源，国外保持 GitHub 原地址。
+- 安装入口会附带缓存破坏参数，避免拉到旧的 raw 文件。
 
 ## 本地执行
 
