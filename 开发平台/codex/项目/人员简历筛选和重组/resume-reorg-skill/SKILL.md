@@ -9,6 +9,7 @@ This skill helps turn a batch of resumes into:
 
 - a graduation-year-based level table
 - a deduplicated client/project/work-content/timeline inventory
+- a customer/project/content clean list with resume and contract sources merged
 - rewritten resumes that satisfy client rules while staying differentiated
 
 ## Use this skill when
@@ -45,14 +46,15 @@ Expect some or all of the following:
 5. Deduplicate records by normalized client + project + content + time range.
 6. Merge near-duplicates only when the facts are the same.
 7. Build a shared project inventory that can be reused during resume rewriting.
-8. Extract each resume into a person-level summary table.
-9. Rewrite each resume to meet the client's minimum requirements.
-10. Fill gaps only from:
+8. Build a customer/project/content clean list that also includes contract summaries, with contract project families merged to a single standard row.
+9. Extract each resume into a person-level summary table.
+10. Rewrite each resume to meet the client's minimum requirements.
+11. Fill gaps only from:
    - the deduplicated inventory
    - clearly supported similar experiences
    - the user's follow-up review list
    - reasonable experience augmentation that stays consistent with the existing facts
-11. Reduce repetition across resumes by varying:
+12. Reduce repetition across resumes by varying:
    - project order
    - wording
    - emphasis
@@ -81,6 +83,8 @@ Expect some or all of the following:
 - `客户名称归一表`
 - `等级规则表`
 - `项目去重清单`
+- `客户名称-项目名称-项目内容清单`
+- `合同信息汇总表`
 - `客户-项目-内容-时间阶段汇总表`
 - `简历信息提取汇总表`
 - `个人简历重组稿`
