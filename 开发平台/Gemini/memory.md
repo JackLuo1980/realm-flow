@@ -22,9 +22,11 @@ This file serves as the "Memory Anchor" for all AI interactions related to OpenC
 - **Role**: Provides IPv4 NAT for Server A.
 
 ## Key Configurations
+- **Local Bot**: `8405474295:AAEc5SY2rw5j6MwQQKaaWyny3_nxW7x_Hjs` (@jackmacaaabot)
+  - **Primary Model**: `minimax/MiniMax-M2.7`
+- **Cloud Bot**: `8322924053:AAEik4qp8ZJxCtaIMLvuWcDcKqI6u3H1Lnc` (@vps_openclaw_bot)
+  - **Primary Model**: `zai/glm-5` (Zhipu GLM)
 - **Zhipu AI Key**: `c33a...RnO` (Shared)
-- **Local Bot**: `8405474295:AAEc5SY2rw5j6MwQQKaaWyny3_nxW7x_Hjs` (@jackopenclawaaabot)
-- **Cloud Bot**: `8322924053:AAEik4qp8ZJxCtaIMlvuWcDcKqI6u7H1Lnc` (@vps_openclaw_bot)
 - **Telegram User ID**: `1603970047`
 
 ## Guidelines
