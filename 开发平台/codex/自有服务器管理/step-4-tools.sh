@@ -40,6 +40,11 @@ DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
   gnupg \
   lsb-release
 
+repair_package_state() {
+  DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" -f install -y || true
+  DEBIAN_FRONTEND=noninteractive dpkg --force-confdef --force-confold --configure -a >/dev/null 2>&1 || true
+}
+
 install_acme_sh() {
   curl -fsSL https://get.acme.sh | sh -s email=none
 }
@@ -116,6 +121,7 @@ EOF
   apt_get_docker_packages
 }
 
+repair_package_state
 install_acme_sh
 install_docker_ce
 
