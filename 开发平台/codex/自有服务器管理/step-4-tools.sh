@@ -23,6 +23,7 @@ DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
   curl \
   ca-certificates \
   cron \
+  acme \
   wget \
   sudo \
   socat \
@@ -43,10 +44,6 @@ DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
 repair_package_state() {
   DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" -f install -y || true
   DEBIAN_FRONTEND=noninteractive dpkg --force-confdef --force-confold --configure -a >/dev/null 2>&1 || true
-}
-
-install_acme_sh() {
-  curl -fsSL https://get.acme.sh | sh -s email=none
 }
 
 purge_conflicting_docker_packages() {
@@ -122,7 +119,6 @@ EOF
 }
 
 repair_package_state
-install_acme_sh
 install_docker_ce
 
 if command -v systemctl >/dev/null 2>&1; then
