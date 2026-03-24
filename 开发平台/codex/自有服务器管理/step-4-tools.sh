@@ -12,11 +12,12 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 1
 fi
 
-DEBIAN_FRONTEND=noninteractive apt-get install -y \
+APT_OPTS=(-o Dpkg::Lock::Timeout=300 -o Acquire::Retries=3)
+
+DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
   curl \
   ca-certificates \
   cron \
-  acme.sh \
   wget \
   sudo \
   socat \
@@ -34,6 +35,10 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
   gnupg \
   lsb-release
 
+install_acme_sh() {
+  curl -fsSL https://get.acme.sh | sh -s email=none
+}
+
 purge_conflicting_docker_packages() {
   local pkgs=(
     docker-buildx
@@ -44,7 +49,7 @@ purge_conflicting_docker_packages() {
 
   for pkg in "${pkgs[@]}"; do
     if dpkg -s "$pkg" >/dev/null 2>&1; then
-      DEBIAN_FRONTEND=noninteractive apt-get purge -y "$pkg" >/dev/null 2>&1 || true
+      DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" purge -y "$pkg" >/dev/null 2>&1 || true
     fi
   done
 }
@@ -86,8 +91,8 @@ deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] h
 EOF
 
   apt_get_docker_packages() {
-    DEBIAN_FRONTEND=noninteractive apt-get update -y
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" update -y
+    DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
       docker-ce \
       docker-ce-cli \
       containerd.io \
@@ -102,10 +107,11 @@ EOF
 
   print_docker_ce_diagnostics
   purge_conflicting_docker_packages
-  DEBIAN_FRONTEND=noninteractive apt-get update -y
+  DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" update -y
   apt_get_docker_packages
 }
 
+install_acme_sh
 install_docker_ce
 
 if command -v systemctl >/dev/null 2>&1; then

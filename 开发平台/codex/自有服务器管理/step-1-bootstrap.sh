@@ -12,4 +12,6 @@ if ! command -v apt-get >/dev/null 2>&1; then
   exit 1
 fi
 
-DEBIAN_FRONTEND=noninteractive apt-get update -y
+APT_OPTS=(-o Dpkg::Lock::Timeout=300 -o Acquire::Retries=3)
+
+DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" update -y

@@ -4,6 +4,7 @@ set -euo pipefail
 
 REPO_RAW_BASE_GLOBAL="${REPO_RAW_BASE_GLOBAL:-https://raw.githubusercontent.com/JackLuo1980/one-click-system-tuning/main}"
 REPO_RAW_BASE_CN="${REPO_RAW_BASE_CN:-https://imgcache.yyyisp.com/shell/JackLuo1980/one-click-system-tuning/main}"
+CACHE_BUST="${CACHE_BUST:-$(date +%s%N)}"
 FILES=(
   "one-click-system-tuning.sh"
   "step-1-bootstrap.sh"
@@ -57,10 +58,18 @@ ensure_fetcher() {
 download_file() {
   local url="$1"
   local output="$2"
-  if need_cmd curl; then
-    curl -fsSL "$url" -o "$output"
+  local fetch_url="$url"
+
+  if [[ "$fetch_url" == *"?"* ]]; then
+    fetch_url="${fetch_url}&t=${CACHE_BUST}"
   else
-    wget -qO "$output" "$url"
+    fetch_url="${fetch_url}?t=${CACHE_BUST}"
+  fi
+
+  if need_cmd curl; then
+    curl -fsSL "$fetch_url" -o "$output"
+  else
+    wget -qO "$output" "$fetch_url"
   fi
 }
 
