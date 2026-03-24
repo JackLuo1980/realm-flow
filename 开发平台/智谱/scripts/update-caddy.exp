@@ -1,0 +1,45 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Updating Caddy configuration ==='\r"
+        expect "#"
+        send "cat > /etc/caddy/Caddyfile << 'EOF'\r"
+        send "dash.lottery.eu.org {\r"
+        send "    reverse_proxy localhost:5555\r"
+        send "}\r"
+        send "EOF\r"
+        expect "#"
+        send "cat /etc/caddy/Caddyfile\r"
+        expect "#"
+        send "echo '=== Reloading Caddy ==='\r"
+        expect "#"
+        send "systemctl reload caddy\r"
+        expect "#"
+        send "sleep 2\r"
+        expect "#"
+        send "systemctl status caddy 2>&1 | head -15\r"
+        expect "#"
+        send "echo '=== Testing proxy ==='\r"
+        expect "#"
+        send "curl -I http://dash.lottery.eu.org 2>&1 | head -10\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

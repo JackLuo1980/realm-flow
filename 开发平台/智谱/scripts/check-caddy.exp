@@ -1,0 +1,43 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Checking Caddy configuration ==='\r"
+        expect "#"
+        send "cat /etc/caddy/Caddyfile\r"
+        expect "#"
+        send "echo '=== Checking DNS resolution ==='\r"
+        expect "#"
+        send "dig dash.lottery.eu.org +short\r"
+        expect "#"
+        send "echo '=== Testing connection to port 5555 ==='\r"
+        expect "#"
+        send "curl -I http://localhost:5555 2>&1 | head -10\r"
+        expect "#"
+        send "echo '=== Testing Caddy proxy ==='\r"
+        expect "#"
+        send "curl -I http://localhost 2>&1 | head -10\r"
+        expect "#"
+        send "echo '=== Checking Caddy full logs ==='\r"
+        expect "#"
+        send "journalctl -u caddy -n 50 --no-pager | grep -E '(error|warn|success|reverse_proxy)'\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

@@ -1,0 +1,35 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Final test of Caddy proxy ==='\r"
+        expect "#"
+        send "curl -I https://dash.lottery.eu.org 2>&1 | head -15\r"
+        expect "#"
+        send "echo '=== Comparing with local port 5555 ==='\r"
+        expect "#"
+        send "curl -I http://localhost:5555 2>&1 | head -10\r"
+        expect "#"
+        send "echo '=== Checking Caddy recent logs ==='\r"
+        expect "#"
+        send "journalctl -u caddy -n 30 --no-pager\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

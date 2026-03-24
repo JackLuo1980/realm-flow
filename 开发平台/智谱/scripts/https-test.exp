@@ -1,0 +1,35 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Testing HTTPS access ==='\r"
+        expect "#"
+        send "curl -I https://dash.lottery.eu.org 2>&1 | head -20\r"
+        expect "#"
+        send "echo '=== Testing actual content ==='\r"
+        expect "#"
+        send "curl -s https://dash.lottery.eu.org | head -30\r"
+        expect "#"
+        send "echo '=== Comparing with local service ==='\r"
+        expect "#"
+        send "curl -s http://localhost:5555 | head -30\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

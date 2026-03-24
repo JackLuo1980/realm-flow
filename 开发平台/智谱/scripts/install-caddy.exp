@@ -1,0 +1,65 @@
+#!/usr/bin/expect -f
+
+set timeout 120
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Installing Caddy ==='\r"
+        expect "#"
+        send "apt-get update\r"
+        expect "#"
+        send "apt-get install -y debian-keyring debian-archive-keyring apt-transport-https curl\r"
+        expect "#"
+        send "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg\r"
+        expect "#"
+        send "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list\r"
+        expect "#"
+        send "apt-get update\r"
+        expect "#"
+        send "apt-get install -y caddy\r"
+        expect "#"
+        send "echo '=== Creating Caddy configuration ==='\r"
+        expect "#"
+        send "mkdir -p /etc/caddy\r"
+        expect "#"
+        send "cat > /etc/caddy/Caddyfile << 'EOF'\r"
+        send "dash.lottery.eu.org {\r"
+        send "    reverse_proxy localhost:5555\r"
+        send "}\r"
+        send "EOF\r"
+        expect "#"
+        send "cat /etc/caddy/Caddyfile\r"
+        expect "#"
+        send "echo '=== Enabling and starting Caddy service ==='\r"
+        expect "#"
+        send "systemctl enable caddy\r"
+        expect "#"
+        send "systemctl start caddy\r"
+        expect "#"
+        send "systemctl status caddy 2>&1 | head -20\r"
+        expect "#"
+        send "echo '=== Checking Caddy logs ==='\r"
+        expect "#"
+        send "journalctl -u caddy -n 20 --no-pager\r"
+        expect "#"
+        send "echo '=== Checking ports ==='\r"
+        expect "#"
+        send "netstat -tlnp | grep -E ':(80|443)'\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof
