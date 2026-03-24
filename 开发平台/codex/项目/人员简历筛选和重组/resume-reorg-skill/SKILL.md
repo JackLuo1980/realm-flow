@@ -36,6 +36,7 @@ Expect some or all of the following:
 3. Map each person to a tier or level.
 4. Extract every project record into a normalized table with:
    - person
+   - customer name
    - client
    - project name
    - project content
@@ -59,6 +60,7 @@ Expect some or all of the following:
 ## Guardrails
 
 - Treat graduation year as the starting point for experience counting unless the client rule says otherwise.
+- Prefer a single normalized customer name per customer family, such as `平安银行` or `国开行`, and keep aliases only in a mapping table if needed.
 - Do not invent employers, clients, projects, dates, or responsibilities.
 - If a detail is not supported by source data or a clearly approved inference, mark it as `待确认`.
 - Preserve factual conflicts instead of silently resolving them.
@@ -75,6 +77,7 @@ Expect some or all of the following:
 
 ## Suggested outputs
 
+- `客户名称归一表`
 - `等级规则表`
 - `项目去重清单`
 - `客户-项目-内容-时间阶段汇总表`
@@ -94,6 +97,7 @@ Expect some or all of the following:
 
 When using this skill, answer with:
 
+- the normalized customer name being applied
 - the seniority rule being applied
 - the deduplication rule being applied
 - the resume rewrite rule being applied
