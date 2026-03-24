@@ -1,0 +1,37 @@
+#!/usr/bin/expect -f
+
+set timeout 120
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Getting servers and sorting ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \"SELECT sid, name FROM servers WHERE deleted_at IS NULL;\" > /tmp/servers.txt\r"
+        expect "#"
+        send "cat /tmp/servers.txt\r"
+        expect "#"
+        send "echo '=== Creating sorted index ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \"UPDATE servers SET display_index = CASE sid WHEN '8f5ce6a0-273b-11f1-97fd-87b043c71718' THEN 0 WHEN '3e2db560-273c-11f1-97fd-87b043c71718' THEN 1 WHEN '85af6a60-26c3-11f1-97fd-87b043c71718' THEN 2 WHEN '3d819e10-2714-11f1-97fd-87b043c71718' THEN 3 WHEN '27b3f0a0-2710-11f1-97fd-87b043c71718' THEN 4 WHEN 'bebacc60-26c2-11f1-97fd-87b043c71718' THEN 5 ELSE display_index END WHERE deleted_at IS NULL;\"\r"
+        expect "#"
+        send "echo '=== Verifying result ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \"SELECT sid, name, display_index FROM servers WHERE deleted_at IS NULL ORDER BY display_index;\"\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof
