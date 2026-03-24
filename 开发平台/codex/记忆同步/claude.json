@@ -1,11 +1,23 @@
 # claude.json
 
 - 来源: `/Users/jack/.claude.json`
-- 同步时间: `2026-03-23 19:32:02 CST`
+- 同步时间: `2026-03-24 15:56:46 CST`
 
 ---
 
 {
+  "numStartups": 1,
+  "customApiKeyResponses": {
+    "approved": [],
+    "rejected": [
+      "AkhZ4OLXmvumiTUkoUfg"
+    ]
+  },
+  "tipsHistory": {
+    "new-user-warmup": 1,
+    "plan-mode-for-complex-tasks": 1
+  },
+  "hasCompletedOnboarding": true,
   "opusProMigrationComplete": true,
   "sonnet1m45MigrationComplete": true,
   "firstStartTime": "2026-03-21T04:45:07.247Z",
@@ -16,7 +28,72 @@
   "userID": "526044bb2218012c37fc30b7db90fab3cd8b45b0cdd3299691d2c6b15fa2bb9a",
   "metricsStatusCache": {
     "enabled": false,
-    "vcsAccountLinkingEnabled": false,
-    "timestamp": 1774068308071
+    "timestamp": 1774319391179
+  },
+  "projects": {
+    "/Users/jack/.gemini/antigravity/scratch": {
+      "allowedTools": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "lastCost": 0.16549875000000003,
+      "lastAPIDuration": 18970,
+      "lastAPIDurationWithoutRetries": 18969,
+      "lastToolDuration": 0,
+      "lastDuration": 109028,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 146,
+      "lastTotalOutputTokens": 614,
+      "lastTotalCacheCreationInputTokens": 23907,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastFpsAverage": 2.16,
+      "lastFpsLow1Pct": 279.49,
+      "lastModelUsage": {
+        "MiniMax-M2.7": {
+          "inputTokens": 146,
+          "outputTokens": 614,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 23907,
+          "webSearchRequests": 0,
+          "costUSD": 0.16549875000000003
+        }
+      },
+      "lastSessionId": "f35f03a5-78f4-4be3-aa2f-1043e431a376",
+      "lastSessionMetrics": {
+        "frame_duration_ms_count": 235,
+        "frame_duration_ms_min": 0.03799999999864667,
+        "frame_duration_ms_max": 5.278792000000067,
+        "frame_duration_ms_avg": 0.6653188085106332,
+        "frame_duration_ms_p50": 0.3919999999998254,
+        "frame_duration_ms_p95": 1.6491748999996612,
+        "frame_duration_ms_p99": 3.042429279999783,
+        "hook_duration_ms_count": 3,
+        "hook_duration_ms_min": 129,
+        "hook_duration_ms_max": 258,
+        "hook_duration_ms_avg": 181,
+        "hook_duration_ms_p50": 156,
+        "hook_duration_ms_p95": 247.8,
+        "hook_duration_ms_p99": 255.95999999999998
+      }
+    }
+  },
+  "lastReleaseNotesSeen": "2.1.71",
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstalled": true,
+  "hasIdeOnboardingBeenShown": {
+    "vscode": true
+  },
+  "skillUsage": {
+    "simplify": {
+      "usageCount": 2,
+      "lastUsedAt": 1774332584789
+    }
   }
 }
