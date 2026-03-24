@@ -1,44 +1,49 @@
-# **DMIT-TYO.Pro.Shinagawa**
+---
+id: 20260321125909
+tags:
+  - VPS
+created: 2026-03-24 13:13
+---
 
-<span style="font-size:16pt;"><b>Information：</b></span>
+## Information
 
-| Password |  |
-| -- | -- |
-| Domain name | **jp.19800203.xyz** |
-| IP | **103.117.103.30** |
-| Bandwidth | 500G |
-| <span style="color:#ff260ff;">Netflix</span> | Originals Only |
-| <span style="color:#ff260ff;">Chatgpt</span> | <span style="color:#ff260ff;">No</span> |
-| Nam | **DMIT-TYO.Pro.Shinagawa** |
-
-
-luo_ming@126.com
-
-LUOMING43cn
-
-<span style="font-size:16pt;"><b>VPS Link：</b></span>
-
-| <span style="font-family:.PingFangUITextSC-Bold;font-size:14pt;"><b>序号</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接类型</b></span> | <span style="font-family:.PingFangUITextSC-Bold;font-size:15pt;"><b>链接信息</b></span>                                                                                                                                                                              |
-| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1**                                                                             | **VMESS**                                                                           |                                                                                                                                                                                                                                                                  |
-| **2**                                                                             | **VLESS**                                                                           |                                                                                                                                                                                                                                                                  |
-| **3**                                                                             | **REALITY**                                                                         | vless://5c099bc1-f2bc-4d8c-93df-830a307cfc94@jp.19800203.xyz:36676?type=tcp&encryption=none&security=reality&pbk=tXW7fKtRaGSMQ9OcWEKhqQsda7vOMs-gBValJaMLZk0&fp=chrome&sni=www.apple.com&sid=cacb24961b6d26&spx=%2F&flow=xtls-rprx-vision#DMIT-TYO.Pro.Shinagawa |
-| **4**                                                                             | **Surge**                                                                           |                                                                                                                                                                                                                                                                  |
-| **5**                                                                             | **Clash**                                                                           |                                                                                                                                                                                                                                                                  |
-| **6**                                                                             | **Quantumult X**                                                                    |                                                                                                                                                                                                                                                                  |
-
-
-
-
-	
-
-[[Pasted Graphic 16.tiff]]
-
-
-[[Pasted Graphic 17.tiff]]
+| Password    |                  |
+| ----------- | ---------------- |
+| Domain name |                  |
+| IP          |                  |
+| Bandwidth   |                  |
+| Email账号     | luo_ming@126.com |
 
 ---
-## 落地节点
 
-<!-- flux-auto:start -->
-<!-- flux-auto:end -->
+## Account Information
+
+```
+═══════════════════════════════════════════
+     Panel Installation Complete!         
+═══════════════════════════════════════════
+Username:    GVFb1ut9BZ
+Password:    dAcJPADMA6
+Port:        20023
+WebBasePath: NcxK1jnn1R0Mucz20q
+Access URL:  https://103.117.102.35:20023/NcxK1jnn1R0Mucz20q
+═══════════════════════════════════════════
+```
+
+---
+
+## VPS Link
+
+### Reality
+
+```
+vless://7b6c5d5b-8fd9-46db-9501-b4e001860143@103.117.102.35:23222?type=tcp&encryption=none&security=reality&pbk=vEhzXCeaDjN9mpZbI_vdmuQrFITnZVmr8ujX8bWxVUw&fp=chrome&sni=www.icloud.com&sid=af8ffb&spx=%2F&flow=xtls-rprx-vision#DMIT-TYO.Pro.Shinagawa
+```
+
+
+## SS
+
+```
+
+```
+
