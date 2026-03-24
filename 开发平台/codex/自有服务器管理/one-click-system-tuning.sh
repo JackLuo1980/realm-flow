@@ -76,7 +76,7 @@ EOF
       ;;
     step-4-tools.sh)
       cat <<'EOF'
-- 已安装 命令: curl ca-certificates cron acme wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git gnupg lsb-release
+- 已安装 命令: curl ca-certificates cron wget sudo socat htop iftop unzip tar tmux btop ncdu fzf vim nano git gnupg lsb-release
 - 已安装 容器: Docker CE 官方仓库
 EOF
       ;;

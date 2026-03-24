@@ -23,7 +23,6 @@ DEBIAN_FRONTEND=noninteractive apt-get "${APT_OPTS[@]}" install -y \
   curl \
   ca-certificates \
   cron \
-  acme \
   wget \
   sudo \
   socat \
