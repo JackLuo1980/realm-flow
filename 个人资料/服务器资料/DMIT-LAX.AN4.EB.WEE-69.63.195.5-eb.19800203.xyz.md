@@ -42,7 +42,7 @@ Access URL:  https://69.63.195.5:54500/SkNGTldoUl1feqaako
 ### Reality
 
 ```
-
+vless://752d43d1-28e4-476d-b5fe-64563d69bf46@69.63.195.5:39186?type=tcp&encryption=none&security=reality&pbk=R2yQpqL0jeJLrtn3d9entjx2bKFZC00SsjCylCXaeSY&fp=chrome&sni=www.sony.com&sid=6b64a92f733feaa6&spx=%2F&flow=xtls-rprx-vision#DMIT-LAX.AN4.EB.WEE
 ```
 
 
