@@ -45,13 +45,14 @@ Expect some or all of the following:
 5. Deduplicate records by normalized client + project + content + time range.
 6. Merge near-duplicates only when the facts are the same.
 7. Build a shared project inventory that can be reused during resume rewriting.
-8. Rewrite each resume to meet the client's minimum requirements.
-9. Fill gaps only from:
+8. Extract each resume into a person-level summary table.
+9. Rewrite each resume to meet the client's minimum requirements.
+10. Fill gaps only from:
    - the deduplicated inventory
    - clearly supported similar experiences
    - the user's follow-up review list
    - reasonable experience augmentation that stays consistent with the existing facts
-10. Reduce repetition across resumes by varying:
+11. Reduce repetition across resumes by varying:
    - project order
    - wording
    - emphasis
@@ -81,6 +82,7 @@ Expect some or all of the following:
 - `等级规则表`
 - `项目去重清单`
 - `客户-项目-内容-时间阶段汇总表`
+- `简历信息提取汇总表`
 - `个人简历重组稿`
 - `差异化检查表`
 - `待确认事项表`
@@ -100,5 +102,6 @@ When using this skill, answer with:
 - the normalized customer name being applied
 - the seniority rule being applied
 - the deduplication rule being applied
+- the extraction summary fields being used
 - the resume rewrite rule being applied
 - any data gaps that need user confirmation
