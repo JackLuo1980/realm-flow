@@ -1,0 +1,43 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Checking DStatus Docker container ==='\r"
+        expect "#"
+        send "docker ps | grep dstatus\r"
+        expect "#"
+        send "echo '=== Checking data directory structure ==='\r"
+        expect "#"
+        send "find /var/lib/docker/volumes -name '*dstatus*' 2>/dev/null | head -20\r"
+        expect "#"
+        send "echo '=== Checking mounted volumes ==='\r"
+        expect "#"
+        send "docker inspect dstatus 2>/dev/null | grep -A 5 Mounts\r"
+        expect "#"
+        send "echo '=== Finding data directory ==='\r"
+        expect "#"
+        send "docker exec dstatus ls -la /app/data\r"
+        expect "#"
+        send "echo '=== Checking database files ==='\r"
+        expect "#"
+        send "docker exec dstatus find /app/data -type f -name '*.json' -o -name '*.db' 2>/dev/null\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

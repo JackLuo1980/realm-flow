@@ -1,0 +1,76 @@
+#!/usr/bin/expect -f
+
+set timeout 120
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "cat > /root/sort_servers.py << 'PYEOF'\r"
+        send "#!/usr/bin/env python3\r"
+        send "\r"
+        send "import sqlite3\r"
+        send "import re\r"
+        send "\r"
+        send "def is_chinese(text):\r"
+        send "    pattern = re.compile(r'[\u4e00-\u9fff]+')\r"
+        send "    return pattern.search(text) is not None\r"
+        send "\r"
+        send "def sort_key(name):\r"
+        send "    if is_chinese(name):\r"
+        send "        return (1, name)\r"
+        send "    else:\r"
+        send "        return (0, name)\r"
+        send "\r"
+        send "def main():\r"
+        send "    db_path = '/opt/dstatus/data/db.db'\r"
+        send "    \r"
+        send "    conn = sqlite3.connect(db_path)\r"
+        send "    cursor = conn.cursor()\r"
+        send "    \r"
+        send "    cursor.execute(\"\"\"\r"
+        send "        SELECT sid, name \r"
+        send "        FROM servers \r"
+        send "        WHERE deleted_at IS NULL\r"
+        send "    \"\"\")\r"
+        send "    \r"
+        send "    servers = cursor.fetchall()\r"
+        send "    \r"
+        send "    servers.sort(key=lambda x: sort_key(x[1]))\r"
+        send "    \r"
+        send "    for index, (sid, name) in enumerate(servers):\r"
+        send "        cursor.execute(\"\"\"\r"
+        send "            UPDATE servers \r"
+        send "            SET display_index = ?\r"
+        send "            WHERE sid = ?\r"
+        send "        \"\"\", (index, sid))\r"
+        send "        print(f\"{index}: {name}\")\r"
+        send "    \r"
+        send "    conn.commit()\r"
+        send "    conn.close()\r"
+        send "    \r"
+        send "    print(\"\\n排序完成！\")\r"
+        send "\r"
+        send "if __name__ == '__main__':\r"
+        send "    main()\r"
+        send "PYEOF\r"
+        expect "#"
+        send "chmod +x /root/sort_servers.py\r"
+        expect "#"
+        send "python3 /root/sort_servers.py\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof

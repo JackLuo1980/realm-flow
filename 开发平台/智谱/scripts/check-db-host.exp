@@ -1,0 +1,39 @@
+#!/usr/bin/expect -f
+
+set timeout 60
+set host "185.213.175.124"
+set port "22"
+set user "root"
+set password "Cej1SRY4wgl$"
+
+log_user 1
+
+spawn ssh -p $port -o StrictHostKeyChecking=no $user@$host
+
+expect {
+    "password:" {
+        send "$password\r"
+        exp_continue
+    }
+    "#" {
+        send "echo '=== Checking database tables ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \".tables\"\r"
+        expect "#"
+        send "echo '=== Checking servers table structure ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \".schema servers\"\r"
+        expect "#"
+        send "echo '=== Checking servers data ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \"SELECT id, name FROM servers;\"\r"
+        expect "#"
+        send "echo '=== Checking table columns ==='\r"
+        expect "#"
+        send "sqlite3 /opt/dstatus/data/db.db \"PRAGMA table_info(servers);\"\r"
+        expect "#"
+        send "exit\r"
+    }
+}
+
+expect eof
