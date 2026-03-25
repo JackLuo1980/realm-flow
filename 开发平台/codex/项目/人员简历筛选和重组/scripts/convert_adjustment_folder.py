@@ -12,9 +12,7 @@ from convert_resumes_to_new_template import (
     ResumeData,
     compute_age_from_birth,
     compute_work_years,
-    extract_resume_data,
     fill_new_template,
-    keyword_summary,
     month_diff,
     normalize_degree_text,
     normalize_school_text,
@@ -30,22 +28,6 @@ def person_from_raw_filename(path: Path) -> str:
     else:
         person = path.stem.replace("工作简历", "").replace("+", "").strip()
     return re.sub(r"\d+$", "", person)
-
-
-def select_latest_team_resume(roots: list[Path]) -> dict[str, Path]:
-    latest: dict[str, tuple[float, Path]] = {}
-    pattern = re.compile(r"国开行人员团队简历-(.+?)(?:_v(\d+(?:\.\d+)?))?\.docx$")
-    for root in roots:
-        for path in root.rglob("国开行人员团队简历-*.docx"):
-            m = pattern.match(path.name)
-            if not m:
-                continue
-            person = re.sub(r"\d+$", "", m.group(1))
-            ver = float(m.group(2)) if m.group(2) else -1.0
-            cur = latest.get(person)
-            if cur is None or ver > cur[0]:
-                latest[person] = (ver, path)
-    return {k: v[1] for k, v in latest.items()}
 
 
 def parse_raw_resume(path: Path) -> ResumeData:
@@ -74,14 +56,16 @@ def parse_raw_resume(path: Path) -> ResumeData:
         m = re.match(r"(\d{4})年(\d{1,2})月", grad)
         if m:
             work_start = f"{int(m.group(1))}.{int(m.group(2)):02d}"
-    related_years = work_years or compute_work_years(work_start)
-    role_years = related_years
+    related_years = ""
+    role_years = ""
 
     certs = [CertRow(name="无", level="", major="", note="")]
-    if len(table.rows) > 23:
-        cert_text = normalize_text(table.rows[23].cells[1].text)
-        if cert_text and cert_text != "无":
-            certs = [CertRow(name=cert_text, level="", major="", note="")]
+    for idx in range(21, min(len(table.rows), 26)):
+        first = normalize_text(table.rows[idx].cells[0].text)
+        if first == "资质认证":
+            cert_text = normalize_text(table.rows[idx].cells[1].text)
+            certs = [CertRow(name=cert_text or "无", level="", major="", note="")]
+            break
 
     projects: list[ProjectRow] = []
     for row in table.rows[13:]:
@@ -100,11 +84,15 @@ def parse_raw_resume(path: Path) -> ResumeData:
             months = str(month_diff(sy, sm, ey, em))
         except Exception:
             pass
+        institution = ""
+        company_by_project = {
+            project_name: normalize_text(table.rows[8].cells[2].text) if len(table.rows) > 8 else ""
+        }
         projects.append(
             ProjectRow(
                 date_text=date_text,
                 name=project_name,
-                institution="",
+                institution=institution,
                 role=role,
                 duty=duty,
                 months=months,
@@ -112,26 +100,18 @@ def parse_raw_resume(path: Path) -> ResumeData:
             )
         )
 
-    age = ""
-    grad = normalize_text(table.rows[2].cells[1].text)
-    m = re.match(r"(\d{4})年(\d{1,2})月", grad)
-    if m:
-        approx_birth_year = int(m.group(1)) - 22
-        age = compute_age_from_birth(approx_birth_year, 1, 1)
-
-    summary_text = summary or keyword_summary(projects)
     return ResumeData(
         name=name,
-        age=age,
+        age="",
         id_number="",
         school=school,
         degree=degree,
         work_start=work_start,
         work_years=work_years or compute_work_years(work_start),
-        related_years=related_years or compute_work_years(work_start),
-        target_role=title or "开发",
-        role_years=role_years or compute_work_years(work_start),
-        summary=summary_text,
+        related_years=related_years,
+        target_role="",
+        role_years=role_years,
+        summary=summary,
         cert_summary="；".join(c.name for c in certs if c.name) if certs else "无",
         certs=certs,
         projects=projects,
@@ -142,30 +122,23 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-root", required=True)
     parser.add_argument("--template", required=True)
-    parser.add_argument("--team-roots", nargs="+", required=True)
     args = parser.parse_args()
 
     raw_root = Path(args.raw_root)
     template = Path(args.template)
-    latest = select_latest_team_resume([Path(x) for x in args.team_roots])
 
     processed = 0
-    fallback = 0
     for raw in sorted(raw_root.rglob("*.docx")):
+        if "+new" in raw.stem:
+            continue
         person = person_from_raw_filename(raw)
-        source = latest.get(person)
-        if source:
-            data = extract_resume_data(source)
-        else:
-            data = parse_raw_resume(raw)
-            fallback += 1
+        data = parse_raw_resume(raw)
         output = raw.with_name(raw.stem + "+new.docx")
         fill_new_template(template, data, output)
         processed += 1
-        print(f"OK {raw} -> {output} (source={source or 'RAW'})")
+        print(f"OK {raw} -> {output} (source=RAW)")
 
     print(f"processed={processed}")
-    print(f"fallback_raw={fallback}")
 
 
 if __name__ == "__main__":
