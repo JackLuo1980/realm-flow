@@ -26,7 +26,7 @@ Username:    tLJfzw5TC4
 Password:    pdmlBsnRiK
 Port:        40378
 WebBasePath: yXUJH8PW7vkzRAbw4W
-Access URL:  https://198.176.52.9:40378/yXUJH8PW7vkzRAbw4W
+Access URL:  http://198.176.52.93:40378/yXUJH8PW7vkzRAbw4W
 ═══════════════════════════════════════════
 ```
 
@@ -37,7 +37,7 @@ Access URL:  https://198.176.52.9:40378/yXUJH8PW7vkzRAbw4W
 ### Reality
 
 ```
-vless://8ed03511-2b3f-496c-92aa-1e4b6343e195@198.176.52.9:25054?type=tcp&encryption=none&security=reality&pbk=yIAHqKekrXoqiPv5-OOI-KlOxegtFPvdP8WBZxt_SUs&fp=chrome&sni=www.nvidia.com&sid=bf24a2&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION
+vless://8ed03511-2b3f-496c-92aa-1e4b6343e195@198.176.52.93:25054?type=tcp&encryption=none&security=reality&pbk=yIAHqKekrXoqiPv5-OOI-KlOxegtFPvdP8WBZxt_SUs&fp=chrome&sni=www.nvidia.com&sid=bf24a2&spx=%2F&flow=xtls-rprx-vision#RFCHost-JP2%20%20Tier%201%20International%20Optimization%20Network%20-%20JP2-T1ION
 ```
 
 
