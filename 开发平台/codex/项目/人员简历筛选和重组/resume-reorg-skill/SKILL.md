@@ -63,22 +63,41 @@ Expect some or all of the following:
 14. Before finalizing any team resume, verify that the `姓名` field is populated and matches the source person exactly; never leave the name blank.
 14. For template-based rewriting, preserve the source facts, align the wording to the target role, and prefer bank/risk-management phrasing when the role belongs to that family.
 15. For team-resume templates, use the following field rules:
-   - `出生年月` should be filled only when supported by source data; otherwise leave it blank.
+   - `出生年月` should use the `xxxx.xx.xx` format when supported by source data; otherwise leave it blank.
+   - If the template field label is `年龄`, the value cell should contain only the integer age as of the current date. Compute it from the person's birth date and do not leave a dotted date in the `年龄` value cell.
+   - If the template field label is `出生年月`, keep the value as a dotted birth date in `xxxx.xx.xx` format and do not replace it with an integer age.
+   - When a team resume is regenerated, keep the birth-date format consistent with `参加工作时间` style conventions in this project, and normalize all birth dates to dotted format.
    - `参加工作时间` should be filled from the graduation time in the source data, because the project rule treats graduation as the work-start date.
+   - `参加工作时间` should use the `xxxx.xx` format.
    - `相关领域工作年限` should contain only the numeric year count, not Chinese text like `年`, and should be calculated from the graduation/work-start date to the current date, rounded down to whole years.
    - `学历及学位` should be expanded to the combined form that matches the degree level, for example:
      - `本科学历` -> `本科学历、学士学位`
      - `硕士学历` -> `硕士学历、硕士学位`
      - `博士学历` -> `博士学历、博士学位`
+   - For the `从业资质证书` section, when the certificate is `PMP`, write the certificate name as `PMP` and the level as `中级`; do not combine them into a single cell or string like `中级PMP`.
+   - In `从业资质证书`, keep certificate name and level in the same row and place the level in the `级别` cell; do not split one certificate across two visible rows.
+   - Apply the same rule to other level-bearing certificates such as `信息系统项目管理师` + `高级`.
+   - Treat Chinese words like `初级`, `中级`, and `高级` as levels, not certificate names. Treat entries like `Oracle` as certificate names. Rebuild the certificate table accordingly when the source resume uses that Chinese layout convention.
    - `职称证书` should be filled with `无` when the source resume does not list one.
    - `毕业学校` should keep only the graduation year plus school and major, and append `专业` after the major text only when the major does not already end with `专业`; omit month/day details unless the user explicitly asks for them.
 16. After generating a batch, run a hard check for blank critical fields, especially `姓名`, before telling the user the files are ready.
 17. When inferring `拟在本项目任职`, prioritize explicit job titles and project-role fields from the source resume; do not let responsibility descriptions alone dominate the role classification.
+18. For Word resumes in this project, keep the font fixed to `仿宋` with size `小四` throughout the document. Do not change the font family or size unless the user explicitly requests a different style.
+19. When rewriting project experience for a risk-related target role, prefer case titles from the approved case list and allow multiple risk cases to be combined or sequenced to better match the target person's required risk-domain experience.
+   - Project timelines should read as a coherent timeline rather than a collection of repeated `xxxx-至今` entries; where possible, select finite date ranges from the approved case list and chain them into a continuous work history.
+   - For newly generated resumes, prefer continuous project date ranges and avoid stacking multiple `至今` ranges unless the source explicitly requires it.
+   - Ensure every project date range is later than the person's employment start date; do not place project experience before the recorded start-of-employment date.
    - `学历及学位` may be expanded to a combined form like `本科学历、学士学位` when the source resume clearly supports it, and should follow the same pattern for master and doctoral degrees.
    - `毕业学校` should keep only school + major; omit the graduation year in that cell unless the template explicitly asks for it.
    - If the work-experience section has 4 columns, merge start and end time into the first column as a date range and place the detailed duties in the `备注` column.
    - Do not truncate project history when the source resume has more entries than the template's visible rows; extend the table with cloned rows and keep all supported project experiences.
    - If `相关领域工作年限` is not explicitly stated, calculate it as `current date - first employment start date` and round down to whole years, unless the client provides a different rule.
+20. For large batches, process resumes in one pass per layout family: cluster sources by table structure first, then reuse the same extraction mapping for every file in that cluster instead of re-parsing each resume from scratch.
+21. Prefer batch validation over repeated full-document inspection: verify critical fields first (`姓名`, dates, roles, certificate layout, project continuity), then only reopen files that fail the check or look ambiguous.
+22. When many resumes share the same source pattern, reuse the same transformation rule set for that pattern and only vary the person-specific facts; avoid rebuilding the mapping file-by-file.
+23. In the project-experience section, write entries in reverse chronological order (newest first, oldest last) and keep one project per row.
+24. When a person still has an active current project, write that latest row as `xxxx.xx-至今`; keep older rows finite and do not stack multiple `至今` entries unless the source resume already does so.
+25. When populating a team-resume template, compress project names and remarks enough to fit the row layout cleanly; prefer concise, fact-preserving wording over long narrative sentences so the project section remains visually aligned with the template.
 
 ## Guardrails
 
