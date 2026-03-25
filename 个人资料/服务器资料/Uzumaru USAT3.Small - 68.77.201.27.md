@@ -96,3 +96,9 @@ vless://18c25b20-af95-4401-94c3-b29e50dd441b@144.34.238.147:33000?encryption=non
 vless://18c25b20-af95-4401-94c3-b29e50dd441b@154.21.89.58:13003?encryption=none&flow=xtls-rprx-vision&security=reality&sni=addons.mozilla.org&fp=chrome&pbk=9pKRyCzgZUhkUs1NN6K-6HoGh2oDON57b48Ttsq2JRQ&sid=5f5875d21046cf0b#DMIT-LAX.Pro.MALIBU%20Uzumaru%20USAT3.Small
 ```
 <!-- flux-auto:end -->
+
+落地[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:21000
+
+```
+ss://2022-blake3-aes-128-gcm%3AzmXtjFlGovbRkcf6bkMZvQ%3D%3D@[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:21000#Vmsilo - Uzumaru USAT3.Small
+```

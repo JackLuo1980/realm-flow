@@ -1,7 +1,7 @@
 # claude.json
 
 - 来源: `/Users/jack/.claude.json`
-- 同步时间: `2026-03-24 17:33:21 CST`
+- 同步时间: `2026-03-25 18:43:59 CST`
 
 ---
 
@@ -28,7 +28,7 @@
   "userID": "526044bb2218012c37fc30b7db90fab3cd8b45b0cdd3299691d2c6b15fa2bb9a",
   "metricsStatusCache": {
     "enabled": false,
-    "timestamp": 1774319391179
+    "timestamp": 1774418514658
   },
   "projects": {
     "/Users/jack/.gemini/antigravity/scratch": {
@@ -94,6 +94,32 @@
     "simplify": {
       "usageCount": 2,
       "lastUsedAt": 1774332584789
+    },
+    "superpowers:using-superpowers": {
+      "usageCount": 1,
+      "lastUsedAt": 1774425011604
+    },
+    "document-skills:docx": {
+      "usageCount": 1,
+      "lastUsedAt": 1774425590270
+    },
+    "minimax-skills:minimax-xlsx": {
+      "usageCount": 1,
+      "lastUsedAt": 1774430550192
+    }
+  },
+  "mcpServers": {
+    "MiniMax": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "minimax-coding-plan-mcp",
+        "-y"
+      ],
+      "env": {
+        "MINIMAX_API_KEY": "sk-cp-8qiX9JVetHWFR5woXNkl_qQ3wQMAf8RMP9Yy1patCOGDy5S21rjpy524tvZ7ABXJaccAEEtvYjrDDEbW0Wf8pURNejAoen7tA0sSRtYP90x7LkdXHxNH1Po",
+        "MINIMAX_API_HOST": "https://api.minimaxi.com"
+      }
     }
   }
 }
