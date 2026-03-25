@@ -60,7 +60,25 @@ Expect some or all of the following:
    - emphasis
    - sentence structure
 13. When the user provides a team-resume template, populate the template directly and save a new file using the pattern `客户名称人员团队简历-姓名.docx` or the user's requested naming convention.
+14. Before finalizing any team resume, verify that the `姓名` field is populated and matches the source person exactly; never leave the name blank.
 14. For template-based rewriting, preserve the source facts, align the wording to the target role, and prefer bank/risk-management phrasing when the role belongs to that family.
+15. For team-resume templates, use the following field rules:
+   - `出生年月` should be filled only when supported by source data; otherwise leave it blank.
+   - `参加工作时间` should be filled from the graduation time in the source data, because the project rule treats graduation as the work-start date.
+   - `相关领域工作年限` should contain only the numeric year count, not Chinese text like `年`, and should be calculated from the graduation/work-start date to the current date, rounded down to whole years.
+   - `学历及学位` should be expanded to the combined form that matches the degree level, for example:
+     - `本科学历` -> `本科学历、学士学位`
+     - `硕士学历` -> `硕士学历、硕士学位`
+     - `博士学历` -> `博士学历、博士学位`
+   - `职称证书` should be filled with `无` when the source resume does not list one.
+   - `毕业学校` should keep only the graduation year plus school and major, and append `专业` after the major text only when the major does not already end with `专业`; omit month/day details unless the user explicitly asks for them.
+16. After generating a batch, run a hard check for blank critical fields, especially `姓名`, before telling the user the files are ready.
+17. When inferring `拟在本项目任职`, prioritize explicit job titles and project-role fields from the source resume; do not let responsibility descriptions alone dominate the role classification.
+   - `学历及学位` may be expanded to a combined form like `本科学历、学士学位` when the source resume clearly supports it, and should follow the same pattern for master and doctoral degrees.
+   - `毕业学校` should keep only school + major; omit the graduation year in that cell unless the template explicitly asks for it.
+   - If the work-experience section has 4 columns, merge start and end time into the first column as a date range and place the detailed duties in the `备注` column.
+   - Do not truncate project history when the source resume has more entries than the template's visible rows; extend the table with cloned rows and keep all supported project experiences.
+   - If `相关领域工作年限` is not explicitly stated, calculate it as `current date - first employment start date` and round down to whole years, unless the client provides a different rule.
 
 ## Guardrails
 
