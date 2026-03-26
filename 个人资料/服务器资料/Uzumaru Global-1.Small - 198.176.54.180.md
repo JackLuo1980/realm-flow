@@ -101,16 +101,8 @@ vless://bdc199f6-25d5-4692-a426-434a7f6932d3@103.192.179.240:20002?encryption=no
 ```
 
 
-### 落地 肥仔云 深圳电信IEPL
+落地
 
 ```
-ss://2022-blake3-aes-128-gcm%3AZ0N1gJLMMrCjThTYPZ%2BTyw%3D%3D@103.236.57.183:14004#%E8%82%A5%E4%BB%94%E4%BA%91%20%E6%B7%B1%E5%9C%B3%E7%94%B5%E4%BF%A1IEPL%20Uzumaru%20Global
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206WjBOMWdKTE1NckNqVGhUWVBaK1R5dz09@198.176.54.180:21004#ss-Uzumaru Global-1.Small
 ```
-
-
-### 落地 肥仔云 深圳电信IEPL
-
-```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206WjBOMWdKTE1NckNqVGhUWVBaK1R5dz09@103.236.57.183:14004#%E8%82%A5%E4%BB%94%E4%BA%91%20%E6%B7%B1%E5%9C%B3%E7%94%B5%E4%BF%A1IEPL%20Uzumaru%20Global
-```
-<!-- flux-auto:end -->
