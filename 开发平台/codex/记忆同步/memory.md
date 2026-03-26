@@ -86,4 +86,4 @@ When user says any of the following, add/update entries in this file:
 - `Uzumaru Global-1B.Small` 若再次出现“/nm 没反馈”，先查 bot 进程是否因 Telegram bootstrap `get_me` 超时而退出；现在已给 `app.run_polling()` 加重试，并给 `/nm`、`/refresh` 的首条回复和关键编辑加了轻量重试。
 - `Uzumaru Global-1B.Small` 最终口径已经回退到 Global-1 干净基线，只保留“切换失败自动回滚”这一项增量；测速、状态缓存、启动重试和消息重试全部移除，后续先以稳定响应为第一优先级。
 - 以后任何上线都按版本发布处理：先保留一个可回退的稳定版本，再把新改动作为新版本发布；每次开发/上线都记录版本基线、改动点和回退路径，避免无版本直改导致无法回退。
-
+- `Uzumaru Global-1B.Small` 这次新增了实验节点预检版本：只对实验节点做切换后 Telegram 预检，失败立即回滚到稳定出口 `香港机房出口`；稳定节点不加额外预检开销，bot 已在 `198.176.54.180:22009` 重新启动并保持 `started`。
