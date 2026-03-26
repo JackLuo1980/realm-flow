@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-26 12:49:11 CST`
+- 同步时间: `2026-03-26 13:26:54 CST`
 
 ---
 
@@ -265,6 +265,12 @@
 - Background: 用户要求将优化后 bot 从 21003 环境同步升级到 22009 环境，并在 Obsidian 单独建项目记录
 - Decision: 以 21003 的 /opt/tg-exit-bot/bot.py 作为标准源，校验哈希后覆盖到 22009 同路径，并通过 rc-service tg-exit-bot restart 验收
 - Why: 用哈希一致性可避免误传版本；按目标机原有守护方式重启可降低运行风险
+
+## 2026-03-26 - Uzumaru Global-1B.Small 删除测速功能并回退稳定菜单
+- Background: 用户反复反馈 `📡 测速节点` / 探测进度容易卡住，且 `/nm` 打开清单时会受测速链路拖累。
+- Decision: 删除测速入口、测速命令、节点状态缓存与所有红绿点/延迟展示；`/nm` 只保留节点切换菜单，`刷新列表` 只更新 `out.sh` 并重建菜单。
+- Why: 刷新、测速、切换是三种不同意图，混在一起会让菜单响应变慢且更容易误判；删除测速后可以把稳定性优先级拉回到节点切换本身。
+- Follow-up: 后续如果只想切换出口，默认走稳定的 `/nm` 菜单，不再附带任何测速状态展示。
 - Follow-up: 后续双环境同步优先执行：源脚本哈希确认 -> 目标覆盖 -> 服务重启 -> 日志出现 Application started -> 回填到 Obsidian 项目记录
 
 ## 2026-03-22 - DDNS 稳定性修复基线（Cloudflare）
