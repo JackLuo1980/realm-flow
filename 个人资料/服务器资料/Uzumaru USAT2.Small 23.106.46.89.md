@@ -68,5 +68,5 @@ created: 2026-03-26 10:28
 ## SS
 
 ```
-
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206eXA5L1lkcEFpc1V6M1hUV2tObkQ5dz09@[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:10001#Uzumaru USAT2.Small
 ```
