@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-26 11:55:45 CST`
+- 同步时间: `2026-03-26 11:59:04 CST`
 
 ---
 
@@ -74,4 +74,5 @@ When user says any of the following, add/update entries in this file:
 - 45.129.9.96 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续按 SSH -> 代理端口 -> 短抓包的流程巡检。
 - 45.129.9.96 实际可从 `22` 登录；`xray` 对外端口是 `14060`，`x-ui` 监听 `2096/46949`，安装 `tcpdump` 后对这两个口短抓包未见持续入站。
 - Uzumaru Global-1B.Small 的 TG 出口管理已重部署到 `198.176.54.180:22009`；稳定基线沿用 `Uzumaru Global-1.Small` 的 `bot.py`，服务名固定为 `tg-exit-bot`，配置文件在 `/opt/tg-exit-bot/.env`，新 token 已验证 `getMe` 成功。
+- `Uzumaru Global-1B.Small` 的面板“刷新列表”按钮现在会先下载最新 `out.sh` 再重建菜单，不再只是重绘本地节点列表；如果刷新后节点仍不变，优先看 `OUT_SCRIPT` 的更新源是否返回新内容。
 

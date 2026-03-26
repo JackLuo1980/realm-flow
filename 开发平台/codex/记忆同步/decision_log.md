@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-26 11:55:45 CST`
+- 同步时间: `2026-03-26 11:59:04 CST`
 
 ---
 
@@ -332,4 +332,10 @@
 - Decision: 采用 `/Users/jack/.gemini/antigravity/scratch/tg-exit-bot/bot.py` 作为标准源，部署到 `/opt/tg-exit-bot/bot.py`，配置 `BOT_TOKEN=8647797680:AAGFJp67gieq3lkHSScpdDtSr83P-sg1lrc`、`ADMIN_USER_ID=1603970047`、`OUT_SCRIPT=/etc/uzmaru/out.sh`，并以 `rc-service tg-exit-bot restart` 完成启动验收。
 - Why: 复用已验证的稳定脚本能减少结构性风险；`getMe` 校验成功说明新 token 与 Telegram 连通正常，服务进程也已成功拉起。
 - Follow-up: 后续 `Global-1B.Small` 的 TG 管理优先沿用这套代码与服务名 `tg-exit-bot`，需要改配置时只改 `/opt/tg-exit-bot/.env`。
+
+## 2026-03-26 - Uzumaru 刷新按钮行为修复
+- Background: 用户反馈点击面板里的“刷新列表”后看起来没有变化，节点列表也没有更新。
+- Decision: 将面板按钮 `刷新列表` 从“仅重画本地菜单”改为“先下载最新 `out.sh`，再切回默认出口并重建菜单”；同时保留 `/refresh` 命令与按钮一致的刷新逻辑。
+- Why: 原先按钮只重新解析本地脚本，不会拉取最新节点文件，所以界面变化不明显；改成先刷新脚本可以让按钮行为与用户预期一致。
+- Follow-up: 后续若用户点刷新仍无变化，优先检查 `OUT_SCRIPT` 下载源是否可用，再看服务日志。
 
