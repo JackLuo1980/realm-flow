@@ -100,5 +100,5 @@ vless://18c25b20-af95-4401-94c3-b29e50dd441b@154.21.89.58:13003?encryption=none&
 落地[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:21000
 
 ```
-ss://2022-blake3-aes-128-gcm%3AzmXtjFlGovbRkcf6bkMZvQ%3D%3D@[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:21000#Vmsilo - Uzumaru USAT3.Small
+ss://2022-blake3-aes-128-gcm%3AzmXtjFlGovbRkcf6bkMZvQ%3D%3D@[240e:96c:7100:1fe:1c8:c8aa:4ecc:86]:10000#Vmsilo - Uzumaru USAT3.Small
 ```
