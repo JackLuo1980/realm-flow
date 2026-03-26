@@ -75,19 +75,8 @@ ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206NTNwK2tCaVlFTFdKUDdFeU5TdThlUT09@155.117.18
 ```
 
 ---
-## 落地节点
-
-<!-- flux-auto:start -->
-### 落地 LaLa  广东三线NAT|680 S2
+落地 [240e:96c:7100:1fe:1c8:c8aa:4ecc:83]:10000
 
 ```
-ss://2022-blake3-aes-128-gcm%3A53p%2BkBiYELWJP7EyNSu8eQ%3D%3D@14.116.246.198:21406#LaLa%20%20%E5%B9%BF%E4%B8%9C%E4%B8%89%E7%BA%BFNAT%7C680%20S2%20Uzumaru%20TWHN2.Small
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206NTNwK2tCaVlFTFdKUDdFeU5TdThlUT09@[240e:96c:7100:1fe:1c8:c8aa:4ecc:83]:10000#Uzumaru TWHN2.Small
 ```
-
-
-### 落地 LaLa  广东三线NAT|680 S2
-
-```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206NTNwK2tCaVlFTFdKUDdFeU5TdThlUT09@14.116.246.198:21406#LaLa%20%20%E5%B9%BF%E4%B8%9C%E4%B8%89%E7%BA%BFNAT%7C680%20S2%20Uzumaru%20TWHN2.Small
-```
-<!-- flux-auto:end -->
