@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-26 13:26:54 CST`
+- 同步时间: `2026-03-26 13:37:43 CST`
 
 ---
 
@@ -271,6 +271,12 @@
 - Decision: 删除测速入口、测速命令、节点状态缓存与所有红绿点/延迟展示；`/nm` 只保留节点切换菜单，`刷新列表` 只更新 `out.sh` 并重建菜单。
 - Why: 刷新、测速、切换是三种不同意图，混在一起会让菜单响应变慢且更容易误判；删除测速后可以把稳定性优先级拉回到节点切换本身。
 - Follow-up: 后续如果只想切换出口，默认走稳定的 `/nm` 菜单，不再附带任何测速状态展示。
+
+## 2026-03-26 - Uzumaru Global-1B.Small 启动与回复重试加固
+- Background: 用户反馈 `/nm` 偶尔“没反馈”，排查发现 bot 进程曾因 Telegram bootstrap 阶段 `get_me` 超时直接退出，OpenRC 还会留下 `crashed` 状态。
+- Decision: 给 `app.run_polling()` 外层加重试循环；同时给 `/nm`、`/refresh` 和关键编辑消息加轻量重试，降低 Telegram 短暂抖动导致的无反馈概率。
+- Why: 这类问题不是菜单逻辑本身坏了，而是进程或首条消息发送在网络抖动时直接失败；重试能把“偶发故障”降级成“短暂延迟”。
+- Follow-up: 若后续再次出现“started 但没响应”，先查 `/run/tg-exit-bot.pid` 和进程是否真在跑，再看 Telegram bootstrap 是否仍有超时。
 - Follow-up: 后续双环境同步优先执行：源脚本哈希确认 -> 目标覆盖 -> 服务重启 -> 日志出现 Application started -> 回填到 Obsidian 项目记录
 
 ## 2026-03-22 - DDNS 稳定性修复基线（Cloudflare）

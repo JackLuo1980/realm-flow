@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-26 13:26:54 CST`
+- 同步时间: `2026-03-26 13:37:43 CST`
 
 ---
 
@@ -83,4 +83,5 @@ When user says any of the following, add/update entries in this file:
 - `Uzumaru Global-1B.Small` 的测速进度若停在 `0/29`，先查是否触发了 `📡 测速节点` 而不是 `刷新列表`；曾有一次因为 `bot.py` 漏导入 `_message_text` 导致第一台节点回切时报错，现在已补上，并改成逐节点回写进度。
 - `Uzumaru Global-1B.Small` 的节点在线/离线判断现在不再只依赖 `ip.sb`，而是改成多端点 fallback：先试 `gstatic` 204，再试 `Cloudflare` 204，最后才回落到 `ip.sb`，以减少把正常节点误判成离线的情况。
 - `Uzumaru Global-1B.Small` 最终回退为稳定菜单基线：测速功能已删除，`/nm` 只负责打开切换清单，`刷新列表` 只更新 `out.sh` 并重建菜单，不再显示红绿点或延迟。
+- `Uzumaru Global-1B.Small` 若再次出现“/nm 没反馈”，先查 bot 进程是否因 Telegram bootstrap `get_me` 超时而退出；现在已给 `app.run_polling()` 加重试，并给 `/nm`、`/refresh` 的首条回复和关键编辑加了轻量重试。
 
