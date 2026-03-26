@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-26 12:09:34 CST`
+- 同步时间: `2026-03-26 12:24:05 CST`
 
 ---
 
@@ -77,4 +77,5 @@ When user says any of the following, add/update entries in this file:
 - `Uzumaru Global-1B.Small` 的面板“刷新列表”按钮现在会先下载最新 `out.sh` 再重建菜单，不再只是重绘本地节点列表；如果刷新后节点仍不变，优先看 `OUT_SCRIPT` 的更新源是否返回新内容。
 - `Uzumaru Global-1B.Small` 的节点数已恢复到 29：`/etc/uzmaru/out.sh` 刷新到 `jZaxMGrMCwGj.sh` 后，bot 日志显示 `22` 个正常节点 + `7` 个实验节点。
 - `Uzumaru Global-1B.Small` 的 TG 出口管理现在带失败自动回滚：切换节点前会先记录原节点，切换失败或验证失败时自动回到原出口；验证用更短超时的 `ip.sb` 探测，降低“卡住”体感。
+- `Uzumaru Global-1B.Small` 的节点清单现在只在手动刷新时做通断/延迟探测；`/nm` 直接读取进程内缓存，按钮会显示 `🟢/🔴` 和 `xxms` 或失败原因。
 
