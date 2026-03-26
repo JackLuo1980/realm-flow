@@ -32,7 +32,7 @@ tags:
 ==========================================
 
 [INFO] 📋 配置信息:
-   SS 端口: 22010 | 密码: AbPQPPmrKNxqk9DSP0I1kQ== | 加密: 2022-blake3-aes-128-gcm
+   SS 端口: 22010 | 密码: Ir8bdwOYfFYaa4KHlQ50rw== | 加密: 2022-blake3-aes-128-gcm
    服务器: 198.176.54.180
    Reality server_name(SNI): addons.mozilla.org
 
@@ -42,8 +42,8 @@ tags:
 
 [INFO] 📜 客户端链接:
    === Shadowsocks (SS) ===
-   ss://2022-blake3-aes-128-gcm%3AAbPQPPmrKNxqk9DSP0I1kQ%3D%3D@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
-   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206QWJQUVBQbXJLTnhxazlEU1AwSTFrUT09@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
+   ss://2022-blake3-aes-128-gcm%3AIr8bdwOYfFYaa4KHlQ50rw%3D%3D@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
+   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206SXI4YmR3T1lmRllhYTRLSGxRNTBydz09@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
    
 
 [INFO] 🔧 管理命令:
@@ -53,7 +53,6 @@ tags:
    状态: rc-service sing-box status
    日志: tail -f /var/log/sing-box.log
 
-==========================================
 ```
 
 - - -
@@ -101,5 +100,5 @@ vless://5bc45954-6b53-43e9-9b28-44e824f742bc@103.192.179.240:20003?encryption=no
 
 落地
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206QWJQUVBQbXJLTnhxazlEU1AwSTFrUT09@119.147.22.28:10005#Uzumaru Global-1B.Small
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206SXI4YmR3T1lmRllhYTRLSGxRNTBydz09@119.147.22.28:10005#Uzumaru Global-1B.Small
 ```
