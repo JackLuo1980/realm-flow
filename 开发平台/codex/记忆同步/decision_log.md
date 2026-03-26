@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-26 11:59:04 CST`
+- 同步时间: `2026-03-26 12:02:27 CST`
 
 ---
 
@@ -338,4 +338,10 @@
 - Decision: 将面板按钮 `刷新列表` 从“仅重画本地菜单”改为“先下载最新 `out.sh`，再切回默认出口并重建菜单”；同时保留 `/refresh` 命令与按钮一致的刷新逻辑。
 - Why: 原先按钮只重新解析本地脚本，不会拉取最新节点文件，所以界面变化不明显；改成先刷新脚本可以让按钮行为与用户预期一致。
 - Follow-up: 后续若用户点刷新仍无变化，优先检查 `OUT_SCRIPT` 下载源是否可用，再看服务日志。
+
+## 2026-03-26 - Uzumaru Global-1B.Small 节点数恢复到 29
+- Background: 用户反馈 `Global-1B.Small` 只有 24 个节点，但 `Global-1.Small` 应该是 29 个。
+- Decision: 直接将目标机 `/etc/uzmaru/out.sh` 刷新为 `http://api-file.ap1.661145.xyz/down/jZaxMGrMCwGj.sh` 的最新版本，并重启 `tg-exit-bot`；重启后日志确认 `解析到 22 个正常节点, 7 个实验节点`，总计 29 个。
+- Why: 问题本质是目标机的 `out.sh` 仍停留在旧版本；最新源脚本已包含 `103-107`，刷新后节点数恢复正常。
+- Follow-up: 后续若再次看到 24 节点，先检查 `/etc/uzmaru/out.sh` 是否被旧版本覆盖，再看 bot 日志里的节点解析结果。
 
