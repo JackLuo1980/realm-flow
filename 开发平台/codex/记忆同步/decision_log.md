@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-25 18:43:59 CST`
+- 同步时间: `2026-03-26 11:55:45 CST`
 
 ---
 
@@ -326,4 +326,10 @@
 - 109.107.137.44: 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续巡检。
 - 45.129.9.96: 全端口 TCP 扫描未扫到任何开放端口，暂时无法继续巡检。
 - 45.129.9.96: 实际可从 `22` 登录；`xray` 对外端口为 `14060`，`x-ui` 监听 `2096/46949`，安装 `tcpdump` 后对这两个口短抓包未见持续入站。
+
+## 2026-03-26 - Uzumaru Global-1B.Small 重部署验收
+- Background: 用户要求把 `Uzumaru Global-1B.Small` 的 TG 出口管理脚本重新部署到 `198.176.54.180:22009`，并明确沿用 `Uzumaru Global-1.Small` 的稳定代码基线。
+- Decision: 采用 `/Users/jack/.gemini/antigravity/scratch/tg-exit-bot/bot.py` 作为标准源，部署到 `/opt/tg-exit-bot/bot.py`，配置 `BOT_TOKEN=8647797680:AAGFJp67gieq3lkHSScpdDtSr83P-sg1lrc`、`ADMIN_USER_ID=1603970047`、`OUT_SCRIPT=/etc/uzmaru/out.sh`，并以 `rc-service tg-exit-bot restart` 完成启动验收。
+- Why: 复用已验证的稳定脚本能减少结构性风险；`getMe` 校验成功说明新 token 与 Telegram 连通正常，服务进程也已成功拉起。
+- Follow-up: 后续 `Global-1B.Small` 的 TG 管理优先沿用这套代码与服务名 `tg-exit-bot`，需要改配置时只改 `/opt/tg-exit-bot/.env`。
 
