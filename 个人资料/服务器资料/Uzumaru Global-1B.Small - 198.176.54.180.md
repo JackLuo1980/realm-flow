@@ -14,7 +14,8 @@ tags:
 | IP          | 198.176.54.180 |
 | Bandwidth   | 800GB          |
 | Email账号     | 637938@qq.com  |
-
+22009
+22010-22011
 - - -
 
 ## Account Information
@@ -31,8 +32,7 @@ tags:
 ==========================================
 
 [INFO] 📋 配置信息:
-   SS 端口: 22010 | 密码: vHjmuiHFS+UuLQCLSxt3LA== | 加密: 2022-blake3-aes-128-gcm
-   Reality 端口: 22011 | UUID: 5bc45954-6b53-43e9-9b28-44e824f742bc
+   SS 端口: 22010 | 密码: AbPQPPmrKNxqk9DSP0I1kQ== | 加密: 2022-blake3-aes-128-gcm
    服务器: 198.176.54.180
    Reality server_name(SNI): addons.mozilla.org
 
@@ -42,11 +42,8 @@ tags:
 
 [INFO] 📜 客户端链接:
    === Shadowsocks (SS) ===
-   ss://2022-blake3-aes-128-gcm%3AvHjmuiHFS%2BUuLQCLSxt3LA%3D%3D@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
-   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206dkhqbXVpSEZTK1V1TFFDTFN4dDNMQT09@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
-   
-   === VLESS Reality ===
-   vless://5bc45954-6b53-43e9-9b28-44e824f742bc@198.176.54.180:22011?encryption=none&flow=xtls-rprx-vision&security=reality&sni=addons.mozilla.org&fp=chrome&pbk=EwlPzUQ3DaMZCYdJPj-Fe3ROebT-SBa4oQt_GMuyFVA&sid=f02d0dfec117cfd2#reality-Uzumaru Global-1B.Small
+   ss://2022-blake3-aes-128-gcm%3AAbPQPPmrKNxqk9DSP0I1kQ%3D%3D@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
+   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206QWJQUVBQbXJLTnhxazlEU1AwSTFrUT09@198.176.54.180:22010#ss-Uzumaru Global-1B.Small
    
 
 [INFO] 🔧 管理命令:
@@ -104,5 +101,5 @@ vless://5bc45954-6b53-43e9-9b28-44e824f742bc@103.192.179.240:20003?encryption=no
 
 落地
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206dkhqbXVpSEZTK1V1TFFDTFN4dDNMQT09@119.147.22.28:10005#Uzumaru Global-1B.Small
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206QWJQUVBQbXJLTnhxazlEU1AwSTFrUT09@119.147.22.28:10005#Uzumaru Global-1B.Small
 ```

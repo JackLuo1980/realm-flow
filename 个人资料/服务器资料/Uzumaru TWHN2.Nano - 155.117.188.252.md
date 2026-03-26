@@ -66,7 +66,7 @@ created: 2026-03-06 17:07
 ## SS
 
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b3FlQjZWU3M3eXE4QlJwN2RhL0YyQT09@[240e:96c:7100:1fe:1c8:c8aa:4ecc:83]:10001#ss-Uzumaru TWHN2.Nano
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b3FlQjZWU3M3eXE4QlJwN2RhL0YyQT09@[240e:96c:7100:1fe:1c8:c8aa:4ecc:83]:10001#Uzumaru TWHN2.Nano
 ```
 
 ---
