@@ -55,3 +55,8 @@ ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206ajFRNFZHQzJZM25yVi8zb1pCWUNLUGtiQ3pSWGxmbUJ
 ```
 
 
+落地 Reality
+
+```
+vless://941ba985-67ac-4b69-be42-6addb72f1a6c@[2409:8c54:6810:5::c4]:10002?type=tcp&encryption=none&security=reality&pbk=DzwcC09w_-AwOtCsepF1rzahGLxy_Ym5iJJ3M4minWg&fp=chrome&sni=www.icloud.com&sid=4ad495&spx=%2F&flow=xtls-rprx-vision#Wawo-HKBN-2G-23-LS
+```

@@ -58,5 +58,5 @@ ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206MWRyWXZ2NXJTbmd3T0lMb3IyR0lIbExzT2FWYndWZ1R
 落地 Reality
 
 ```
-vless://0f52a487-a810-425c-a952-405e535960c1@23.147.172.13:24819?type=tcp&encryption=none&security=reality&pbk=BooxBSKV6zclWQbA4BSZyxroGgJDzk0vcQWhBa4sxUw&fp=chrome&sni=www.oracle.com&sid=ef&spx=%2F&flow=xtls-rprx-vision#Wawo-HK-Simple-2G-SE
+vless://0f52a487-a810-425c-a952-405e535960c1@[2409:8c54:6810:5::c4]:10000?type=tcp&encryption=none&security=reality&pbk=BooxBSKV6zclWQbA4BSZyxroGgJDzk0vcQWhBa4sxUw&fp=chrome&sni=www.oracle.com&sid=ef&spx=%2F&flow=xtls-rprx-vision#Wawo-HK-Simple-2G-SE
 ```

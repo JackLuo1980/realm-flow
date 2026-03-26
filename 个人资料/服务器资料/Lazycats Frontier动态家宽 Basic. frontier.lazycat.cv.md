@@ -57,6 +57,6 @@ ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206SWNaSkRRZHgyd0k1US84Y3NjYkhmSWRESVFZdGZOR2d
 ### 落地 Lazycats Frontier动态家宽 Basic-widw2o4v
 
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206SWNaSkRRZHgyd0k1US84Y3NjYkhmSWRESVFZdGZOR2dJV0JsUlA3b1MwYz06SlI2SFNYRTlFK2VKQ1M1bDFvd2h1VkN5ak8yM0VYL1pKK3VHNlZTd2lpcz0@frontier.lazycat.cv:34535?type=tcp#Lazycats%20Frontier%E5%8A%A8%E6%80%81%E5%AE%B6%E5%AE%BD%20Basic-widw2o4v%20Lazycats%20Frontier%E5%8A%A8%E6%80%81%E5%AE%B6%E5%AE%BD%20Basic.%20frontier.lazycat.cv
+ss://MjAyMi1ibGFrZTMtYWVzLTI1Ni1nY206SWNaSkRRZHgyd0k1US84Y3NjYkhmSWRESVFZdGZOR2dJV0JsUlA3b1MwYz06SlI2SFNYRTlFK2VKQ1M1bDFvd2h1VkN5ak8yM0VYL1pKK3VHNlZTd2lpcz0@[240e:97c:400c:803::1:14c]:10000?type=tcp#Lazycats Frontier动态家宽 Basic
 ```
 <!-- flux-auto:end -->
