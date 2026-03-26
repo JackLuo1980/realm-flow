@@ -1,7 +1,7 @@
 # decision_log.md
 
 - 来源: `/Users/jack/Documents/Playground/decision_log.md`
-- 同步时间: `2026-03-26 12:02:27 CST`
+- 同步时间: `2026-03-26 12:09:34 CST`
 
 ---
 
@@ -344,4 +344,10 @@
 - Decision: 直接将目标机 `/etc/uzmaru/out.sh` 刷新为 `http://api-file.ap1.661145.xyz/down/jZaxMGrMCwGj.sh` 的最新版本，并重启 `tg-exit-bot`；重启后日志确认 `解析到 22 个正常节点, 7 个实验节点`，总计 29 个。
 - Why: 问题本质是目标机的 `out.sh` 仍停留在旧版本；最新源脚本已包含 `103-107`，刷新后节点数恢复正常。
 - Follow-up: 后续若再次看到 24 节点，先检查 `/etc/uzmaru/out.sh` 是否被旧版本覆盖，再看 bot 日志里的节点解析结果。
+
+## 2026-03-26 - Uzumaru 切换失败自动回滚
+- Background: 用户反馈切换某些节点（例如 10 号节点）后会“没反应、像卡住”，且没有自动回到原节点。
+- Decision: 为 `tg-exit-bot` 增加失败回滚机制：先切目标节点，再用短超时 `ip.sb` 探测验证；若切换失败或验证失败，自动调用原节点的 `switch_via_api` 回滚，并在 TG 回调里明确提示是否已回到原节点。
+- Why: 坏节点会让出口变成不可用状态，若不自动回滚就会让服务器保持在错误出口上；短超时验证可减少“卡住”的体感。
+- Follow-up: 后续切坏节点时，先看 TG 是否提示“已自动回到原来的节点”，再查 `/var/log/tg-exit-bot.err` 是否有回滚失败。
 
