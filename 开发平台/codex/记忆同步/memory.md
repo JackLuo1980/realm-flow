@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-26 13:37:43 CST`
+- 同步时间: `2026-03-26 13:46:38 CST`
 
 ---
 
@@ -84,4 +84,6 @@ When user says any of the following, add/update entries in this file:
 - `Uzumaru Global-1B.Small` 的节点在线/离线判断现在不再只依赖 `ip.sb`，而是改成多端点 fallback：先试 `gstatic` 204，再试 `Cloudflare` 204，最后才回落到 `ip.sb`，以减少把正常节点误判成离线的情况。
 - `Uzumaru Global-1B.Small` 最终回退为稳定菜单基线：测速功能已删除，`/nm` 只负责打开切换清单，`刷新列表` 只更新 `out.sh` 并重建菜单，不再显示红绿点或延迟。
 - `Uzumaru Global-1B.Small` 若再次出现“/nm 没反馈”，先查 bot 进程是否因 Telegram bootstrap `get_me` 超时而退出；现在已给 `app.run_polling()` 加重试，并给 `/nm`、`/refresh` 的首条回复和关键编辑加了轻量重试。
+- `Uzumaru Global-1B.Small` 最终口径已经回退到 Global-1 干净基线，只保留“切换失败自动回滚”这一项增量；测速、状态缓存、启动重试和消息重试全部移除，后续先以稳定响应为第一优先级。
+- 以后任何上线都按版本发布处理：先保留一个可回退的稳定版本，再把新改动作为新版本发布；每次开发/上线都记录版本基线、改动点和回退路径，避免无版本直改导致无法回退。
 
