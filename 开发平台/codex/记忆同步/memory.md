@@ -1,7 +1,7 @@
 # memory.md
 
 - 来源: `/Users/jack/Documents/Playground/memory.md`
-- 同步时间: `2026-03-26 12:42:45 CST`
+- 同步时间: `2026-03-26 12:49:11 CST`
 
 ---
 
@@ -81,4 +81,5 @@ When user says any of the following, add/update entries in this file:
 - `Uzumaru Global-1B.Small` 的刷新流程现在会分段回报进度，不再长时间只停在“正在更新...”这一句；节点名也尽量放在按钮文本最前面，减少视觉上“没左对齐”的感觉。
 - `Uzumaru Global-1B.Small` 进一步把刷新与测速解耦：`刷新列表` 只更新 `out.sh` 和菜单，`📡 测速节点` 才做延迟探测；按钮文案优先显示 `🟢 123ms  节点名`，让状态更醒目。
 - `Uzumaru Global-1B.Small` 的测速进度若停在 `0/29`，先查是否触发了 `📡 测速节点` 而不是 `刷新列表`；曾有一次因为 `bot.py` 漏导入 `_message_text` 导致第一台节点回切时报错，现在已补上，并改成逐节点回写进度。
+- `Uzumaru Global-1B.Small` 的节点在线/离线判断现在不再只依赖 `ip.sb`，而是改成多端点 fallback：先试 `gstatic` 204，再试 `Cloudflare` 204，最后才回落到 `ip.sb`，以减少把正常节点误判成离线的情况。
 
