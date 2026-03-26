@@ -216,10 +216,13 @@ def gather_resume_data(base_dir: Path):
         projects = extract_projects(table)
         if projects:
             for project in projects:
-                summary_rows.append((seq, folder, name, role, project["project"]))
+                project_start = ""
+                if "-" in project["period"]:
+                    project_start = project["period"].split("-", 1)[0]
+                summary_rows.append((seq, folder, name, role, project_start, project["project"]))
                 seq += 1
         else:
-            summary_rows.append((seq, folder, name, role, ""))
+            summary_rows.append((seq, folder, name, role, "", ""))
             seq += 1
         people[name]["companies"].extend(parse_work_history(get_main_text(table)))
         people[name]["projects"].extend(projects)
@@ -252,17 +255,17 @@ def build_workbook(base_dir: Path, output_path: Path) -> None:
     # 项目汇总
     ws = wb.active
     ws.title = "项目汇总"
-    ws.append(["序号", "文件夹名称", "姓名", "拟投入本项目工作岗位", "项目名称及项目内容"])
+    ws.append(["序号", "文件夹名称", "姓名", "拟投入本项目工作岗位", "项目开始时间", "项目名称及项目内容"])
     for row in summary_rows:
         ws.append(list(row))
-    style_sheet(ws, {"A": 8, "B": 28, "C": 18, "D": 28, "E": 72})
+    style_sheet(ws, {"A": 8, "B": 28, "C": 18, "D": 28, "E": 16, "F": 72})
 
     # 项目统计
     stat = wb.create_sheet("项目统计")
     stat.append(["序号", "项目名称及项目内容", "人数", "人员名单"])
     project_people = defaultdict(list)
     seen = defaultdict(set)
-    for _, _, name, _, project in summary_rows:
+    for _, _, name, _, _, project in summary_rows:
         if not project:
             continue
         if name not in seen[project]:
@@ -277,7 +280,7 @@ def build_workbook(base_dir: Path, output_path: Path) -> None:
     cross = wb.create_sheet("跨文件夹同岗位")
     cross.append(["序号", "姓名", "拟投入本项目工作岗位", "涉及文件夹数", "文件夹名称"])
     mapping = defaultdict(lambda: defaultdict(set))
-    for _, folder, name, role, _ in summary_rows:
+    for _, folder, name, role, _, _ in summary_rows:
         if name and role and folder:
             mapping[name][role].add(folder)
     idx = 1
@@ -303,10 +306,10 @@ def build_workbook(base_dir: Path, output_path: Path) -> None:
         ]
     )
     groups = defaultdict(list)
-    for _, folder, name, role, project in summary_rows:
+    for _, folder, name, role, _, project in summary_rows:
         if project and role:
             groups[(project, role)].append((folder, name))
-    for idx, (_, folder, name, role, project) in enumerate(summary_rows, start=1):
+    for idx, (_, folder, name, role, _, project) in enumerate(summary_rows, start=1):
         group = groups.get((project, role), []) if project and role else []
         unique_names = []
         name_seen = set()
