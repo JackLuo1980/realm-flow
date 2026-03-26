@@ -28,8 +28,7 @@ created: 2026-03-06 17:07
 ==========================================
 
 [INFO] 📋 配置信息:
-   SS 端口: 23043 | 密码: 53p+kBiYELWJP7EyNSu8eQ== | 加密: 2022-blake3-aes-128-gcm
-   Reality 端口: 23044 | UUID: 04a64c49-8a4d-4eb1-8c43-bb6418441e66
+   SS 端口: 23043 | 密码: oqeB6VSs7yq8BRp7da/F2A== | 加密: 2022-blake3-aes-128-gcm
    服务器: 155.117.188.252
    Reality server_name(SNI): addons.mozilla.org
 
@@ -39,11 +38,8 @@ created: 2026-03-06 17:07
 
 [INFO] 📜 客户端链接:
    === Shadowsocks (SS) ===
-   ss://2022-blake3-aes-128-gcm%3A53p%2BkBiYELWJP7EyNSu8eQ%3D%3D@155.117.188.252:23043#ss
-   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206NTNwK2tCaVlFTFdKUDdFeU5TdThlUT09@155.117.188.252:23043#ss
-   
-   === VLESS Reality ===
-   vless://04a64c49-8a4d-4eb1-8c43-bb6418441e66@155.117.188.252:23044?encryption=none&flow=xtls-rprx-vision&security=reality&sni=addons.mozilla.org&fp=chrome&pbk=jr0iFy2OvsfE8Vljb4gKNoTuq-_j-Vyydq0FO7I16i4&sid=4a936a148fc8997b#reality
+   ss://2022-blake3-aes-128-gcm%3AoqeB6VSs7yq8BRp7da%2FF2A%3D%3D@155.117.188.252:23043#ss-Uzumaru TWHN2.Nano
+   ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b3FlQjZWU3M3eXE4QlJwN2RhL0YyQT09@155.117.188.252:23043#ss-Uzumaru TWHN2.Nano
    
 
 [INFO] 🔧 管理命令:
@@ -63,15 +59,14 @@ created: 2026-03-06 17:07
 ### Reality
 
 ```
-vless://04a64c49-8a4d-4eb1-8c43-bb6418441e66@155.117.188.252:23044?encryption=none&flow=xtls-rprx-vision&security=reality&sni=addons.mozilla.org&fp=chrome&pbk=jr0iFy2OvsfE8Vljb4gKNoTuq-_j-Vyydq0FO7I16i4&sid=4a936a148fc8997b#reality
+
 ```
 
 
 ## SS
 
 ```
-ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206NTNwK2tCaVlFTFdKUDdFeU5TdThlUT09@155.117.188.252:23043#ss
-
+ss://MjAyMi1ibGFrZTMtYWVzLTEyOC1nY206b3FlQjZWU3M3eXE4QlJwN2RhL0YyQT09@[240e:96c:7100:1fe:1c8:c8aa:4ecc:83]:10001#ss-Uzumaru TWHN2.Nano
 ```
 
 ---
